@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/go-logr/logr v1.2.0
+	github.com/go-logr/logr v0.4.0
 	github.com/google/gofuzz v1.1.0
 	github.com/google/uuid v1.1.2
 	github.com/onsi/ginkgo v1.16.4
@@ -26,7 +26,7 @@ require (
 	k8s.io/apiserver v0.22.1
 	k8s.io/client-go v0.22.1
 	k8s.io/code-generator v0.22.1
-	k8s.io/klog/v2 v2.30.0
+	k8s.io/klog/v2 v2.9.0
 	k8s.io/kubectl v0.22.0
 	k8s.io/utils v0.0.0-20210930125809-cb0fa318a74b
 	sigs.k8s.io/cluster-api-provider-aws v0.0.0-00010101000000-000000000000
