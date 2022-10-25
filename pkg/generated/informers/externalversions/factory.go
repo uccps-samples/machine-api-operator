@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/openshift/machine-api-operator/pkg/generated/clientset/versioned"
-	internalinterfaces "github.com/openshift/machine-api-operator/pkg/generated/informers/externalversions/internalinterfaces"
-	machine "github.com/openshift/machine-api-operator/pkg/generated/informers/externalversions/machine"
+	versioned "github.com/uccps-samples/machine-api-operator/pkg/generated/clientset/versioned"
+	internalinterfaces "github.com/uccps-samples/machine-api-operator/pkg/generated/informers/externalversions/internalinterfaces"
+	machine "github.com/uccps-samples/machine-api-operator/pkg/generated/informers/externalversions/machine"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

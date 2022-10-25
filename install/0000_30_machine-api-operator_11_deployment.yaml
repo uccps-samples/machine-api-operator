@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   labels:
     k8s-app: machine-api-operator
   annotations:
-    exclude.release.openshift.io/internal-openshift-hosted: "true"
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 spec:
   replicas: 1
   selector:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        target.workload.uccp.io/management: '{"effect": "PreferredDuringScheduling"}'
       labels:
         k8s-app: machine-api-operator
     spec:

@@ -4,7 +4,7 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/openshift/api/pkg/serialization"
+	"github.com/uccps-samples/api/pkg/serialization"
 )
 
 var _ runtime.NestedObjectDecoder = &Template{}

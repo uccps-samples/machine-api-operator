@@ -4,7 +4,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	helmv1beta1 "github.com/openshift/api/helm/v1beta1"
+	helmv1beta1 "github.com/uccps-samples/api/helm/v1beta1"
 )
 
 const (

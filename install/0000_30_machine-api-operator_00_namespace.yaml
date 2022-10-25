@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Namespace
 metadata:
   annotations:
-    include.release.openshift.io/ibm-cloud-managed: "true"
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
-    openshift.io/node-selector: ""
-    workload.openshift.io/allowed: "management"
-  name: openshift-machine-api
+    include.release.uccp.io/ibm-cloud-managed: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
+    uccp.io/node-selector: ""
+    workload.uccp.io/allowed: "management"
+  name: uccp-machine-api
   labels:
-    name: openshift-machine-api
-    # allow openshift-monitoring to look for ServiceMonitor objects in this namespace
-    openshift.io/cluster-monitoring: "true"
+    name: uccp-machine-api
+    # allow uccp-monitoring to look for ServiceMonitor objects in this namespace
+    uccp.io/cluster-monitoring: "true"
 

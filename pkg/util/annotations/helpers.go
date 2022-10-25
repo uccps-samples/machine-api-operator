@@ -4,7 +4,7 @@ package annotations
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 )
 
 // IsPaused returns true if the Cluster is paused or the object has the `paused` annotation.

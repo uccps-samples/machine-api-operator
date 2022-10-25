@@ -2,7 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    api-approved.openshift.io: https://github.com/openshift/api/pull/470
+    api-approved.openshift.io: https://github.com/uccps-samples/api/pull/470
     include.release.openshift.io/ibm-cloud-managed: "true"
     include.release.openshift.io/self-managed-high-availability: "true"
     include.release.openshift.io/single-node-developer: "true"
@@ -271,7 +271,7 @@ spec:
                         description: mappingMethod determines how identities from this provider are mapped to users Defaults to "claim"
                         type: string
                       name:
-                        description: 'name is used to qualify the identities returned by this provider. - It MUST be unique and not shared by any other identity provider used - It MUST be a valid path segment: name cannot equal "." or ".." or contain "/" or "%" or ":"   Ref: https://godoc.org/github.com/openshift/origin/pkg/user/apis/user/validation#ValidateIdentityProviderName'
+                        description: 'name is used to qualify the identities returned by this provider. - It MUST be unique and not shared by any other identity provider used - It MUST be a valid path segment: name cannot equal "." or ".." or contain "/" or "%" or ":"   Ref: https://godoc.org/github.com/uccps-samples/origin/pkg/user/apis/user/validation#ValidateIdentityProviderName'
                         type: string
                       openID:
                         description: openID enables user authentication using OpenID credentials

@@ -72,7 +72,7 @@ message ConfigSpec {
   optional string managementState = 1;
 
   // samplesRegistry allows for the specification of which registry is accessed
-  // by the ImageStreams for their image content.  Defaults on the content in https://github.com/openshift/library
+  // by the ImageStreams for their image content.  Defaults on the content in https://github.com/uccps-samples/library
   // that are pulled into this github repository, but based on our pulling only ocp content it typically
   // defaults to registry.redhat.io.
   optional string samplesRegistry = 2;
@@ -113,7 +113,7 @@ message ConfigStatus {
   repeated ConfigCondition conditions = 2;
 
   // samplesRegistry allows for the specification of which registry is accessed
-  // by the ImageStreams for their image content.  Defaults on the content in https://github.com/openshift/library
+  // by the ImageStreams for their image content.  Defaults on the content in https://github.com/uccps-samples/library
   // that are pulled into this github repository, but based on our pulling only ocp content it typically
   // defaults to registry.redhat.io.
   // +patchMergeKey=type

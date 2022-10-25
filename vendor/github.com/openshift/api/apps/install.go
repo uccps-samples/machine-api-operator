@@ -4,7 +4,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	appsv1 "github.com/openshift/api/apps/v1"
+	appsv1 "github.com/uccps-samples/api/apps/v1"
 )
 
 const (

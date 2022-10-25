@@ -3,8 +3,8 @@
 package v1
 
 import (
-	v1 "github.com/openshift/api/config/v1"
-	"github.com/openshift/client-go/config/clientset/versioned/scheme"
+	v1 "github.com/uccps-samples/api/config/v1"
+	"github.com/uccps-samples/client-go/config/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 

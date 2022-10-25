@@ -2,7 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    api-approved.openshift.io: https://github.com/openshift/api/pull/616
+    api-approved.openshift.io: https://github.com/uccps-samples/api/pull/616
     include.release.openshift.io/ibm-cloud-managed: "true"
     include.release.openshift.io/self-managed-high-availability: "true"
     include.release.openshift.io/single-node-developer: "true"
@@ -870,7 +870,7 @@ spec:
                     description: "wildcardPolicy describes how routes with wildcard
                       policies should be handled for the ingress controller. WildcardPolicy
                       controls use of routes [1] exposed by the ingress controller
-                      based on the route's wildcard policy. \n [1] https://github.com/openshift/api/blob/master/route/v1/types.go
+                      based on the route's wildcard policy. \n [1] https://github.com/uccps-samples/api/blob/master/route/v1/types.go
                       \n Note: Updating WildcardPolicy from WildcardsAllowed to WildcardsDisallowed
                       will cause admitted routes with a wildcard policy of Subdomain
                       to stop working. These routes must be updated to a wildcard

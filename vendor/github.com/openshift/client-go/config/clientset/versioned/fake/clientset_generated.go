@@ -3,9 +3,9 @@
 package fake
 
 import (
-	clientset "github.com/openshift/client-go/config/clientset/versioned"
-	configv1 "github.com/openshift/client-go/config/clientset/versioned/typed/config/v1"
-	fakeconfigv1 "github.com/openshift/client-go/config/clientset/versioned/typed/config/v1/fake"
+	clientset "github.com/uccps-samples/client-go/config/clientset/versioned"
+	configv1 "github.com/uccps-samples/client-go/config/clientset/versioned/typed/config/v1"
+	fakeconfigv1 "github.com/uccps-samples/client-go/config/clientset/versioned/typed/config/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

@@ -2,7 +2,7 @@
 
 set -eu
 
-REPO=github.com/openshift/machine-api-operator
+REPO=github.com/uccps-samples/machine-api-operator
 WHAT=${1:-machine-api-operator}
 GLDFLAGS=${GLDFLAGS:-}
 

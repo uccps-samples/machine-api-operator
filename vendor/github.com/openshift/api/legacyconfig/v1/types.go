@@ -6,7 +6,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	buildv1 "github.com/openshift/api/build/v1"
+	buildv1 "github.com/uccps-samples/api/build/v1"
 )
 
 type ExtendedArguments map[string][]string

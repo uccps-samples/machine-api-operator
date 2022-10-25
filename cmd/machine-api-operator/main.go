@@ -8,7 +8,7 @@ import (
 	"k8s.io/klog/v2"
 )
 
-var componentNamespace = "openshift-machine-api"
+var componentNamespace = "uccp-machine-api"
 
 const (
 	componentName = "machine-api-operator"

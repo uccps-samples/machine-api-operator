@@ -6,10 +6,10 @@ import (
 
 	"k8s.io/apimachinery/pkg/runtime"
 
-	openshiftapi "github.com/openshift/api"
+	openshiftapi "github.com/uccps-samples/api"
 
-	"github.com/openshift/library-go/pkg/operator/events"
-	"github.com/openshift/library-go/pkg/operator/resource/resourcehelper"
+	"github.com/uccps-samples/library-go/pkg/operator/events"
+	"github.com/uccps-samples/library-go/pkg/operator/resource/resourcehelper"
 )
 
 var (

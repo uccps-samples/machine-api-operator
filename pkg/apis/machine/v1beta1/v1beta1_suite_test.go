@@ -29,7 +29,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 
 	fuzz "github.com/google/gofuzz"
-	osconfigv1 "github.com/openshift/api/config/v1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/kubernetes/scheme"
@@ -56,7 +56,7 @@ func TestMain(m *testing.M) {
 	testEnv = &envtest.Environment{
 		CRDDirectoryPaths: []string{
 			filepath.Join("..", "..", "..", "..", "install"),
-			filepath.Join("..", "..", "..", "..", "vendor", "github.com", "openshift", "api", "config", "v1"),
+			filepath.Join("..", "..", "..", "..", "vendor", "github.com", "uccps-samples", "api", "config", "v1"),
 		},
 		WebhookInstallOptions: envtest.WebhookInstallOptions{
 			MutatingWebhooks:   []client.Object{NewMutatingWebhookConfiguration()},

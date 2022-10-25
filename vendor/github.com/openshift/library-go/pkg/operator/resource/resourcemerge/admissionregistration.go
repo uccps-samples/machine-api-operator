@@ -1,7 +1,7 @@
 package resourcemerge
 
 import (
-	operatorsv1 "github.com/openshift/api/operator/v1"
+	operatorsv1 "github.com/uccps-samples/api/operator/v1"
 	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )

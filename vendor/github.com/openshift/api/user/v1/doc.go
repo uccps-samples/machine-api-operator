@@ -1,5 +1,5 @@
 // +k8s:deepcopy-gen=package,register
-// +k8s:conversion-gen=github.com/openshift/origin/pkg/user/apis/user
+// +k8s:conversion-gen=github.com/uccps-samples/origin/pkg/user/apis/user
 // +k8s:defaulter-gen=TypeMeta
 // +k8s:openapi-gen=true
 

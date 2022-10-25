@@ -5,11 +5,11 @@ import (
 	"errors"
 	"fmt"
 
-	machinev1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	apivsphere "github.com/openshift/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
-	machineapierros "github.com/openshift/machine-api-operator/pkg/controller/machine"
-	machinecontroller "github.com/openshift/machine-api-operator/pkg/controller/machine"
-	"github.com/openshift/machine-api-operator/pkg/controller/vsphere/session"
+	machinev1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	apivsphere "github.com/uccps-samples/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
+	machineapierros "github.com/uccps-samples/machine-api-operator/pkg/controller/machine"
+	machinecontroller "github.com/uccps-samples/machine-api-operator/pkg/controller/machine"
+	"github.com/uccps-samples/machine-api-operator/pkg/controller/vsphere/session"
 	apicorev1 "k8s.io/api/core/v1"
 	apimachineryerrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/klog/v2"
@@ -208,7 +208,7 @@ func (s *machineScope) GetUserData() ([]byte, error) {
 //kind: Secret
 //metadata:
 //  name: vsphere
-//  namespace: openshift-machine-api
+//  namespace: uccp-machine-api
 //type: Opaque
 //data:
 //  vcsa.vmware.devcluster.openshift.com.username: base64 string

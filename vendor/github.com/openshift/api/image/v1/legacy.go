@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"github.com/openshift/api/image/docker10"
-	"github.com/openshift/api/image/dockerpre012"
+	"github.com/uccps-samples/api/image/docker10"
+	"github.com/uccps-samples/api/image/dockerpre012"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"

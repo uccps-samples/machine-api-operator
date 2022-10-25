@@ -4,7 +4,7 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	operatorsv1 "github.com/openshift/api/operator/v1"
+	operatorsv1 "github.com/uccps-samples/api/operator/v1"
 )
 
 func GenerationFor(generations []operatorsv1.GenerationStatus, resource schema.GroupResource, namespace, name string) *operatorsv1.GenerationStatus {

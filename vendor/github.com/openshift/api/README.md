@@ -1,20 +1,20 @@
 # api
-The canonical location of the OpenShift API definition.  This repo holds the API type definitions and serialization code used by [openshift/client-go](https://github.com/openshift/client-go)
+The canonical location of the OpenShift API definition.  This repo holds the API type definitions and serialization code used by [openshift/client-go](https://github.com/uccps-samples/client-go)
 
 ## pull request process
 
 Pull requests that change API types in this repo that have corresponding "internal" API objects in the 
-[openshift/origin](https://github.com/openshift/origin) repo must be paired with a pull request to
-[openshift/origin](https://github.com/openshift/origin).
+[openshift/origin](https://github.com/uccps-samples/origin) repo must be paired with a pull request to
+[openshift/origin](https://github.com/uccps-samples/origin).
 
 To ensure the corresponding origin pull request is ready to merge as soon as the pull request to this repo is merged:
-1. Base your pull request to this repo on latest [openshift/api#master](https://github.com/openshift/api/commits/master) and ensure CI is green
-2. Base your pull request to openshift/origin on latest [openshift/origin#master](https://github.com/openshift/origin/commits/master)
+1. Base your pull request to this repo on latest [openshift/api#master](https://github.com/uccps-samples/api/commits/master) and ensure CI is green
+2. Base your pull request to openshift/origin on latest [openshift/origin#master](https://github.com/uccps-samples/origin/commits/master)
 3. In your openshift/origin pull request:
-   1. Add a TMP commit that points [glide.yaml](https://github.com/openshift/origin/blob/master/glide.yaml#L39-L41) at your fork of openshift/api, and the branch of your pull request:
+   1. Add a TMP commit that points [glide.yaml](https://github.com/uccps-samples/origin/blob/master/glide.yaml#L39-L41) at your fork of openshift/api, and the branch of your pull request:
 
       ```
-      - package: github.com/openshift/api
+      - package: github.com/uccps-samples/api
         repo:    https://github.com/<your-username>/api.git
         version: "<your-openshift-api-branch>"
       ```
@@ -34,16 +34,16 @@ Then do the following with your openshift/origin pull request:
 
 Since Kubernetes 1.16, every CRD created in `apiextensions.k8s.io/v1` is required to have a [structural OpenAPIV3 schema](https://kubernetes.io/blog/2019/06/20/crd-structural-schema/). The schemas provide server-side validation for fields, as well as providing the descriptions for `oc explain`. Moreover, schemas ensure structural consistency of data in etcd. Without it anything can be stored in a resource which can have security implications. As we host many of our CRDs in this repo along with their corresponding Go types we also require them to have schemas. However, the following instructions apply for CRDs that are not hosted here as well.
 
-These schemas are often very long and complex, and should not be written by hand. For OpenShift, we provide Makefile targets in [build-machinery-go](https://github.com/openshift/build-machinery-go/) which generate the schema, built on upstream's [controller-gen](https://github.com/kubernetes-sigs/controller-tools) tool.
+These schemas are often very long and complex, and should not be written by hand. For OpenShift, we provide Makefile targets in [build-machinery-go](https://github.com/uccps-samples/build-machinery-go/) which generate the schema, built on upstream's [controller-gen](https://github.com/kubernetes-sigs/controller-tools) tool.
 
-If you make a change to a CRD type in this repo, simply calling `make update-codegen-crds` should regenerate all CRDs and update the manifests. If yours is not updated, ensure that the path to its API is included in our [calls to the Makefile targets](https://github.com/openshift/api/blob/release-4.5/Makefile#L17-L29).
+If you make a change to a CRD type in this repo, simply calling `make update-codegen-crds` should regenerate all CRDs and update the manifests. If yours is not updated, ensure that the path to its API is included in our [calls to the Makefile targets](https://github.com/uccps-samples/api/blob/release-4.5/Makefile#L17-L29).
 
 To add this generator to another repo:
-1. Vendor `github.com/openshift/build-machinery-go`
+1. Vendor `github.com/uccps-samples/build-machinery-go`
 
 2. Update your `Makefile` to include the following:
 ```
-include $(addprefix ./vendor/github.com/openshift/build-machinery-go/make/, \
+include $(addprefix ./vendor/github.com/uccps-samples/build-machinery-go/make/, \
   targets/openshift/crd-schema-gen.mk \
 )
 

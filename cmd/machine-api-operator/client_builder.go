@@ -3,8 +3,8 @@ package main
 import (
 	"errors"
 
-	osclientset "github.com/openshift/client-go/config/clientset/versioned"
-	mapiclientset "github.com/openshift/machine-api-operator/pkg/generated/clientset/versioned"
+	osclientset "github.com/uccps-samples/client-go/config/clientset/versioned"
+	mapiclientset "github.com/uccps-samples/machine-api-operator/pkg/generated/clientset/versioned"
 	"k8s.io/client-go/dynamic"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"

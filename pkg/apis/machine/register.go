@@ -5,4 +5,4 @@
 
 package machine
 
-const GroupName = "machine.openshift.io"
+const GroupName = "machine.uccp.io"

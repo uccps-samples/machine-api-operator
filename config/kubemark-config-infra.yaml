@@ -1,9 +1,9 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: infrastructures.config.openshift.io
+  name: infrastructures.config.uccp.io
 spec:
-  group: config.openshift.io
+  group: config.uccp.io
   names:
     kind: Infrastructure
     listKind: InfrastructureList
@@ -15,7 +15,7 @@ spec:
     served: true
     storage: true
 ---
-apiVersion: config.openshift.io/v1
+apiVersion: config.uccp.io/v1
 kind: Infrastructure
 metadata:
   name: cluster

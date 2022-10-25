@@ -127,7 +127,7 @@ type IdentityProvider struct {
 	// name is used to qualify the identities returned by this provider.
 	// - It MUST be unique and not shared by any other identity provider used
 	// - It MUST be a valid path segment: name cannot equal "." or ".." or contain "/" or "%" or ":"
-	//   Ref: https://godoc.org/github.com/openshift/origin/pkg/user/apis/user/validation#ValidateIdentityProviderName
+	//   Ref: https://godoc.org/github.com/uccps-samples/origin/pkg/user/apis/user/validation#ValidateIdentityProviderName
 	Name string `json:"name"`
 
 	// mappingMethod determines how identities from this provider are mapped to users

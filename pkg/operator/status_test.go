@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	osconfigv1 "github.com/openshift/api/config/v1"
-	fakeconfigclientset "github.com/openshift/client-go/config/clientset/versioned/fake"
-	"github.com/openshift/library-go/pkg/config/clusteroperator/v1helpers"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	fakeconfigclientset "github.com/uccps-samples/client-go/config/clientset/versioned/fake"
+	"github.com/uccps-samples/library-go/pkg/config/clusteroperator/v1helpers"
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/api/equality"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -205,19 +205,19 @@ func TestGetOrCreateClusterOperator(t *testing.T) {
 							Name:     namespace,
 						},
 						{
-							Group:     "machine.openshift.io",
+							Group:     "machine.uccp.io",
 							Resource:  "machines",
 							Name:      "",
 							Namespace: namespace,
 						},
 						{
-							Group:     "machine.openshift.io",
+							Group:     "machine.uccp.io",
 							Resource:  "machinesets",
 							Name:      "",
 							Namespace: namespace,
 						},
 						{
-							Group:     "machine.openshift.io",
+							Group:     "machine.uccp.io",
 							Resource:  "machinehealthchecks",
 							Name:      "",
 							Namespace: namespace,
@@ -269,19 +269,19 @@ func TestGetOrCreateClusterOperator(t *testing.T) {
 							Name:     namespace,
 						},
 						{
-							Group:     "machine.openshift.io",
+							Group:     "machine.uccp.io",
 							Resource:  "machines",
 							Name:      "",
 							Namespace: namespace,
 						},
 						{
-							Group:     "machine.openshift.io",
+							Group:     "machine.uccp.io",
 							Resource:  "machinesets",
 							Name:      "",
 							Namespace: namespace,
 						},
 						{
-							Group:     "machine.openshift.io",
+							Group:     "machine.uccp.io",
 							Resource:  "machinehealthchecks",
 							Name:      "",
 							Namespace: namespace,

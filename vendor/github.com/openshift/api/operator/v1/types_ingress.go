@@ -6,7 +6,7 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	configv1 "github.com/openshift/api/config/v1"
+	configv1 "github.com/uccps-samples/api/config/v1"
 )
 
 // +genclient
@@ -683,7 +683,7 @@ type RouteAdmissionPolicy struct {
 	// of routes [1] exposed by the ingress controller based on the route's
 	// wildcard policy.
 	//
-	// [1] https://github.com/openshift/api/blob/master/route/v1/types.go
+	// [1] https://github.com/uccps-samples/api/blob/master/route/v1/types.go
 	//
 	// Note: Updating WildcardPolicy from WildcardsAllowed to WildcardsDisallowed
 	// will cause admitted routes with a wildcard policy of Subdomain to stop

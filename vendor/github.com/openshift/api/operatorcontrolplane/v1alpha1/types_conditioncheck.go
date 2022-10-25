@@ -2,7 +2,7 @@
 package v1alpha1
 
 import (
-	v1 "github.com/openshift/api/config/v1"
+	v1 "github.com/uccps-samples/api/config/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

@@ -83,7 +83,7 @@ type MergeOptions struct {
 	IgnoreUnmatchedNulls bool
 }
 
-// The following code is adapted from github.com/openshift/origin/pkg/util/jsonmerge.
+// The following code is adapted from github.com/uccps-samples/origin/pkg/util/jsonmerge.
 // Instead of defining a Delta that holds an original, a patch and a set of preconditions,
 // the reconcile method accepts a set of preconditions as an argument.
 

@@ -154,88 +154,88 @@ github.com/onsi/gomega/matchers/support/goraph/edge
 github.com/onsi/gomega/matchers/support/goraph/node
 github.com/onsi/gomega/matchers/support/goraph/util
 github.com/onsi/gomega/types
-# github.com/openshift/api v0.0.0-20210816181336-8ff39b776da3
+# github.com/uccps-samples/api v0.0.0-20210816181336-8ff39b776da3
 ## explicit
-github.com/openshift/api
-github.com/openshift/api/apiserver
-github.com/openshift/api/apiserver/v1
-github.com/openshift/api/apps
-github.com/openshift/api/apps/v1
-github.com/openshift/api/authorization
-github.com/openshift/api/authorization/v1
-github.com/openshift/api/build
-github.com/openshift/api/build/v1
-github.com/openshift/api/cloudnetwork
-github.com/openshift/api/cloudnetwork/v1
-github.com/openshift/api/config
-github.com/openshift/api/config/v1
-github.com/openshift/api/helm
-github.com/openshift/api/helm/v1beta1
-github.com/openshift/api/image
-github.com/openshift/api/image/docker10
-github.com/openshift/api/image/dockerpre012
-github.com/openshift/api/image/v1
-github.com/openshift/api/imageregistry
-github.com/openshift/api/imageregistry/v1
-github.com/openshift/api/kubecontrolplane
-github.com/openshift/api/kubecontrolplane/v1
-github.com/openshift/api/legacyconfig/v1
-github.com/openshift/api/network
-github.com/openshift/api/network/v1
-github.com/openshift/api/networkoperator
-github.com/openshift/api/networkoperator/v1
-github.com/openshift/api/oauth
-github.com/openshift/api/oauth/v1
-github.com/openshift/api/openshiftcontrolplane
-github.com/openshift/api/openshiftcontrolplane/v1
-github.com/openshift/api/operator
-github.com/openshift/api/operator/v1
-github.com/openshift/api/operator/v1alpha1
-github.com/openshift/api/operatorcontrolplane
-github.com/openshift/api/operatorcontrolplane/v1alpha1
-github.com/openshift/api/osin
-github.com/openshift/api/osin/v1
-github.com/openshift/api/pkg/serialization
-github.com/openshift/api/project
-github.com/openshift/api/project/v1
-github.com/openshift/api/quota
-github.com/openshift/api/quota/v1
-github.com/openshift/api/route
-github.com/openshift/api/route/v1
-github.com/openshift/api/samples
-github.com/openshift/api/samples/v1
-github.com/openshift/api/security
-github.com/openshift/api/security/v1
-github.com/openshift/api/servicecertsigner
-github.com/openshift/api/servicecertsigner/v1alpha1
-github.com/openshift/api/template
-github.com/openshift/api/template/v1
-github.com/openshift/api/user
-github.com/openshift/api/user/v1
-# github.com/openshift/client-go v0.0.0-20210730113412-1811c1b3fc0e
+github.com/uccps-samples/api
+github.com/uccps-samples/api/apiserver
+github.com/uccps-samples/api/apiserver/v1
+github.com/uccps-samples/api/apps
+github.com/uccps-samples/api/apps/v1
+github.com/uccps-samples/api/authorization
+github.com/uccps-samples/api/authorization/v1
+github.com/uccps-samples/api/build
+github.com/uccps-samples/api/build/v1
+github.com/uccps-samples/api/cloudnetwork
+github.com/uccps-samples/api/cloudnetwork/v1
+github.com/uccps-samples/api/config
+github.com/uccps-samples/api/config/v1
+github.com/uccps-samples/api/helm
+github.com/uccps-samples/api/helm/v1beta1
+github.com/uccps-samples/api/image
+github.com/uccps-samples/api/image/docker10
+github.com/uccps-samples/api/image/dockerpre012
+github.com/uccps-samples/api/image/v1
+github.com/uccps-samples/api/imageregistry
+github.com/uccps-samples/api/imageregistry/v1
+github.com/uccps-samples/api/kubecontrolplane
+github.com/uccps-samples/api/kubecontrolplane/v1
+github.com/uccps-samples/api/legacyconfig/v1
+github.com/uccps-samples/api/network
+github.com/uccps-samples/api/network/v1
+github.com/uccps-samples/api/networkoperator
+github.com/uccps-samples/api/networkoperator/v1
+github.com/uccps-samples/api/oauth
+github.com/uccps-samples/api/oauth/v1
+github.com/uccps-samples/api/openshiftcontrolplane
+github.com/uccps-samples/api/openshiftcontrolplane/v1
+github.com/uccps-samples/api/operator
+github.com/uccps-samples/api/operator/v1
+github.com/uccps-samples/api/operator/v1alpha1
+github.com/uccps-samples/api/operatorcontrolplane
+github.com/uccps-samples/api/operatorcontrolplane/v1alpha1
+github.com/uccps-samples/api/osin
+github.com/uccps-samples/api/osin/v1
+github.com/uccps-samples/api/pkg/serialization
+github.com/uccps-samples/api/project
+github.com/uccps-samples/api/project/v1
+github.com/uccps-samples/api/quota
+github.com/uccps-samples/api/quota/v1
+github.com/uccps-samples/api/route
+github.com/uccps-samples/api/route/v1
+github.com/uccps-samples/api/samples
+github.com/uccps-samples/api/samples/v1
+github.com/uccps-samples/api/security
+github.com/uccps-samples/api/security/v1
+github.com/uccps-samples/api/servicecertsigner
+github.com/uccps-samples/api/servicecertsigner/v1alpha1
+github.com/uccps-samples/api/template
+github.com/uccps-samples/api/template/v1
+github.com/uccps-samples/api/user
+github.com/uccps-samples/api/user/v1
+# github.com/uccps-samples/client-go v0.0.0-20210730113412-1811c1b3fc0e
 ## explicit
-github.com/openshift/client-go/config/clientset/versioned
-github.com/openshift/client-go/config/clientset/versioned/fake
-github.com/openshift/client-go/config/clientset/versioned/scheme
-github.com/openshift/client-go/config/clientset/versioned/typed/config/v1
-github.com/openshift/client-go/config/clientset/versioned/typed/config/v1/fake
-github.com/openshift/client-go/config/informers/externalversions
-github.com/openshift/client-go/config/informers/externalversions/config
-github.com/openshift/client-go/config/informers/externalversions/config/v1
-github.com/openshift/client-go/config/informers/externalversions/internalinterfaces
-github.com/openshift/client-go/config/listers/config/v1
-# github.com/openshift/cluster-api-provider-gcp v0.0.1-0.20210615203611-a02074e8d5bb
+github.com/uccps-samples/client-go/config/clientset/versioned
+github.com/uccps-samples/client-go/config/clientset/versioned/fake
+github.com/uccps-samples/client-go/config/clientset/versioned/scheme
+github.com/uccps-samples/client-go/config/clientset/versioned/typed/config/v1
+github.com/uccps-samples/client-go/config/clientset/versioned/typed/config/v1/fake
+github.com/uccps-samples/client-go/config/informers/externalversions
+github.com/uccps-samples/client-go/config/informers/externalversions/config
+github.com/uccps-samples/client-go/config/informers/externalversions/config/v1
+github.com/uccps-samples/client-go/config/informers/externalversions/internalinterfaces
+github.com/uccps-samples/client-go/config/listers/config/v1
+# github.com/uccps-samples/cluster-api-provider-gcp v0.0.1-0.20210615203611-a02074e8d5bb
 ## explicit
-github.com/openshift/cluster-api-provider-gcp/pkg/apis/gcpprovider/v1beta1
-# github.com/openshift/library-go v0.0.0-20210811133500-5e31383de2a7
+github.com/uccps-samples/cluster-api-provider-gcp/pkg/apis/gcpprovider/v1beta1
+# github.com/uccps-samples/library-go v0.0.0-20210811133500-5e31383de2a7
 ## explicit
-github.com/openshift/library-go/pkg/config/clusteroperator/v1helpers
-github.com/openshift/library-go/pkg/operator/events
-github.com/openshift/library-go/pkg/operator/resource/resourceapply
-github.com/openshift/library-go/pkg/operator/resource/resourcehash
-github.com/openshift/library-go/pkg/operator/resource/resourcehelper
-github.com/openshift/library-go/pkg/operator/resource/resourcemerge
-github.com/openshift/library-go/pkg/operator/v1helpers
+github.com/uccps-samples/library-go/pkg/config/clusteroperator/v1helpers
+github.com/uccps-samples/library-go/pkg/operator/events
+github.com/uccps-samples/library-go/pkg/operator/resource/resourceapply
+github.com/uccps-samples/library-go/pkg/operator/resource/resourcehash
+github.com/uccps-samples/library-go/pkg/operator/resource/resourcehelper
+github.com/uccps-samples/library-go/pkg/operator/resource/resourcemerge
+github.com/uccps-samples/library-go/pkg/operator/v1helpers
 # github.com/operator-framework/operator-sdk v0.5.1-0.20190301204940-c2efe6f74e7b
 ## explicit
 github.com/operator-framework/operator-sdk/version
@@ -932,10 +932,10 @@ k8s.io/utils/exec
 k8s.io/utils/integer
 k8s.io/utils/pointer
 k8s.io/utils/trace
-# sigs.k8s.io/cluster-api-provider-aws v0.0.0-00010101000000-000000000000 => github.com/openshift/cluster-api-provider-aws v0.2.1-0.20210622023641-c69a3acaee27
+# sigs.k8s.io/cluster-api-provider-aws v0.0.0-00010101000000-000000000000 => github.com/uccps-samples/cluster-api-provider-aws v0.2.1-0.20210622023641-c69a3acaee27
 ## explicit
 sigs.k8s.io/cluster-api-provider-aws/pkg/apis/awsprovider/v1beta1
-# sigs.k8s.io/cluster-api-provider-azure v0.0.0-00010101000000-000000000000 => github.com/openshift/cluster-api-provider-azure v0.1.0-alpha.3.0.20211202014309-184ccedc799e
+# sigs.k8s.io/cluster-api-provider-azure v0.0.0-00010101000000-000000000000 => github.com/uccps-samples/cluster-api-provider-azure v0.1.0-alpha.3.0.20211202014309-184ccedc799e
 ## explicit
 sigs.k8s.io/cluster-api-provider-azure/pkg/apis/azureprovider/v1beta1
 # sigs.k8s.io/controller-runtime v0.9.6
@@ -1093,5 +1093,5 @@ sigs.k8s.io/structured-merge-diff/v4/value
 # sigs.k8s.io/yaml v1.2.0
 ## explicit
 sigs.k8s.io/yaml
-# sigs.k8s.io/cluster-api-provider-aws => github.com/openshift/cluster-api-provider-aws v0.2.1-0.20210622023641-c69a3acaee27
-# sigs.k8s.io/cluster-api-provider-azure => github.com/openshift/cluster-api-provider-azure v0.1.0-alpha.3.0.20211202014309-184ccedc799e
+# sigs.k8s.io/cluster-api-provider-aws => github.com/uccps-samples/cluster-api-provider-aws v0.2.1-0.20210622023641-c69a3acaee27
+# sigs.k8s.io/cluster-api-provider-azure => github.com/uccps-samples/cluster-api-provider-azure v0.1.0-alpha.3.0.20211202014309-184ccedc799e

@@ -5,7 +5,7 @@ all: build
 update-codegen-crds: update-scripts
 
 # Include the library makefile
-include $(addprefix ./vendor/github.com/openshift/build-machinery-go/make/, \
+include $(addprefix ./vendor/github.com/uccps-samples/build-machinery-go/make/, \
 	golang.mk \
 	targets/openshift/deps.mk \
 	targets/openshift/crd-schema-gen.mk \
@@ -65,4 +65,4 @@ update-scripts:
 
 generate-with-container: Dockerfile.build
 	$(RUNTIME) build -t $(RUNTIME_IMAGE_NAME) -f Dockerfile.build .
-	$(RUNTIME) run -ti --rm -v $(PWD):/go/src/github.com/openshift/api:z -w /go/src/github.com/openshift/api $(RUNTIME_IMAGE_NAME) make update
+	$(RUNTIME) run -ti --rm -v $(PWD):/go/src/github.com/uccps-samples/api:z -w /go/src/github.com/uccps-samples/api $(RUNTIME_IMAGE_NAME) make update

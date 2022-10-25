@@ -5,8 +5,8 @@ import (
 
 	"fmt"
 
-	configv1 "github.com/openshift/api/config/v1"
-	osinv1 "github.com/openshift/api/osin/v1"
+	configv1 "github.com/uccps-samples/api/config/v1"
+	osinv1 "github.com/uccps-samples/api/osin/v1"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

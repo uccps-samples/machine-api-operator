@@ -174,8 +174,8 @@ type ImageStreamList struct {
 }
 
 // +genclient
-// +genclient:method=Secrets,verb=get,subresource=secrets,result=github.com/openshift/api/image/v1.SecretList
-// +genclient:method=Layers,verb=get,subresource=layers,result=github.com/openshift/api/image/v1.ImageStreamLayers
+// +genclient:method=Secrets,verb=get,subresource=secrets,result=github.com/uccps-samples/api/image/v1.SecretList
+// +genclient:method=Layers,verb=get,subresource=layers,result=github.com/uccps-samples/api/image/v1.ImageStreamLayers
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // An ImageStream stores a mapping of tags to images, metadata overrides that are applied

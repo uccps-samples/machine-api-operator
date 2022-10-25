@@ -4,7 +4,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"github.com/openshift/api/operatorcontrolplane/v1alpha1"
+	"github.com/uccps-samples/api/operatorcontrolplane/v1alpha1"
 )
 
 const (

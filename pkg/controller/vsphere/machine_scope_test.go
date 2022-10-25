@@ -10,9 +10,9 @@ import (
 	"time"
 
 	. "github.com/onsi/gomega"
-	configv1 "github.com/openshift/api/config/v1"
-	machinev1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	vspherev1 "github.com/openshift/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
+	configv1 "github.com/uccps-samples/api/config/v1"
+	machinev1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	vspherev1 "github.com/uccps-samples/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -291,7 +291,7 @@ func TestPatchMachine(t *testing.T) {
 	testEnv := &envtest.Environment{
 		CRDDirectoryPaths: []string{
 			filepath.Join("..", "..", "..", "install"),
-			filepath.Join("..", "..", "..", "vendor", "github.com", "openshift", "api", "config", "v1")},
+			filepath.Join("..", "..", "..", "vendor", "github.com", "uccps-samples", "api", "config", "v1")},
 	}
 
 	cfg, err := testEnv.Start()
@@ -482,7 +482,7 @@ func TestPatchMachine(t *testing.T) {
 				},
 				TypeMeta: metav1.TypeMeta{
 					Kind:       "Machine",
-					APIVersion: "machine.openshift.io/v1beta1",
+					APIVersion: "machine.uccp.io/v1beta1",
 				},
 				Spec: machinev1.MachineSpec{
 					ProviderSpec: machinev1.ProviderSpec{
@@ -547,7 +547,7 @@ func TestNodeGetter(t *testing.T) {
 	testEnv := &envtest.Environment{
 		CRDDirectoryPaths: []string{
 			filepath.Join("..", "..", "..", "install"),
-			filepath.Join("..", "..", "..", "vendor", "github.com", "openshift", "api", "config", "v1")},
+			filepath.Join("..", "..", "..", "vendor", "github.com", "uccps-samples", "api", "config", "v1")},
 	}
 
 	cfg, err := testEnv.Start()
@@ -603,7 +603,7 @@ func TestNodeGetter(t *testing.T) {
 		},
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "Machine",
-			APIVersion: "machine.openshift.io/v1beta1",
+			APIVersion: "machine.uccp.io/v1beta1",
 		},
 	}
 	g.Expect(k8sClient.Create(ctx, machine)).To(Succeed())

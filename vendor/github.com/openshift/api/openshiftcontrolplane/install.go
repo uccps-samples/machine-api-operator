@@ -4,7 +4,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	openshiftcontrolplanev1 "github.com/openshift/api/openshiftcontrolplane/v1"
+	openshiftcontrolplanev1 "github.com/uccps-samples/api/openshiftcontrolplane/v1"
 )
 
 const (

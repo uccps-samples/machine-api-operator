@@ -5,8 +5,8 @@
 package v1
 
 import (
-	buildv1 "github.com/openshift/api/build/v1"
-	configv1 "github.com/openshift/api/config/v1"
+	buildv1 "github.com/uccps-samples/api/build/v1"
+	configv1 "github.com/uccps-samples/api/config/v1"
 	corev1 "k8s.io/api/core/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )

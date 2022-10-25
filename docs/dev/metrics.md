@@ -7,13 +7,13 @@ HTTP GET requests to a specific port and URI of the MAO. The
 URI for all metrics is `/metrics`, see the Prometheus documentation for query
 parameter options. To find the exposed metrics port for the MAO you can either
 inspect the Deployment resource or the
-[install manifest](https://github.com/openshift/machine-api-operator/blob/master/install/0000_30_machine-api-operator_11_deployment.yaml)
+[install manifest](https://github.com/uccps-samples/machine-api-operator/blob/master/install/0000_30_machine-api-operator_11_deployment.yaml)
 to find the environment variable `METRICS_PORT`, the default value for this is `8080`.
 
 **Example MAO metrics scrape procedure**
 1. Forward the metrics port from the CAO to a local port
    ```
-   $ oc port-forward -n openshift-machine-api deployment/machine-api-operator 8080:8080
+   $ oc port-forward -n uccp-machine-api deployment/machine-api-operator 8080:8080
    ```
 2. Perform an HTTP GET request on the local port
    ```
@@ -39,7 +39,7 @@ current phase of the Machine.
 mapi_machine_items 1
 # HELP mapi_machine_created_timestamp_seconds Timestamp of the mapi managed Machine creation time
 # TYPE mapi_machine_created_timestamp_seconds gauge
-mapi_machine_created_timestamp_seconds{api_version="machine.openshift.io/v1beta1",name="machine-name",namespace="openshift-machine-api",node="unique-node-identifier",phase="Running",spec_provider_id="cloud-provider-identifier"} 1.589550152e+09
+mapi_machine_created_timestamp_seconds{api_version="machine.uccp.io/v1beta1",name="machine-name",namespace="uccp-machine-api",node="unique-node-identifier",phase="Running",spec_provider_id="cloud-provider-identifier"} 1.589550152e+09
 ```
 
 ## Metrics about MachineSet resources
@@ -59,16 +59,16 @@ entries help to provide current information about the state of each MachineSet.
 mapi_machineset_items 1
 # HELP mapi_machine_set_status_replicas Information of the mapi managed Machineset's status for replicas
 # TYPE mapi_machine_set_status_replicas gauge
-mapi_machine_set_status_replicas{name="machineset-name",namespace="openshift-machine-api"} 1
+mapi_machine_set_status_replicas{name="machineset-name",namespace="uccp-machine-api"} 1
 # HELP mapi_machine_set_status_replicas_available Information of the mapi managed Machineset's status for available replicas
 # TYPE mapi_machine_set_status_replicas_available gauge
-mapi_machine_set_status_replicas_available{name="machineset-name",namespace="openshift-machine-api"} 1
+mapi_machine_set_status_replicas_available{name="machineset-name",namespace="uccp-machine-api"} 1
 # HELP mapi_machine_set_status_replicas_ready Information of the mapi managed Machineset's status for ready replicas
 # TYPE mapi_machine_set_status_replicas_ready gauge
-mapi_machine_set_status_replicas_ready{name="machineset-name",namespace="openshift-machine-api"} 1
+mapi_machine_set_status_replicas_ready{name="machineset-name",namespace="uccp-machine-api"} 1
 # HELP mapi_machineset_created_timestamp_seconds Timestamp of the mapi managed Machineset creation time
 # TYPE mapi_machineset_created_timestamp_seconds gauge
-mapi_machineset_created_timestamp_seconds{api_version="machine.openshift.io/v1beta1",name="ocp-cluster-rndpg-worker-us-east-2a",namespace="openshift-machine-api"} 1.589550153e+09
+mapi_machineset_created_timestamp_seconds{api_version="machine.uccp.io/v1beta1",name="ocp-cluster-rndpg-worker-us-east-2a",namespace="uccp-machine-api"} 1.589550153e+09
 ```
 
 ## Metrics about the Prometheus collectors
@@ -103,11 +103,11 @@ For example:
 **Sample metrics**
 ```
 # Typical format:
-# mapi_instance_<operation>_failed{name=<machine-name>,namespace=openshift-machine-api,reason=<failure cause>} <number of occurences>
+# mapi_instance_<operation>_failed{name=<machine-name>,namespace=uccp-machine-api,reason=<failure cause>} <number of occurences>
 # Examples:
-mapi_instance_create_failed{name=machine-1,namespace=openshift-machine-api,reason="Unknown region 'us-central4'"} 1
-mapi_instance_update_failed{name=machine-2,namespace=openshift-machine-api,reason="Unexpected response return code: 500"} 2
-mapi_instance_delete_failed{name=machine-3,namespace=openshift-machine-api,reason="Timeout waiting for response"} 5
+mapi_instance_create_failed{name=machine-1,namespace=uccp-machine-api,reason="Unknown region 'us-central4'"} 1
+mapi_instance_update_failed{name=machine-2,namespace=uccp-machine-api,reason="Unexpected response return code: 500"} 2
+mapi_instance_delete_failed{name=machine-3,namespace=uccp-machine-api,reason="Timeout waiting for response"} 5
 ```
 
 [Demo](https://user-images.githubusercontent.com/32226600/87791648-e72b6900-c842-11ea-90b7-4967b0d06fb5.gif)
@@ -134,13 +134,13 @@ The `namespace` label refers to the owning namespace of the MachineHealthCheck.
 ```
 # HELP mapi_machinehealthcheck_nodes_covered Number of nodes covered by MachineHealthChecks
 # TYPE mapi_machinehealthcheck_nodes_covered gauge
-mapi_machinehealthcheck_nodes_covered{name="machine-api-termination-handler",namespace="openshift-machine-api"} 0
-mapi_machinehealthcheck_nodes_covered{name="mhc-1",namespace="openshift-machine-api"} 1
+mapi_machinehealthcheck_nodes_covered{name="machine-api-termination-handler",namespace="uccp-machine-api"} 0
+mapi_machinehealthcheck_nodes_covered{name="mhc-1",namespace="uccp-machine-api"} 1
 # HELP mapi_machinehealthcheck_remediation_success_total Number of successful remediations performed by MachineHealthChecks
 # TYPE mapi_machinehealthcheck_remediation_success_total counter
-mapi_machinehealthcheck_remediation_success_total{name="mhc-1",namespace="openshift-machine-api"} 1
+mapi_machinehealthcheck_remediation_success_total{name="mhc-1",namespace="uccp-machine-api"} 1
 # HELP mapi_machinehealthcheck_short_circuit Short circuit status for MachineHealthCheck (0=no, 1=yes)
 # TYPE mapi_machinehealthcheck_short_circuit gauge
-mapi_machinehealthcheck_short_circuit{name="machine-api-termination-handler",namespace="openshift-machine-api"} 0
-mapi_machinehealthcheck_short_circuit{name="mhc-1",namespace="openshift-machine-api"} 0
+mapi_machinehealthcheck_short_circuit{name="machine-api-termination-handler",namespace="uccp-machine-api"} 0
+mapi_machinehealthcheck_short_circuit{name="mhc-1",namespace="uccp-machine-api"} 0
 ```

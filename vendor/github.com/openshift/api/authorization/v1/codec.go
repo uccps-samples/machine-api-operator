@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"github.com/openshift/api/pkg/serialization"
+	"github.com/uccps-samples/api/pkg/serialization"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 

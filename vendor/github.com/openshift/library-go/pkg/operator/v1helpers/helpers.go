@@ -18,8 +18,8 @@ import (
 
 	"github.com/ghodss/yaml"
 
-	configv1 "github.com/openshift/api/config/v1"
-	operatorv1 "github.com/openshift/api/operator/v1"
+	configv1 "github.com/uccps-samples/api/config/v1"
+	operatorv1 "github.com/uccps-samples/api/operator/v1"
 )
 
 // SetOperandVersion sets the new version and returns the previous value.

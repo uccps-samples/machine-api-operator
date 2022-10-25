@@ -21,7 +21,7 @@ import (
 	"math"
 	"sort"
 
-	"github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -31,7 +31,7 @@ const (
 
 	// DeleteNodeAnnotation marks nodes that will be given priority for deletion
 	// when a machineset scales down. This annotation is given top priority on all delete policies.
-	DeleteNodeAnnotation = "machine.openshift.io/cluster-api-delete-machine"
+	DeleteNodeAnnotation = "machine.uccp.io/cluster-api-delete-machine"
 
 	mustDelete    deletePriority = 100.0
 	betterDelete  deletePriority = 50.0
