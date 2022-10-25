@@ -205,8 +205,7 @@ type RouteIngressCondition struct {
 // generate host names and routing table entries when a routing shard is
 // allocated for a specific route.
 // Caveat: This is WIP and will likely undergo modifications when sharding
-//
-//	support is added.
+//         support is added.
 type RouterShard struct {
 	// shardName uniquely identifies a router shard in the "set" of
 	// routers used for routing traffic to the services.
@@ -225,8 +224,7 @@ type TLSConfig struct {
 	// * reencrypt - TLS termination is done by the router and https is used to communicate with the backend
 	Termination TLSTerminationType `json:"termination" protobuf:"bytes,1,opt,name=termination,casttype=TLSTerminationType"`
 
-	// certificate provides certificate contents. This should be a single serving certificate, not a certificate
-	// chain. Do not include a CA certificate.
+	// certificate provides certificate contents
 	Certificate string `json:"certificate,omitempty" protobuf:"bytes,2,opt,name=certificate"`
 
 	// key provides key file contents
@@ -295,10 +293,10 @@ const (
 const (
 	// AllowNonDNSCompliantHostAnnotation indicates that the host name in a route
 	// configuration is not required to follow strict DNS compliance.
-	// Unless the annotation is set to true, the route host name must have at least one label.
-	// Labels must have no more than 63 characters from the set of
+	// Unless the annotation is set to true, the route host name must have
+	// at least two labels, with each label no more than 63 characters from the set of
 	// alphanumeric characters, '-' or '.', and must start and end with an alphanumeric
-	// character. A trailing dot is not allowed. The total host name length must be no more
+	// character. A trailing dot is allowed. The total host name length must be no more
 	// than 253 characters.
 	//
 	// When the annotation is set to true, the host name must pass a smaller set of

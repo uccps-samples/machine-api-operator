@@ -254,15 +254,15 @@ func (m *ResourceQuotaStatusByNamespace) XXX_DiscardUnknown() {
 var xxx_messageInfo_ResourceQuotaStatusByNamespace proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*AppliedClusterResourceQuota)(nil), "github.com.uccp.api.quota.v1.AppliedClusterResourceQuota")
-	proto.RegisterType((*AppliedClusterResourceQuotaList)(nil), "github.com.uccp.api.quota.v1.AppliedClusterResourceQuotaList")
-	proto.RegisterType((*ClusterResourceQuota)(nil), "github.com.uccp.api.quota.v1.ClusterResourceQuota")
-	proto.RegisterType((*ClusterResourceQuotaList)(nil), "github.com.uccp.api.quota.v1.ClusterResourceQuotaList")
-	proto.RegisterType((*ClusterResourceQuotaSelector)(nil), "github.com.uccp.api.quota.v1.ClusterResourceQuotaSelector")
-	proto.RegisterMapType((map[string]string)(nil), "github.com.uccp.api.quota.v1.ClusterResourceQuotaSelector.AnnotationsEntry")
-	proto.RegisterType((*ClusterResourceQuotaSpec)(nil), "github.com.uccp.api.quota.v1.ClusterResourceQuotaSpec")
-	proto.RegisterType((*ClusterResourceQuotaStatus)(nil), "github.com.uccp.api.quota.v1.ClusterResourceQuotaStatus")
-	proto.RegisterType((*ResourceQuotaStatusByNamespace)(nil), "github.com.uccp.api.quota.v1.ResourceQuotaStatusByNamespace")
+	proto.RegisterType((*AppliedClusterResourceQuota)(nil), "github.com.uccps-samples.api.quota.v1.AppliedClusterResourceQuota")
+	proto.RegisterType((*AppliedClusterResourceQuotaList)(nil), "github.com.uccps-samples.api.quota.v1.AppliedClusterResourceQuotaList")
+	proto.RegisterType((*ClusterResourceQuota)(nil), "github.com.uccps-samples.api.quota.v1.ClusterResourceQuota")
+	proto.RegisterType((*ClusterResourceQuotaList)(nil), "github.com.uccps-samples.api.quota.v1.ClusterResourceQuotaList")
+	proto.RegisterType((*ClusterResourceQuotaSelector)(nil), "github.com.uccps-samples.api.quota.v1.ClusterResourceQuotaSelector")
+	proto.RegisterMapType((map[string]string)(nil), "github.com.uccps-samples.api.quota.v1.ClusterResourceQuotaSelector.AnnotationsEntry")
+	proto.RegisterType((*ClusterResourceQuotaSpec)(nil), "github.com.uccps-samples.api.quota.v1.ClusterResourceQuotaSpec")
+	proto.RegisterType((*ClusterResourceQuotaStatus)(nil), "github.com.uccps-samples.api.quota.v1.ClusterResourceQuotaStatus")
+	proto.RegisterType((*ResourceQuotaStatusByNamespace)(nil), "github.com.uccps-samples.api.quota.v1.ResourceQuotaStatusByNamespace")
 }
 
 func init() {

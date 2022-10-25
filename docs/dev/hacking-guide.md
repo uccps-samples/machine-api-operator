@@ -35,7 +35,7 @@ Machine API consists of a number different components:
   - [NodeLink](https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/nodelink)
 
 - Provider specific implementation. Each provider except vSphere is located in a separate repository. These providers use the code from the machine controller(link to MAO/machine-controller) and extend it with cloud specific logic:
-  - https://github.com/uccps-samples/cluster-api-provider-gcp
+  - https://github.com/openshift/cluster-api-provider-gcp
   - https://github.com/uccps-samples/cluster-api-provider-azure
   - https://github.com/uccps-samples/cluster-api-provider-aws
   - https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/vsphere

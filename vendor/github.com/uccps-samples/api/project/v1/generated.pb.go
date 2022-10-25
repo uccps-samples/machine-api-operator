@@ -170,11 +170,11 @@ func (m *ProjectStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_ProjectStatus proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*Project)(nil), "github.com.uccp.api.project.v1.Project")
-	proto.RegisterType((*ProjectList)(nil), "github.com.uccp.api.project.v1.ProjectList")
-	proto.RegisterType((*ProjectRequest)(nil), "github.com.uccp.api.project.v1.ProjectRequest")
-	proto.RegisterType((*ProjectSpec)(nil), "github.com.uccp.api.project.v1.ProjectSpec")
-	proto.RegisterType((*ProjectStatus)(nil), "github.com.uccp.api.project.v1.ProjectStatus")
+	proto.RegisterType((*Project)(nil), "github.com.uccps-samples.api.project.v1.Project")
+	proto.RegisterType((*ProjectList)(nil), "github.com.uccps-samples.api.project.v1.ProjectList")
+	proto.RegisterType((*ProjectRequest)(nil), "github.com.uccps-samples.api.project.v1.ProjectRequest")
+	proto.RegisterType((*ProjectSpec)(nil), "github.com.uccps-samples.api.project.v1.ProjectSpec")
+	proto.RegisterType((*ProjectStatus)(nil), "github.com.uccps-samples.api.project.v1.ProjectStatus")
 }
 
 func init() {

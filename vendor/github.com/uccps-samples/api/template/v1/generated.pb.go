@@ -424,22 +424,22 @@ func (m *TemplateList) XXX_DiscardUnknown() {
 var xxx_messageInfo_TemplateList proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*BrokerTemplateInstance)(nil), "github.com.uccp.api.template.v1.BrokerTemplateInstance")
-	proto.RegisterType((*BrokerTemplateInstanceList)(nil), "github.com.uccp.api.template.v1.BrokerTemplateInstanceList")
-	proto.RegisterType((*BrokerTemplateInstanceSpec)(nil), "github.com.uccp.api.template.v1.BrokerTemplateInstanceSpec")
-	proto.RegisterType((*ExtraValue)(nil), "github.com.uccp.api.template.v1.ExtraValue")
-	proto.RegisterType((*Parameter)(nil), "github.com.uccp.api.template.v1.Parameter")
-	proto.RegisterType((*Template)(nil), "github.com.uccp.api.template.v1.Template")
-	proto.RegisterMapType((map[string]string)(nil), "github.com.uccp.api.template.v1.Template.LabelsEntry")
-	proto.RegisterType((*TemplateInstance)(nil), "github.com.uccp.api.template.v1.TemplateInstance")
-	proto.RegisterType((*TemplateInstanceCondition)(nil), "github.com.uccp.api.template.v1.TemplateInstanceCondition")
-	proto.RegisterType((*TemplateInstanceList)(nil), "github.com.uccp.api.template.v1.TemplateInstanceList")
-	proto.RegisterType((*TemplateInstanceObject)(nil), "github.com.uccp.api.template.v1.TemplateInstanceObject")
-	proto.RegisterType((*TemplateInstanceRequester)(nil), "github.com.uccp.api.template.v1.TemplateInstanceRequester")
-	proto.RegisterMapType((map[string]ExtraValue)(nil), "github.com.uccp.api.template.v1.TemplateInstanceRequester.ExtraEntry")
-	proto.RegisterType((*TemplateInstanceSpec)(nil), "github.com.uccp.api.template.v1.TemplateInstanceSpec")
-	proto.RegisterType((*TemplateInstanceStatus)(nil), "github.com.uccp.api.template.v1.TemplateInstanceStatus")
-	proto.RegisterType((*TemplateList)(nil), "github.com.uccp.api.template.v1.TemplateList")
+	proto.RegisterType((*BrokerTemplateInstance)(nil), "github.com.uccps-samples.api.template.v1.BrokerTemplateInstance")
+	proto.RegisterType((*BrokerTemplateInstanceList)(nil), "github.com.uccps-samples.api.template.v1.BrokerTemplateInstanceList")
+	proto.RegisterType((*BrokerTemplateInstanceSpec)(nil), "github.com.uccps-samples.api.template.v1.BrokerTemplateInstanceSpec")
+	proto.RegisterType((*ExtraValue)(nil), "github.com.uccps-samples.api.template.v1.ExtraValue")
+	proto.RegisterType((*Parameter)(nil), "github.com.uccps-samples.api.template.v1.Parameter")
+	proto.RegisterType((*Template)(nil), "github.com.uccps-samples.api.template.v1.Template")
+	proto.RegisterMapType((map[string]string)(nil), "github.com.uccps-samples.api.template.v1.Template.LabelsEntry")
+	proto.RegisterType((*TemplateInstance)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstance")
+	proto.RegisterType((*TemplateInstanceCondition)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceCondition")
+	proto.RegisterType((*TemplateInstanceList)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceList")
+	proto.RegisterType((*TemplateInstanceObject)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceObject")
+	proto.RegisterType((*TemplateInstanceRequester)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceRequester")
+	proto.RegisterMapType((map[string]ExtraValue)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceRequester.ExtraEntry")
+	proto.RegisterType((*TemplateInstanceSpec)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceSpec")
+	proto.RegisterType((*TemplateInstanceStatus)(nil), "github.com.uccps-samples.api.template.v1.TemplateInstanceStatus")
+	proto.RegisterType((*TemplateList)(nil), "github.com.uccps-samples.api.template.v1.TemplateList")
 }
 
 func init() {

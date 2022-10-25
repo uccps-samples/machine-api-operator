@@ -253,15 +253,15 @@ func (m *UserList) XXX_DiscardUnknown() {
 var xxx_messageInfo_UserList proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*Group)(nil), "github.com.uccp.api.user.v1.Group")
-	proto.RegisterType((*GroupList)(nil), "github.com.uccp.api.user.v1.GroupList")
-	proto.RegisterType((*Identity)(nil), "github.com.uccp.api.user.v1.Identity")
-	proto.RegisterMapType((map[string]string)(nil), "github.com.uccp.api.user.v1.Identity.ExtraEntry")
-	proto.RegisterType((*IdentityList)(nil), "github.com.uccp.api.user.v1.IdentityList")
-	proto.RegisterType((*OptionalNames)(nil), "github.com.uccp.api.user.v1.OptionalNames")
-	proto.RegisterType((*User)(nil), "github.com.uccp.api.user.v1.User")
-	proto.RegisterType((*UserIdentityMapping)(nil), "github.com.uccp.api.user.v1.UserIdentityMapping")
-	proto.RegisterType((*UserList)(nil), "github.com.uccp.api.user.v1.UserList")
+	proto.RegisterType((*Group)(nil), "github.com.uccps-samples.api.user.v1.Group")
+	proto.RegisterType((*GroupList)(nil), "github.com.uccps-samples.api.user.v1.GroupList")
+	proto.RegisterType((*Identity)(nil), "github.com.uccps-samples.api.user.v1.Identity")
+	proto.RegisterMapType((map[string]string)(nil), "github.com.uccps-samples.api.user.v1.Identity.ExtraEntry")
+	proto.RegisterType((*IdentityList)(nil), "github.com.uccps-samples.api.user.v1.IdentityList")
+	proto.RegisterType((*OptionalNames)(nil), "github.com.uccps-samples.api.user.v1.OptionalNames")
+	proto.RegisterType((*User)(nil), "github.com.uccps-samples.api.user.v1.User")
+	proto.RegisterType((*UserIdentityMapping)(nil), "github.com.uccps-samples.api.user.v1.UserIdentityMapping")
+	proto.RegisterType((*UserList)(nil), "github.com.uccps-samples.api.user.v1.UserList")
 }
 
 func init() {

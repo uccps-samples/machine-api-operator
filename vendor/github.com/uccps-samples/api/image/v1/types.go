@@ -117,7 +117,7 @@ type ImageSignature struct {
 	IssuedTo *SignatureSubject `json:"issuedTo,omitempty" protobuf:"bytes,9,opt,name=issuedTo"`
 }
 
-// / SignatureConditionType is a type of image signature condition.
+/// SignatureConditionType is a type of image signature condition.
 type SignatureConditionType string
 
 // SignatureCondition describes an image signature condition of particular kind at particular probe time.
@@ -597,7 +597,7 @@ type ImageStreamImport struct {
 
 	// Spec is a description of the images that the user wishes to import
 	Spec ImageStreamImportSpec `json:"spec" protobuf:"bytes,2,opt,name=spec"`
-	// Status is the result of importing the image
+	// Status is the the result of importing the image
 	Status ImageStreamImportStatus `json:"status" protobuf:"bytes,3,opt,name=status"`
 }
 

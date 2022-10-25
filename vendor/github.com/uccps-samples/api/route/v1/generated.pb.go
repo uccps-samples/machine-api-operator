@@ -311,16 +311,16 @@ func (m *TLSConfig) XXX_DiscardUnknown() {
 var xxx_messageInfo_TLSConfig proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*Route)(nil), "github.com.uccp.api.route.v1.Route")
-	proto.RegisterType((*RouteIngress)(nil), "github.com.uccp.api.route.v1.RouteIngress")
-	proto.RegisterType((*RouteIngressCondition)(nil), "github.com.uccp.api.route.v1.RouteIngressCondition")
-	proto.RegisterType((*RouteList)(nil), "github.com.uccp.api.route.v1.RouteList")
-	proto.RegisterType((*RoutePort)(nil), "github.com.uccp.api.route.v1.RoutePort")
-	proto.RegisterType((*RouteSpec)(nil), "github.com.uccp.api.route.v1.RouteSpec")
-	proto.RegisterType((*RouteStatus)(nil), "github.com.uccp.api.route.v1.RouteStatus")
-	proto.RegisterType((*RouteTargetReference)(nil), "github.com.uccp.api.route.v1.RouteTargetReference")
-	proto.RegisterType((*RouterShard)(nil), "github.com.uccp.api.route.v1.RouterShard")
-	proto.RegisterType((*TLSConfig)(nil), "github.com.uccp.api.route.v1.TLSConfig")
+	proto.RegisterType((*Route)(nil), "github.com.uccps-samples.api.route.v1.Route")
+	proto.RegisterType((*RouteIngress)(nil), "github.com.uccps-samples.api.route.v1.RouteIngress")
+	proto.RegisterType((*RouteIngressCondition)(nil), "github.com.uccps-samples.api.route.v1.RouteIngressCondition")
+	proto.RegisterType((*RouteList)(nil), "github.com.uccps-samples.api.route.v1.RouteList")
+	proto.RegisterType((*RoutePort)(nil), "github.com.uccps-samples.api.route.v1.RoutePort")
+	proto.RegisterType((*RouteSpec)(nil), "github.com.uccps-samples.api.route.v1.RouteSpec")
+	proto.RegisterType((*RouteStatus)(nil), "github.com.uccps-samples.api.route.v1.RouteStatus")
+	proto.RegisterType((*RouteTargetReference)(nil), "github.com.uccps-samples.api.route.v1.RouteTargetReference")
+	proto.RegisterType((*RouterShard)(nil), "github.com.uccps-samples.api.route.v1.RouterShard")
+	proto.RegisterType((*TLSConfig)(nil), "github.com.uccps-samples.api.route.v1.TLSConfig")
 }
 
 func init() {

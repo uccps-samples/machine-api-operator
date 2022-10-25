@@ -364,18 +364,18 @@ func (m *NetNamespaceList) XXX_DiscardUnknown() {
 var xxx_messageInfo_NetNamespaceList proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*ClusterNetwork)(nil), "github.com.uccp.api.network.v1.ClusterNetwork")
-	proto.RegisterType((*ClusterNetworkEntry)(nil), "github.com.uccp.api.network.v1.ClusterNetworkEntry")
-	proto.RegisterType((*ClusterNetworkList)(nil), "github.com.uccp.api.network.v1.ClusterNetworkList")
-	proto.RegisterType((*EgressNetworkPolicy)(nil), "github.com.uccp.api.network.v1.EgressNetworkPolicy")
-	proto.RegisterType((*EgressNetworkPolicyList)(nil), "github.com.uccp.api.network.v1.EgressNetworkPolicyList")
-	proto.RegisterType((*EgressNetworkPolicyPeer)(nil), "github.com.uccp.api.network.v1.EgressNetworkPolicyPeer")
-	proto.RegisterType((*EgressNetworkPolicyRule)(nil), "github.com.uccp.api.network.v1.EgressNetworkPolicyRule")
-	proto.RegisterType((*EgressNetworkPolicySpec)(nil), "github.com.uccp.api.network.v1.EgressNetworkPolicySpec")
-	proto.RegisterType((*HostSubnet)(nil), "github.com.uccp.api.network.v1.HostSubnet")
-	proto.RegisterType((*HostSubnetList)(nil), "github.com.uccp.api.network.v1.HostSubnetList")
-	proto.RegisterType((*NetNamespace)(nil), "github.com.uccp.api.network.v1.NetNamespace")
-	proto.RegisterType((*NetNamespaceList)(nil), "github.com.uccp.api.network.v1.NetNamespaceList")
+	proto.RegisterType((*ClusterNetwork)(nil), "github.com.uccps-samples.api.network.v1.ClusterNetwork")
+	proto.RegisterType((*ClusterNetworkEntry)(nil), "github.com.uccps-samples.api.network.v1.ClusterNetworkEntry")
+	proto.RegisterType((*ClusterNetworkList)(nil), "github.com.uccps-samples.api.network.v1.ClusterNetworkList")
+	proto.RegisterType((*EgressNetworkPolicy)(nil), "github.com.uccps-samples.api.network.v1.EgressNetworkPolicy")
+	proto.RegisterType((*EgressNetworkPolicyList)(nil), "github.com.uccps-samples.api.network.v1.EgressNetworkPolicyList")
+	proto.RegisterType((*EgressNetworkPolicyPeer)(nil), "github.com.uccps-samples.api.network.v1.EgressNetworkPolicyPeer")
+	proto.RegisterType((*EgressNetworkPolicyRule)(nil), "github.com.uccps-samples.api.network.v1.EgressNetworkPolicyRule")
+	proto.RegisterType((*EgressNetworkPolicySpec)(nil), "github.com.uccps-samples.api.network.v1.EgressNetworkPolicySpec")
+	proto.RegisterType((*HostSubnet)(nil), "github.com.uccps-samples.api.network.v1.HostSubnet")
+	proto.RegisterType((*HostSubnetList)(nil), "github.com.uccps-samples.api.network.v1.HostSubnetList")
+	proto.RegisterType((*NetNamespace)(nil), "github.com.uccps-samples.api.network.v1.NetNamespace")
+	proto.RegisterType((*NetNamespaceList)(nil), "github.com.uccps-samples.api.network.v1.NetNamespaceList")
 }
 
 func init() {

@@ -220,8 +220,8 @@ var map_ConsoleCustomization = map[string]string{
 	"":                     "ConsoleCustomization defines a list of optional configuration for the console UI.",
 	"brand":                "brand is the default branding of the web console which can be overridden by providing the brand field.  There is a limited set of specific brand options. This field controls elements of the console such as the logo. Invalid value will prevent a console rollout.",
 	"documentationBaseURL": "documentationBaseURL links to external documentation are shown in various sections of the web console.  Providing documentationBaseURL will override the default documentation URL. Invalid value will prevent a console rollout.",
-	"customProductName":    "customProductName is the name that will be displayed in page titles, logo alt text, and the about dialog instead of the normal Uccp product name.",
-	"customLogoFile":       "customLogoFile replaces the default Uccp logo in the masthead and about dialog. It is a reference to a ConfigMap in the uccp-config namespace. This can be created with a command like 'oc create configmap custom-logo --from-file=/path/to/file -n uccp-config'. Image size must be less than 1 MB due to constraints on the ConfigMap size. The ConfigMap key should include a file extension so that the console serves the file with the correct MIME type. Recommended logo specifications: Dimensions: Max height of 68px and max width of 200px SVG format preferred",
+	"customProductName":    "customProductName is the name that will be displayed in page titles, logo alt text, and the about dialog instead of the normal OpenShift product name.",
+	"customLogoFile":       "customLogoFile replaces the default OpenShift logo in the masthead and about dialog. It is a reference to a ConfigMap in the uccp-config namespace. This can be created with a command like 'oc create configmap custom-logo --from-file=/path/to/file -n uccp-config'. Image size must be less than 1 MB due to constraints on the ConfigMap size. The ConfigMap key should include a file extension so that the console serves the file with the correct MIME type. Recommended logo specifications: Dimensions: Max height of 68px and max width of 200px SVG format preferred",
 	"developerCatalog":     "developerCatalog allows to configure the shown developer catalog categories.",
 	"projectAccess":        "projectAccess allows customizing the available list of ClusterRoles in the Developer perspective Project access page which can be used by a project admin to specify roles to other users and restrict access within the project. If set, the list will replace the default ClusterRole options.",
 	"quickStarts":          "quickStarts allows customization of available ConsoleQuickStart resources in console.",
@@ -326,7 +326,7 @@ func (StatuspageProvider) SwaggerDoc() map[string]string {
 }
 
 var map_ClusterCSIDriver = map[string]string{
-	"":       "ClusterCSIDriver object allows management and configuration of a CSI driver operator installed by default in Uccp. Name of the object must be name of the CSI driver it operates. See CSIDriverName type for list of allowed values.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+	"":       "ClusterCSIDriver object allows management and configuration of a CSI driver operator installed by default in OpenShift. Name of the object must be name of the CSI driver it operates. See CSIDriverName type for list of allowed values.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"spec":   "spec holds user settable values for configuration",
 	"status": "status holds observed values from the cluster. They may not be overridden.",
 }
@@ -422,13 +422,10 @@ func (DNSNodePlacement) SwaggerDoc() map[string]string {
 }
 
 var map_DNSSpec = map[string]string{
-	"":                  "DNSSpec is the specification of the desired behavior of the DNS.",
-	"servers":           "servers is a list of DNS resolvers that provide name query delegation for one or more subdomains outside the scope of the cluster domain. If servers consists of more than one Server, longest suffix match will be used to determine the Server.\n\nFor example, if there are two Servers, one for \"foo.com\" and another for \"a.foo.com\", and the name query is for \"www.a.foo.com\", it will be routed to the Server with Zone \"a.foo.com\".\n\nIf this field is nil, no servers are created.",
-	"upstreamResolvers": "upstreamResolvers defines a schema for configuring CoreDNS to proxy DNS messages to upstream resolvers for the case of the default (\".\") server\n\nIf this field is not specified, the upstream used will default to /etc/resolv.conf, with policy \"sequential\"",
-	"nodePlacement":     "nodePlacement provides explicit control over the scheduling of DNS pods.\n\nGenerally, it is useful to run a DNS pod on every node so that DNS queries are always handled by a local DNS pod instead of going over the network to a DNS pod on another node.  However, security policies may require restricting the placement of DNS pods to specific nodes. For example, if a security policy prohibits pods on arbitrary nodes from communicating with the API, a node selector can be specified to restrict DNS pods to nodes that are permitted to communicate with the API.  Conversely, if running DNS pods on nodes with a particular taint is desired, a toleration can be specified for that taint.\n\nIf unset, defaults are used. See nodePlacement for more details.",
-	"managementState":   "managementState indicates whether the DNS operator should manage cluster DNS",
-	"operatorLogLevel":  "operatorLogLevel controls the logging level of the DNS Operator. Valid values are: \"Normal\", \"Debug\", \"Trace\". Defaults to \"Normal\". setting operatorLogLevel: Trace will produce extremely verbose logs.",
-	"logLevel":          "logLevel describes the desired logging verbosity for CoreDNS. Any one of the following values may be specified: * Normal logs errors from upstream resolvers. * Debug logs errors, NXDOMAIN responses, and NODATA responses. * Trace logs errors and all responses.\n Setting logLevel: Trace will produce extremely verbose logs.\nValid values are: \"Normal\", \"Debug\", \"Trace\". Defaults to \"Normal\".",
+	"":                "DNSSpec is the specification of the desired behavior of the DNS.",
+	"servers":         "servers is a list of DNS resolvers that provide name query delegation for one or more subdomains outside the scope of the cluster domain. If servers consists of more than one Server, longest suffix match will be used to determine the Server.\n\nFor example, if there are two Servers, one for \"foo.com\" and another for \"a.foo.com\", and the name query is for \"www.a.foo.com\", it will be routed to the Server with Zone \"a.foo.com\".\n\nIf this field is nil, no servers are created.",
+	"nodePlacement":   "nodePlacement provides explicit control over the scheduling of DNS pods.\n\nGenerally, it is useful to run a DNS pod on every node so that DNS queries are always handled by a local DNS pod instead of going over the network to a DNS pod on another node.  However, security policies may require restricting the placement of DNS pods to specific nodes. For example, if a security policy prohibits pods on arbitrary nodes from communicating with the API, a node selector can be specified to restrict DNS pods to nodes that are permitted to communicate with the API.  Conversely, if running DNS pods on nodes with a particular taint is desired, a toleration can be specified for that taint.\n\nIf unset, defaults are used. See nodePlacement for more details.",
+	"managementState": "managementState indicates whether the DNS operator should manage cluster DNS",
 }
 
 func (DNSSpec) SwaggerDoc() map[string]string {
@@ -465,27 +462,6 @@ var map_Server = map[string]string{
 
 func (Server) SwaggerDoc() map[string]string {
 	return map_Server
-}
-
-var map_Upstream = map[string]string{
-	"":        "Upstream can either be of type SystemResolvConf, or of type Network.\n\n  - For an Upstream of type SystemResolvConf, no further fields are necessary:\n    The upstream will be configured to use /etc/resolv.conf.\n  - For an Upstream of type Network, a NetworkResolver field needs to be defined\n    with an IP address or IP:port if the upstream listens on a port other than 53.",
-	"type":    "Type defines whether this upstream contains an IP/IP:port resolver or the local /etc/resolv.conf. Type accepts 2 possible values: SystemResolvConf or Network.\n\n* When SystemResolvConf is used, the Upstream structure does not require any further fields to be defined:\n  /etc/resolv.conf will be used\n* When Network is used, the Upstream structure must contain at least an Address",
-	"address": "Address must be defined when Type is set to Network. It will be ignored otherwise. It must be a valid ipv4 or ipv6 address.",
-	"port":    "Port may be defined when Type is set to Network. It will be ignored otherwise. Port must be between 65535",
-}
-
-func (Upstream) SwaggerDoc() map[string]string {
-	return map_Upstream
-}
-
-var map_UpstreamResolvers = map[string]string{
-	"":          "UpstreamResolvers defines a schema for configuring the CoreDNS forward plugin in the specific case of the default (\".\") server. It defers from ForwardPlugin in the default values it accepts: * At least one upstream should be specified. * the default policy is Sequential",
-	"upstreams": "Upstreams is a list of resolvers to forward name queries for the \".\" domain. Each instance of CoreDNS performs health checking of Upstreams. When a healthy upstream returns an error during the exchange, another resolver is tried from Upstreams. The Upstreams are selected in the order specified in Policy.\n\nA maximum of 15 upstreams is allowed per ForwardPlugin. If no Upstreams are specified, /etc/resolv.conf is used by default",
-	"policy":    "Policy is used to determine the order in which upstream servers are selected for querying. Any one of the following values may be specified:\n\n* \"Random\" picks a random upstream server for each query. * \"RoundRobin\" picks upstream servers in a round-robin order, moving to the next server for each new query. * \"Sequential\" tries querying upstream servers in a sequential order until one responds, starting with the first server for each new query.\n\nThe default value is \"Sequential\"",
-}
-
-func (UpstreamResolvers) SwaggerDoc() map[string]string {
-	return map_UpstreamResolvers
 }
 
 var map_Etcd = map[string]string{
@@ -566,7 +542,7 @@ func (ContainerLoggingDestinationParameters) SwaggerDoc() map[string]string {
 
 var map_EndpointPublishingStrategy = map[string]string{
 	"":             "EndpointPublishingStrategy is a way to publish the endpoints of an IngressController, and represents the type and any additional configuration for a specific type.",
-	"type":         "type is the publishing strategy to use. Valid values are:\n\n* LoadBalancerService\n\nPublishes the ingress controller using a Kubernetes LoadBalancer Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A LoadBalancer Service is created to publish the deployment.\n\nSee: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer\n\nIf domain is set, a wildcard DNS record will be managed to point at the LoadBalancer Service's external name. DNS records are managed only in DNS zones defined by dns.config.uccp.io/cluster .spec.publicZone and .spec.privateZone.\n\nWildcard DNS management is currently supported only on the AWS, Azure, and GCP platforms.\n\n* HostNetwork\n\nPublishes the ingress controller on node ports where the ingress controller is deployed.\n\nIn this configuration, the ingress controller deployment uses host networking, bound to node ports 80 and 443. The user is responsible for configuring an external load balancer to publish the ingress controller via the node ports.\n\n* Private\n\nDoes not publish the ingress controller.\n\nIn this configuration, the ingress controller deployment uses container networking, and is not explicitly published. The user must manually publish the ingress controller.\n\n* NodePortService\n\nPublishes the ingress controller using a Kubernetes NodePort Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A NodePort Service is created to publish the deployment. The specific node ports are dynamically allocated by Uccp; however, to support static port allocations, user changes to the node port field of the managed NodePort Service will preserved.",
+	"type":         "type is the publishing strategy to use. Valid values are:\n\n* LoadBalancerService\n\nPublishes the ingress controller using a Kubernetes LoadBalancer Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A LoadBalancer Service is created to publish the deployment.\n\nSee: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer\n\nIf domain is set, a wildcard DNS record will be managed to point at the LoadBalancer Service's external name. DNS records are managed only in DNS zones defined by dns.config.uccp.io/cluster .spec.publicZone and .spec.privateZone.\n\nWildcard DNS management is currently supported only on the AWS, Azure, and GCP platforms.\n\n* HostNetwork\n\nPublishes the ingress controller on node ports where the ingress controller is deployed.\n\nIn this configuration, the ingress controller deployment uses host networking, bound to node ports 80 and 443. The user is responsible for configuring an external load balancer to publish the ingress controller via the node ports.\n\n* Private\n\nDoes not publish the ingress controller.\n\nIn this configuration, the ingress controller deployment uses container networking, and is not explicitly published. The user must manually publish the ingress controller.\n\n* NodePortService\n\nPublishes the ingress controller using a Kubernetes NodePort Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A NodePort Service is created to publish the deployment. The specific node ports are dynamically allocated by OpenShift; however, to support static port allocations, user changes to the node port field of the managed NodePort Service will preserved.",
 	"loadBalancer": "loadBalancer holds parameters for the load balancer. Present only if type is LoadBalancerService.",
 	"hostNetwork":  "hostNetwork holds parameters for the HostNetwork endpoint publishing strategy. Present only if type is HostNetwork.",
 	"private":      "private holds parameters for the Private endpoint publishing strategy. Present only if type is Private.",
@@ -605,7 +581,7 @@ func (HostNetworkStrategy) SwaggerDoc() map[string]string {
 }
 
 var map_IngressController = map[string]string{
-	"":       "IngressController describes a managed ingress controller for the cluster. The controller can service Uccp Route and Kubernetes Ingress resources.\n\nWhen an IngressController is created, a new ingress controller deployment is created to allow external traffic to reach the services that expose Ingress or Route resources. Updating this resource may lead to disruption for public facing network connections as a new ingress controller revision may be rolled out.\n\nhttps://kubernetes.io/docs/concepts/services-networking/ingress-controllers\n\nWhenever possible, sensible defaults for the platform are used. See each field for more details.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+	"":       "IngressController describes a managed ingress controller for the cluster. The controller can service OpenShift Route and Kubernetes Ingress resources.\n\nWhen an IngressController is created, a new ingress controller deployment is created to allow external traffic to reach the services that expose Ingress or Route resources. Updating this resource may lead to disruption for public facing network connections as a new ingress controller revision may be rolled out.\n\nhttps://kubernetes.io/docs/concepts/services-networking/ingress-controllers\n\nWhenever possible, sensible defaults for the platform are used. See each field for more details.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"spec":   "spec is the specification of the desired behavior of the IngressController.",
 	"status": "status is the most recently observed status of the IngressController.",
 }
@@ -695,10 +671,10 @@ func (IngressControllerLogging) SwaggerDoc() map[string]string {
 var map_IngressControllerSpec = map[string]string{
 	"":                           "IngressControllerSpec is the specification of the desired behavior of the IngressController.",
 	"domain":                     "domain is a DNS name serviced by the ingress controller and is used to configure multiple features:\n\n* For the LoadBalancerService endpoint publishing strategy, domain is\n  used to configure DNS records. See endpointPublishingStrategy.\n\n* When using a generated default certificate, the certificate will be valid\n  for domain and its subdomains. See defaultCertificate.\n\n* The value is published to individual Route statuses so that end-users\n  know where to target external DNS records.\n\ndomain must be unique among all IngressControllers, and cannot be updated.\n\nIf empty, defaults to ingress.config.uccp.io/cluster .spec.domain.",
-	"httpErrorCodePages":         "httpErrorCodePages specifies a configmap with custom error pages. The administrator must create this configmap in the uccp-config namespace. This configmap should have keys in the format \"error-page-<error code>.http\", where <error code> is an HTTP error code. For example, \"error-page-503.http\" defines an error page for HTTP 503 responses. Currently only error pages for 503 and 404 responses can be customized. Each value in the configmap should be the full response, including HTTP headers. Eg- https://raw.githubusercontent.com/uccp/router/fadab45747a9b30cc3f0a4b41ad2871f95827a93/images/router/haproxy/conf/error-page-503.http If this field is empty, the ingress controller uses the default error pages.",
+	"httpErrorCodePages":         "httpErrorCodePages specifies a configmap with custom error pages. The administrator must create this configmap in the uccp-config namespace. This configmap should have keys in the format \"error-page-<error code>.http\", where <error code> is an HTTP error code. For example, \"error-page-503.http\" defines an error page for HTTP 503 responses. Currently only error pages for 503 and 404 responses can be customized. Each value in the configmap should be the full response, including HTTP headers. Eg- https://raw.githubusercontent.com/openshift/router/fadab45747a9b30cc3f0a4b41ad2871f95827a93/images/router/haproxy/conf/error-page-503.http If this field is empty, the ingress controller uses the default error pages.",
 	"replicas":                   "replicas is the desired number of ingress controller replicas. If unset, defaults to 2.",
 	"endpointPublishingStrategy": "endpointPublishingStrategy is used to publish the ingress controller endpoints to other networks, enable load balancer integrations, etc.\n\nIf unset, the default is based on infrastructure.config.uccp.io/cluster .status.platform:\n\n  AWS:          LoadBalancerService (with External scope)\n  Azure:        LoadBalancerService (with External scope)\n  GCP:          LoadBalancerService (with External scope)\n  IBMCloud:     LoadBalancerService (with External scope)\n  AlibabaCloud: LoadBalancerService (with External scope)\n  Libvirt:      HostNetwork\n\nAny other platform types (including None) default to HostNetwork.\n\nendpointPublishingStrategy cannot be updated.",
-	"defaultCertificate":         "defaultCertificate is a reference to a secret containing the default certificate served by the ingress controller. When Routes don't specify their own certificate, defaultCertificate is used.\n\nThe secret must contain the following keys and data:\n\n  tls.crt: certificate file contents\n  tls.key: key file contents\n\nIf unset, a wildcard certificate is automatically generated and used. The certificate is valid for the ingress controller domain (and subdomains) and the generated certificate's CA will be automatically integrated with the cluster's trust store.\n\nIf a wildcard certificate is used and shared by multiple HTTP/2 enabled routes (which implies ALPN) then clients (i.e., notably browsers) are at liberty to reuse open connections. This means a client can reuse a connection to another route and that is likely to fail. This behaviour is generally known as connection coalescing.\n\nThe in-use certificate (whether generated or user-specified) will be automatically integrated with Uccp's built-in OAuth server.",
+	"defaultCertificate":         "defaultCertificate is a reference to a secret containing the default certificate served by the ingress controller. When Routes don't specify their own certificate, defaultCertificate is used.\n\nThe secret must contain the following keys and data:\n\n  tls.crt: certificate file contents\n  tls.key: key file contents\n\nIf unset, a wildcard certificate is automatically generated and used. The certificate is valid for the ingress controller domain (and subdomains) and the generated certificate's CA will be automatically integrated with the cluster's trust store.\n\nIf a wildcard certificate is used and shared by multiple HTTP/2 enabled routes (which implies ALPN) then clients (i.e., notably browsers) are at liberty to reuse open connections. This means a client can reuse a connection to another route and that is likely to fail. This behaviour is generally known as connection coalescing.\n\nThe in-use certificate (whether generated or user-specified) will be automatically integrated with OpenShift's built-in OAuth server.",
 	"namespaceSelector":          "namespaceSelector is used to filter the set of namespaces serviced by the ingress controller. This is useful for implementing shards.\n\nIf unset, the default is no filtering.",
 	"routeSelector":              "routeSelector is used to filter the set of Routes serviced by the ingress controller. This is useful for implementing shards.\n\nIf unset, the default is no filtering.",
 	"nodePlacement":              "nodePlacement enables explicit control over the scheduling of the ingress controller.\n\nIf unset, defaults are used. See NodePlacement for more details.",
@@ -849,23 +825,6 @@ func (KubeAPIServerList) SwaggerDoc() map[string]string {
 	return map_KubeAPIServerList
 }
 
-var map_KubeAPIServerStatus = map[string]string{
-	"serviceAccountIssuers": "serviceAccountIssuers tracks history of used service account issuers. The item without expiration time represents the currently used service account issuer. The other items represents service account issuers that were used previously and are still being trusted. The default expiration for the items is set by the platform and it defaults to 24h. see: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection",
-}
-
-func (KubeAPIServerStatus) SwaggerDoc() map[string]string {
-	return map_KubeAPIServerStatus
-}
-
-var map_ServiceAccountIssuerStatus = map[string]string{
-	"name":           "name is the name of the service account issuer",
-	"expirationTime": "expirationTime is the time after which this service account issuer will be pruned and removed from the trusted list of service account issuers.",
-}
-
-func (ServiceAccountIssuerStatus) SwaggerDoc() map[string]string {
-	return map_ServiceAccountIssuerStatus
-}
-
 var map_KubeControllerManager = map[string]string{
 	"":       "KubeControllerManager provides information to configure an operator to manage kube-controller-manager.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"spec":   "spec is the specification of the desired behavior of the Kubernetes Controller Manager",
@@ -934,8 +893,8 @@ func (ClusterNetworkEntry) SwaggerDoc() map[string]string {
 var map_DefaultNetworkDefinition = map[string]string{
 	"":                    "DefaultNetworkDefinition represents a single network plugin's configuration. type must be specified, along with exactly one \"Config\" that matches the type.",
 	"type":                "type is the type of network All NetworkTypes are supported except for NetworkTypeRaw",
-	"uccpSDNConfig":       "uccpSDNConfig configures the uccp-sdn plugin",
-	"ovnKubernetesConfig": "ovnKubernetesConfig configures the ovn-kubernetes plugin.",
+	"openshiftSDNConfig":  "openShiftSDNConfig configures the uccp-sdn plugin",
+	"ovnKubernetesConfig": "oVNKubernetesConfig configures the ovn-kubernetes plugin. This is currently not implemented.",
 	"kuryrConfig":         "KuryrConfig configures the kuryr plugin",
 }
 
@@ -951,15 +910,6 @@ var map_ExportNetworkFlows = map[string]string{
 
 func (ExportNetworkFlows) SwaggerDoc() map[string]string {
 	return map_ExportNetworkFlows
-}
-
-var map_GatewayConfig = map[string]string{
-	"":               "GatewayConfig holds node gateway-related parsed config file parameters and command-line overrides",
-	"routingViaHost": "RoutingViaHost allows pod egress traffic to exit via the ovn-k8s-mp0 management port into the host before sending it out. If this is not set, traffic will always egress directly from OVN to outside without touching the host stack. Setting this to true means hardware offload will not be supported. Default is false if GatewayConfig is specified.",
-}
-
-func (GatewayConfig) SwaggerDoc() map[string]string {
-	return map_GatewayConfig
 }
 
 var map_HybridOverlayConfig = map[string]string{
@@ -993,7 +943,7 @@ var map_KuryrConfig = map[string]string{
 	"":                             "KuryrConfig configures the Kuryr-Kubernetes SDN",
 	"daemonProbesPort":             "The port kuryr-daemon will listen for readiness and liveness requests.",
 	"controllerProbesPort":         "The port kuryr-controller will listen for readiness and liveness requests.",
-	"openStackServiceNetwork":      "openStackServiceNetwork contains the CIDR of network from which to allocate IPs for OpenStack Octavia's Amphora VMs. Please note that with Amphora driver Octavia uses two IPs from that network for each loadbalancer - one given by Uccp and second for VRRP connections. As the first one is managed by Uccp's and second by Neutron's IPAMs, those need to come from different pools. Therefore `openStackServiceNetwork` needs to be at least twice the size of `serviceNetwork`, and whole `serviceNetwork` must be overlapping with `openStackServiceNetwork`. cluster-network-operator will then make sure VRRP IPs are taken from the ranges inside `openStackServiceNetwork` that are not overlapping with `serviceNetwork`, effectivly preventing conflicts. If not set cluster-network-operator will use `serviceNetwork` expanded by decrementing the prefix size by 1.",
+	"openStackServiceNetwork":      "openStackServiceNetwork contains the CIDR of network from which to allocate IPs for OpenStack Octavia's Amphora VMs. Please note that with Amphora driver Octavia uses two IPs from that network for each loadbalancer - one given by OpenShift and second for VRRP connections. As the first one is managed by OpenShift's and second by Neutron's IPAMs, those need to come from different pools. Therefore `openStackServiceNetwork` needs to be at least twice the size of `serviceNetwork`, and whole `serviceNetwork` must be overlapping with `openStackServiceNetwork`. cluster-network-operator will then make sure VRRP IPs are taken from the ranges inside `openStackServiceNetwork` that are not overlapping with `serviceNetwork`, effectivly preventing conflicts. If not set cluster-network-operator will use `serviceNetwork` expanded by decrementing the prefix size by 1.",
 	"enablePortPoolsPrepopulation": "enablePortPoolsPrepopulation when true will make Kuryr prepopulate each newly created port pool with a minimum number of ports. Kuryr uses Neutron port pooling to fight the fact that it takes a significant amount of time to create one. Instead of creating it when pod is being deployed, Kuryr keeps a number of ports ready to be attached to pods. By default port prepopulation is disabled.",
 	"poolMaxPorts":                 "poolMaxPorts sets a maximum number of free ports that are being kept in a port pool. If the number of ports exceeds this setting, free ports will get deleted. Setting 0 will disable this upper bound, effectively preventing pools from shrinking and this is the default value. For more information about port pools see enablePortPoolsPrepopulation setting.",
 	"poolMinPorts":                 "poolMinPorts sets a minimum number of free ports that should be kept in a port pool. If the number of ports is lower than this setting, new ports will get created and added to pool. The default is 1. For more information about port pools see enablePortPoolsPrepopulation setting.",
@@ -1003,26 +953,6 @@ var map_KuryrConfig = map[string]string{
 
 func (KuryrConfig) SwaggerDoc() map[string]string {
 	return map_KuryrConfig
-}
-
-var map_MTUMigration = map[string]string{
-	"":        "MTUMigration MTU contains infomation about MTU migration.",
-	"network": "network contains information about MTU migration for the default network. Migrations are only allowed to MTU values lower than the machine's uplink MTU by the minimum appropriate offset.",
-	"machine": "machine contains MTU migration configuration for the machine's uplink. Needs to be migrated along with the default network MTU unless the current uplink MTU already accommodates the default network MTU.",
-}
-
-func (MTUMigration) SwaggerDoc() map[string]string {
-	return map_MTUMigration
-}
-
-var map_MTUMigrationValues = map[string]string{
-	"":     "MTUMigrationValues contains the values for a MTU migration.",
-	"to":   "to is the MTU to migrate to.",
-	"from": "from is the MTU to migrate from.",
-}
-
-func (MTUMigrationValues) SwaggerDoc() map[string]string {
-	return map_MTUMigrationValues
 }
 
 var map_NetFlowConfig = map[string]string{
@@ -1051,8 +981,7 @@ func (NetworkList) SwaggerDoc() map[string]string {
 
 var map_NetworkMigration = map[string]string{
 	"":            "NetworkMigration represents the cluster network configuration.",
-	"networkType": "networkType is the target type of network migration. Set this to the target network type to allow changing the default network. If unset, the operation of changing cluster default network plugin will be rejected. The supported values are UccpSDN, OVNKubernetes",
-	"mtu":         "mtu contains the MTU migration configuration. Set this to allow changing the MTU values for the default network. If unset, the operation of changing the MTU for the default network will be rejected.",
+	"networkType": "networkType is the target type of network migration The supported values are OpenShiftSDN, OVNKubernetes",
 }
 
 func (NetworkMigration) SwaggerDoc() map[string]string {
@@ -1061,17 +990,17 @@ func (NetworkMigration) SwaggerDoc() map[string]string {
 
 var map_NetworkSpec = map[string]string{
 	"":                          "NetworkSpec is the top-level network configuration object.",
-	"clusterNetwork":            "clusterNetwork is the IP address pool to use for pod IPs. Some network providers, e.g. Uccp SDN, support multiple ClusterNetworks. Others only support one. This is equivalent to the cluster-cidr.",
+	"clusterNetwork":            "clusterNetwork is the IP address pool to use for pod IPs. Some network providers, e.g. OpenShift SDN, support multiple ClusterNetworks. Others only support one. This is equivalent to the cluster-cidr.",
 	"serviceNetwork":            "serviceNetwork is the ip address pool to use for Service IPs Currently, all existing network providers only support a single value here, but this is an array to allow for growth.",
 	"defaultNetwork":            "defaultNetwork is the \"default\" network that all pods will receive",
 	"additionalNetworks":        "additionalNetworks is a list of extra networks to make available to pods when multiple networks are enabled.",
 	"disableMultiNetwork":       "disableMultiNetwork specifies whether or not multiple pod network support should be disabled. If unset, this property defaults to 'false' and multiple network support is enabled.",
 	"useMultiNetworkPolicy":     "useMultiNetworkPolicy enables a controller which allows for MultiNetworkPolicy objects to be used on additional networks as created by Multus CNI. MultiNetworkPolicy are similar to NetworkPolicy objects, but NetworkPolicy objects only apply to the primary interface. With MultiNetworkPolicy, you can control the traffic that a pod can receive over the secondary interfaces. If unset, this property defaults to 'false' and MultiNetworkPolicy objects are ignored. If 'disableMultiNetwork' is 'true' then the value of this field is ignored.",
-	"deployKubeProxy":           "deployKubeProxy specifies whether or not a standalone kube-proxy should be deployed by the operator. Some network providers include kube-proxy or similar functionality. If unset, the plugin will attempt to select the correct value, which is false when Uccp SDN and ovn-kubernetes are used and true otherwise.",
+	"deployKubeProxy":           "deployKubeProxy specifies whether or not a standalone kube-proxy should be deployed by the operator. Some network providers include kube-proxy or similar functionality. If unset, the plugin will attempt to select the correct value, which is false when OpenShift SDN and ovn-kubernetes are used and true otherwise.",
 	"disableNetworkDiagnostics": "disableNetworkDiagnostics specifies whether or not PodNetworkConnectivityCheck CRs from a test pod to every node, apiserver and LB should be disabled or not. If unset, this property defaults to 'false' and network diagnostics is enabled. Setting this to 'true' would reduce the additional load of the pods performing the checks.",
-	"kubeProxyConfig":           "kubeProxyConfig lets us configure desired proxy configuration. If not specified, sensible defaults will be chosen by Uccp directly. Not consumed by all network providers - currently only uccp-sdn.",
+	"kubeProxyConfig":           "kubeProxyConfig lets us configure desired proxy configuration. If not specified, sensible defaults will be chosen by OpenShift directly. Not consumed by all network providers - currently only uccp-sdn.",
 	"exportNetworkFlows":        "exportNetworkFlows enables and configures the export of network flow metadata from the pod network by using protocols NetFlow, SFlow or IPFIX. Currently only supported on OVN-Kubernetes plugin. If unset, flows will not be exported to any collector.",
-	"migration":                 "migration enables and configures the cluster network migration. The migration procedure allows to change the network type and the MTU.",
+	"migration":                 "migration enables and configures the cluster network migration. Setting this to the target network type to allow changing the default network. If unset, the operation of changing cluster default network plugin will be rejected.",
 }
 
 func (NetworkSpec) SwaggerDoc() map[string]string {
@@ -1093,7 +1022,6 @@ var map_OVNKubernetesConfig = map[string]string{
 	"hybridOverlayConfig": "HybridOverlayConfig configures an additional overlay network for peers that are not using OVN.",
 	"ipsecConfig":         "ipsecConfig enables and configures IPsec for pods on the pod network within the cluster.",
 	"policyAuditConfig":   "policyAuditConfig is the configuration for network policy audit events. If unset, reported defaults are used.",
-	"gatewayConfig":       "gatewayConfig holds the configuration for node gateway options.",
 }
 
 func (OVNKubernetesConfig) SwaggerDoc() map[string]string {
@@ -1199,7 +1127,7 @@ func (StaticIPAMRoutes) SwaggerDoc() map[string]string {
 
 var map_OpenShiftAPIServer = map[string]string{
 	"":       "OpenShiftAPIServer provides information to configure an operator to manage uccp-apiserver.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
-	"spec":   "spec is the specification of the desired behavior of the Uccp API Server.",
+	"spec":   "spec is the specification of the desired behavior of the OpenShift API Server.",
 	"status": "status defines the observed status of the OpenShift API Server.",
 }
 

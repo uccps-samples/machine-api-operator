@@ -7,7 +7,7 @@ import (
 
 	. "github.com/onsi/gomega"
 	osconfigv1 "github.com/uccps-samples/api/config/v1"
-	gcp "github.com/uccps-samples/cluster-api-provider-gcp/pkg/apis/gcpprovider/v1beta1"
+	gcp "github.com/openshift/cluster-api-provider-gcp/pkg/apis/gcpprovider/v1beta1"
 	vsphere "github.com/uccps-samples/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"

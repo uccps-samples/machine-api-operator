@@ -3,7 +3,7 @@
 
 syntax = "proto2";
 
-package github.com.uccp.api.route.v1;
+package github.com.uccps-samples.api.route.v1;
 
 import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
@@ -205,8 +205,7 @@ message RouteTargetReference {
 // generate host names and routing table entries when a routing shard is
 // allocated for a specific route.
 // Caveat: This is WIP and will likely undergo modifications when sharding
-//
-// 	support is added.
+//         support is added.
 message RouterShard {
   // shardName uniquely identifies a router shard in the "set" of
   // routers used for routing traffic to the services.
@@ -225,8 +224,7 @@ message TLSConfig {
   // * reencrypt - TLS termination is done by the router and https is used to communicate with the backend
   optional string termination = 1;
 
-  // certificate provides certificate contents. This should be a single serving certificate, not a certificate
-  // chain. Do not include a CA certificate.
+  // certificate provides certificate contents
   optional string certificate = 2;
 
   // key provides key file contents

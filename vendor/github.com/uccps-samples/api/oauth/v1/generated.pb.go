@@ -420,20 +420,20 @@ func (m *UserOAuthAccessTokenList) XXX_DiscardUnknown() {
 var xxx_messageInfo_UserOAuthAccessTokenList proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*ClusterRoleScopeRestriction)(nil), "github.com.uccp.api.oauth.v1.ClusterRoleScopeRestriction")
-	proto.RegisterType((*OAuthAccessToken)(nil), "github.com.uccp.api.oauth.v1.OAuthAccessToken")
-	proto.RegisterType((*OAuthAccessTokenList)(nil), "github.com.uccp.api.oauth.v1.OAuthAccessTokenList")
-	proto.RegisterType((*OAuthAuthorizeToken)(nil), "github.com.uccp.api.oauth.v1.OAuthAuthorizeToken")
-	proto.RegisterType((*OAuthAuthorizeTokenList)(nil), "github.com.uccp.api.oauth.v1.OAuthAuthorizeTokenList")
-	proto.RegisterType((*OAuthClient)(nil), "github.com.uccp.api.oauth.v1.OAuthClient")
-	proto.RegisterType((*OAuthClientAuthorization)(nil), "github.com.uccp.api.oauth.v1.OAuthClientAuthorization")
-	proto.RegisterType((*OAuthClientAuthorizationList)(nil), "github.com.uccp.api.oauth.v1.OAuthClientAuthorizationList")
-	proto.RegisterType((*OAuthClientList)(nil), "github.com.uccp.api.oauth.v1.OAuthClientList")
-	proto.RegisterType((*OAuthRedirectReference)(nil), "github.com.uccp.api.oauth.v1.OAuthRedirectReference")
-	proto.RegisterType((*RedirectReference)(nil), "github.com.uccp.api.oauth.v1.RedirectReference")
-	proto.RegisterType((*ScopeRestriction)(nil), "github.com.uccp.api.oauth.v1.ScopeRestriction")
-	proto.RegisterType((*UserOAuthAccessToken)(nil), "github.com.uccp.api.oauth.v1.UserOAuthAccessToken")
-	proto.RegisterType((*UserOAuthAccessTokenList)(nil), "github.com.uccp.api.oauth.v1.UserOAuthAccessTokenList")
+	proto.RegisterType((*ClusterRoleScopeRestriction)(nil), "github.com.uccps-samples.api.oauth.v1.ClusterRoleScopeRestriction")
+	proto.RegisterType((*OAuthAccessToken)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthAccessToken")
+	proto.RegisterType((*OAuthAccessTokenList)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthAccessTokenList")
+	proto.RegisterType((*OAuthAuthorizeToken)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthAuthorizeToken")
+	proto.RegisterType((*OAuthAuthorizeTokenList)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthAuthorizeTokenList")
+	proto.RegisterType((*OAuthClient)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthClient")
+	proto.RegisterType((*OAuthClientAuthorization)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthClientAuthorization")
+	proto.RegisterType((*OAuthClientAuthorizationList)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthClientAuthorizationList")
+	proto.RegisterType((*OAuthClientList)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthClientList")
+	proto.RegisterType((*OAuthRedirectReference)(nil), "github.com.uccps-samples.api.oauth.v1.OAuthRedirectReference")
+	proto.RegisterType((*RedirectReference)(nil), "github.com.uccps-samples.api.oauth.v1.RedirectReference")
+	proto.RegisterType((*ScopeRestriction)(nil), "github.com.uccps-samples.api.oauth.v1.ScopeRestriction")
+	proto.RegisterType((*UserOAuthAccessToken)(nil), "github.com.uccps-samples.api.oauth.v1.UserOAuthAccessToken")
+	proto.RegisterType((*UserOAuthAccessTokenList)(nil), "github.com.uccps-samples.api.oauth.v1.UserOAuthAccessTokenList")
 }
 
 func init() {

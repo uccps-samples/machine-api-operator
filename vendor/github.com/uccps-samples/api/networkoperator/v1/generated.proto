@@ -3,7 +3,7 @@
 
 syntax = "proto2";
 
-package github.com.uccp.api.networkoperator.v1;
+package github.com.uccps-samples.api.networkoperator.v1;
 
 import "k8s.io/apimachinery/pkg/apis/meta/v1/generated.proto";
 import "k8s.io/apimachinery/pkg/runtime/schema/generated.proto";

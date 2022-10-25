@@ -94,7 +94,7 @@ var (
 		user.Install,
 		machine.Install,
 	)
-	// Install is a function which adds every version of every uccp group to a scheme
+	// Install is a function which adds every version of every openshift group to a scheme
 	Install = schemeBuilder.AddToScheme
 
 	kubeSchemeBuilder = runtime.NewSchemeBuilder(

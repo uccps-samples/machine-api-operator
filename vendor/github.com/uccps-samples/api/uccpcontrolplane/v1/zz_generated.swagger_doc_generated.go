@@ -125,7 +125,7 @@ var map_JenkinsPipelineConfig = map[string]string{
 	"autoProvisionEnabled": "autoProvisionEnabled determines whether a Jenkins server will be spawned from the provided template when the first build config in the project with type JenkinsPipeline is created. When not specified this option defaults to true.",
 	"templateNamespace":    "templateNamespace contains the namespace name where the Jenkins template is stored",
 	"templateName":         "templateName is the name of the default Jenkins template",
-	"serviceName":          "serviceName is the name of the Jenkins service Uccp uses to detect whether a Jenkins pipeline handler has already been installed in a project. This value *must* match a service name in the provided template.",
+	"serviceName":          "serviceName is the name of the Jenkins service OpenShift uses to detect whether a Jenkins pipeline handler has already been installed in a project. This value *must* match a service name in the provided template.",
 	"parameters":           "parameters specifies a set of optional parameters to the Jenkins template.",
 }
 
@@ -162,7 +162,7 @@ var map_OpenShiftControllerManagerConfig = map[string]string{
 	"servingInfo":    "servingInfo describes how to start serving",
 	"leaderElection": "leaderElection defines the configuration for electing a controller instance to make changes to the cluster. If unspecified, the ControllerTTL value is checked to determine whether the legacy direct etcd election code will be used.",
 	"controllers":    "controllers is a list of controllers to enable.  '*' enables all on-by-default controllers, 'foo' enables the controller \"+ named 'foo', '-foo' disables the controller named 'foo'. Defaults to \"*\".",
-	"featureGates":   "featureGates are the set of extra Uccp feature gates for uccp-controller-manager. These feature gates can be used to enable features that are tech preview or otherwise not available on Uccp by default.",
+	"featureGates":   "featureGates are the set of extra OpenShift feature gates for uccp-controller-manager. These feature gates can be used to enable features that are tech preview or otherwise not available on OpenShift by default.",
 }
 
 func (OpenShiftControllerManagerConfig) SwaggerDoc() map[string]string {

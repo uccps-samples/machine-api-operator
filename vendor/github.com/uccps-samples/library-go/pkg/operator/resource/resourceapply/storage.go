@@ -2,7 +2,8 @@ package resourceapply
 
 import (
 	"context"
-	"fmt"
+
+	"k8s.io/klog/v2"
 
 	storagev1 "k8s.io/api/storage/v1"
 	storagev1beta1 "k8s.io/api/storage/v1beta1"
@@ -11,7 +12,6 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	storageclientv1 "k8s.io/client-go/kubernetes/typed/storage/v1"
 	storageclientv1beta1 "k8s.io/client-go/kubernetes/typed/storage/v1beta1"
-	"k8s.io/klog/v2"
 
 	"github.com/uccps-samples/library-go/pkg/operator/events"
 	"github.com/uccps-samples/library-go/pkg/operator/resource/resourcemerge"
@@ -53,57 +53,10 @@ func ApplyStorageClass(ctx context.Context, client storageclientv1.StorageClasse
 		klog.Infof("StorageClass %q changes: %v", required.Name, JSONPatchNoError(existingCopy, requiredCopy))
 	}
 
-	if storageClassNeedsRecreate(existingCopy, requiredCopy) {
-		requiredCopy.ObjectMeta.ResourceVersion = ""
-		err = client.StorageClasses().Delete(ctx, existingCopy.Name, metav1.DeleteOptions{})
-		reportDeleteEvent(recorder, requiredCopy, err, "Deleting StorageClass to re-create it with updated parameters")
-		if err != nil && !apierrors.IsNotFound(err) {
-			return existing, false, err
-		}
-		actual, err := client.StorageClasses().Create(ctx, requiredCopy, metav1.CreateOptions{})
-		if err != nil && apierrors.IsAlreadyExists(err) {
-			// Delete() few lines above did not really delete the object,
-			// the API server is probably waiting for a finalizer removal or so.
-			// Report an error, but something else than "Already exists", because
-			// that would be very confusing - Apply failed because the object
-			// already exists???
-			err = fmt.Errorf("failed to re-create StorageClass %s, waiting for the original object to be deleted", existingCopy.Name)
-		} else if err != nil {
-			err = fmt.Errorf("failed to re-create StorageClass %s: %s", existingCopy.Name, err)
-		}
-		reportCreateEvent(recorder, actual, err)
-		return actual, true, err
-	}
-
-	// Only mutable fields need a change
+	// TODO if provisioner, parameters, reclaimpolicy, or volumebindingmode are different, update will fail so delete and recreate
 	actual, err := client.StorageClasses().Update(ctx, requiredCopy, metav1.UpdateOptions{})
 	reportUpdateEvent(recorder, required, err)
 	return actual, true, err
-}
-
-func storageClassNeedsRecreate(oldSC, newSC *storagev1.StorageClass) bool {
-	// Based on kubernetes/kubernetes/pkg/apis/storage/validation/validation.go,
-	// these fields are immutable.
-	if !equality.Semantic.DeepEqual(oldSC.Parameters, newSC.Parameters) {
-		return true
-	}
-	if oldSC.Provisioner != newSC.Provisioner {
-		return true
-	}
-
-	// In theory, ReclaimPolicy is always set, just in case:
-	if (oldSC.ReclaimPolicy == nil && newSC.ReclaimPolicy != nil) ||
-		(oldSC.ReclaimPolicy != nil && newSC.ReclaimPolicy == nil) {
-		return true
-	}
-	if oldSC.ReclaimPolicy != nil && newSC.ReclaimPolicy != nil && *oldSC.ReclaimPolicy != *newSC.ReclaimPolicy {
-		return true
-	}
-
-	if !equality.Semantic.DeepEqual(oldSC.VolumeBindingMode, newSC.VolumeBindingMode) {
-		return true
-	}
-	return false
 }
 
 // ApplyCSIDriverV1Beta1 merges objectmeta, does not worry about anything else
@@ -167,29 +120,4 @@ func ApplyCSIDriver(ctx context.Context, client storageclientv1.CSIDriversGetter
 	actual, err := client.CSIDrivers().Update(ctx, existingCopy, metav1.UpdateOptions{})
 	reportUpdateEvent(recorder, required, err)
 	return actual, true, err
-}
-
-func DeleteStorageClass(ctx context.Context, client storageclientv1.StorageClassesGetter, recorder events.Recorder, required *storagev1.StorageClass) (*storagev1.StorageClass, bool,
-	error) {
-	err := client.StorageClasses().Delete(ctx, required.Name, metav1.DeleteOptions{})
-	if err != nil && apierrors.IsNotFound(err) {
-		return nil, false, nil
-	}
-	if err != nil {
-		return nil, false, err
-	}
-	reportDeleteEvent(recorder, required, err)
-	return nil, true, nil
-}
-
-func DeleteCSIDriver(ctx context.Context, client storageclientv1.CSIDriversGetter, recorder events.Recorder, required *storagev1.CSIDriver) (*storagev1.CSIDriver, bool, error) {
-	err := client.CSIDrivers().Delete(ctx, required.Name, metav1.DeleteOptions{})
-	if err != nil && apierrors.IsNotFound(err) {
-		return nil, false, nil
-	}
-	if err != nil {
-		return nil, false, err
-	}
-	reportDeleteEvent(recorder, required, err)
-	return nil, true, nil
 }

@@ -141,10 +141,10 @@ func (m *CloudPrivateIPConfigStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_CloudPrivateIPConfigStatus proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*CloudPrivateIPConfig)(nil), "github.com.uccp.api.cloudnetwork.v1.CloudPrivateIPConfig")
-	proto.RegisterType((*CloudPrivateIPConfigList)(nil), "github.com.uccp.api.cloudnetwork.v1.CloudPrivateIPConfigList")
-	proto.RegisterType((*CloudPrivateIPConfigSpec)(nil), "github.com.uccp.api.cloudnetwork.v1.CloudPrivateIPConfigSpec")
-	proto.RegisterType((*CloudPrivateIPConfigStatus)(nil), "github.com.uccp.api.cloudnetwork.v1.CloudPrivateIPConfigStatus")
+	proto.RegisterType((*CloudPrivateIPConfig)(nil), "github.com.uccps-samples.api.cloudnetwork.v1.CloudPrivateIPConfig")
+	proto.RegisterType((*CloudPrivateIPConfigList)(nil), "github.com.uccps-samples.api.cloudnetwork.v1.CloudPrivateIPConfigList")
+	proto.RegisterType((*CloudPrivateIPConfigSpec)(nil), "github.com.uccps-samples.api.cloudnetwork.v1.CloudPrivateIPConfigSpec")
+	proto.RegisterType((*CloudPrivateIPConfigStatus)(nil), "github.com.uccps-samples.api.cloudnetwork.v1.CloudPrivateIPConfigStatus")
 }
 
 func init() {

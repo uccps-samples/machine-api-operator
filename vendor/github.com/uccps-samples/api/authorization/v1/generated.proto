@@ -3,7 +3,7 @@
 
 syntax = "proto2";
 
-package github.com.uccp.api.authorization.v1;
+package github.com.uccps-samples.api.authorization.v1;
 
 import "k8s.io/api/core/v1/generated.proto";
 import "k8s.io/api/rbac/v1/generated.proto";

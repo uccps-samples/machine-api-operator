@@ -87,7 +87,7 @@ func (KubeletConnectionInfo) SwaggerDoc() map[string]string {
 
 var map_MasterAuthConfig = map[string]string{
 	"":                           "MasterAuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
-	"requestHeader":              "requestHeader holds options for setting up a front proxy against the API.  It is optional.",
+	"requestHeader":              "requestHeader holds options for setting up a front proxy against the the API.  It is optional.",
 	"webhookTokenAuthenticators": "webhookTokenAuthenticators, if present configures remote token reviewers",
 	"oauthMetadataFile":          "oauthMetadataFile is a path to a file containing the discovery endpoint for OAuth 2.0 Authorization Server Metadata for an external OAuth server. See IETF Draft: // https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2 This option is mutually exclusive with OAuthConfig",
 }
@@ -129,7 +129,7 @@ func (UserAgentDenyRule) SwaggerDoc() map[string]string {
 
 var map_UserAgentMatchRule = map[string]string{
 	"":          "UserAgentMatchRule describes how to match a given request based on User-Agent and HTTPVerb",
-	"regex":     "regex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing uccp resources: oc/v1.1.3 (linux/amd64) uccp/b348c2f 3. uccp kubectl accessing kube resources:  uccp/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. uccp kubectl accessing uccp resources: uccp/v1.1.3 (linux/amd64) uccp/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing uccp resources: oadm/v1.1.3 (linux/amd64) uccp/b348c2f 7. uccp cli accessing kube resources: uccp/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. uccp cli accessing uccp resources: uccp/v1.1.3 (linux/amd64) uccp/b348c2f",
+	"regex":     "regex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing openshift resources: oc/v1.1.3 (linux/amd64) openshift/b348c2f 3. openshift kubectl accessing kube resources:  openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. openshift kubectl accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing openshift resources: oadm/v1.1.3 (linux/amd64) openshift/b348c2f 7. openshift cli accessing kube resources: openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. openshift cli accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f",
 	"httpVerbs": "httpVerbs specifies which HTTP verbs should be matched.  An empty list means \"match all verbs\".",
 }
 

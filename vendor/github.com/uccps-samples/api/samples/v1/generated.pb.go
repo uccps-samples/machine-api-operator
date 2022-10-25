@@ -171,11 +171,11 @@ func (m *ConfigStatus) XXX_DiscardUnknown() {
 var xxx_messageInfo_ConfigStatus proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*Config)(nil), "github.com.uccp.api.samples.v1.Config")
-	proto.RegisterType((*ConfigCondition)(nil), "github.com.uccp.api.samples.v1.ConfigCondition")
-	proto.RegisterType((*ConfigList)(nil), "github.com.uccp.api.samples.v1.ConfigList")
-	proto.RegisterType((*ConfigSpec)(nil), "github.com.uccp.api.samples.v1.ConfigSpec")
-	proto.RegisterType((*ConfigStatus)(nil), "github.com.uccp.api.samples.v1.ConfigStatus")
+	proto.RegisterType((*Config)(nil), "github.com.uccps-samples.api.samples.v1.Config")
+	proto.RegisterType((*ConfigCondition)(nil), "github.com.uccps-samples.api.samples.v1.ConfigCondition")
+	proto.RegisterType((*ConfigList)(nil), "github.com.uccps-samples.api.samples.v1.ConfigList")
+	proto.RegisterType((*ConfigSpec)(nil), "github.com.uccps-samples.api.samples.v1.ConfigSpec")
+	proto.RegisterType((*ConfigStatus)(nil), "github.com.uccps-samples.api.samples.v1.ConfigStatus")
 }
 
 func init() {

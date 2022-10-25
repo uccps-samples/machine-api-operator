@@ -48,7 +48,7 @@ This operator is responsible for the creation and maintenance of:
 
 Providers which currently works with MAO, are:
 - [AWS](https://github.com/uccps-samples/cluster-api-provider-aws)
-- [GCP](https://github.com/uccps-samples/cluster-api-provider-gcp/)
+- [GCP](https://github.com/openshift/cluster-api-provider-gcp/)
 - [OpenStack](https://github.com/uccps-samples/cluster-api-provider-openstack/)
 - [vSphere](https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/vsphere)
 - [Azure](https://github.com/uccps-samples/cluster-api-provider-azure)

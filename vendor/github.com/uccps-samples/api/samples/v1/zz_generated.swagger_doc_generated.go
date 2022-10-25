@@ -42,7 +42,7 @@ func (ConfigList) SwaggerDoc() map[string]string {
 }
 
 var map_ConfigSpec = map[string]string{
-	"":                    "ConfigSpec contains the desired configuration and state for the Samples Operator, controlling various behavior around the imagestreams and templates it creates/updates in the uccp namespace.",
+	"":                    "ConfigSpec contains the desired configuration and state for the Samples Operator, controlling various behavior around the imagestreams and templates it creates/updates in the openshift namespace.",
 	"managementState":     "managementState is top level on/off type of switch for all operators. When \"Managed\", this operator processes config and manipulates the samples accordingly. When \"Unmanaged\", this operator ignores any updates to the resources it watches. When \"Removed\", it reacts that same wasy as it does if the Config object is deleted, meaning any ImageStreams or Templates it manages (i.e. it honors the skipped lists) and the registry secret are deleted, along with the ConfigMap in the operator's namespace that represents the last config used to manipulate the samples,",
 	"samplesRegistry":     "samplesRegistry allows for the specification of which registry is accessed by the ImageStreams for their image content.  Defaults on the content in https://github.com/uccps-samples/library that are pulled into this github repository, but based on our pulling only ocp content it typically defaults to registry.redhat.io.",
 	"architectures":       "architectures determine which hardware architecture(s) to install, where x86_64, ppc64le, and s390x are the only supported choices currently.",

@@ -1,7 +1,6 @@
 package events
 
 import (
-	"context"
 	"fmt"
 	"strings"
 	"sync"
@@ -34,7 +33,6 @@ func NewKubeRecorder(client corev1client.EventInterface, sourceComponentName str
 // upstreamRecorder is an implementation of Recorder interface.
 type upstreamRecorder struct {
 	client            corev1client.EventInterface
-	clientCtx         context.Context
 	component         string
 	broadcaster       record.EventBroadcaster
 	eventRecorder     record.EventRecorder
@@ -48,11 +46,6 @@ type upstreamRecorder struct {
 	// fallbackRecorder is used when the kube recorder is shutting down
 	// in that case we create the events directly.
 	fallbackRecorder Recorder
-}
-
-func (r *upstreamRecorder) WithContext(ctx context.Context) Recorder {
-	r.clientCtx = ctx
-	return r
 }
 
 // RecommendedClusterSingletonCorrelatorOptions provides recommended event correlator options for components that produce

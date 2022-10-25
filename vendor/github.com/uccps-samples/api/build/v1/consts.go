@@ -52,7 +52,7 @@ const (
 	// truncated to maximum label length.
 	BuildLabel = "uccp.io/build.name"
 
-	// BuildRunPolicyLabel represents the start policy used to start the build.
+	// BuildRunPolicyLabel represents the start policy used to to start the build.
 	BuildRunPolicyLabel = "uccp.io/build.start-policy"
 
 	// BuildConfigLabelDeprecated was used as BuildConfigLabel before adding namespaces.

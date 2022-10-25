@@ -14,7 +14,7 @@ package v1
 var map_ActiveDirectoryConfig = map[string]string{
 	"":                          "ActiveDirectoryConfig holds the necessary configuration options to define how an LDAP group sync interacts with an LDAP server using the Active Directory schema",
 	"usersQuery":                "AllUsersQuery holds the template for an LDAP query that returns user entries.",
-	"userNameAttributes":        "UserNameAttributes defines which attributes on an LDAP user entry will be interpreted as its Uccp user name.",
+	"userNameAttributes":        "UserNameAttributes defines which attributes on an LDAP user entry will be interpreted as its OpenShift user name.",
 	"groupMembershipAttributes": "GroupMembershipAttributes defines which attributes on an LDAP user entry will be interpreted as the groups it is a member of",
 }
 
@@ -80,11 +80,11 @@ func (AuditConfig) SwaggerDoc() map[string]string {
 var map_AugmentedActiveDirectoryConfig = map[string]string{
 	"":                          "AugmentedActiveDirectoryConfig holds the necessary configuration options to define how an LDAP group sync interacts with an LDAP server using the augmented Active Directory schema",
 	"usersQuery":                "AllUsersQuery holds the template for an LDAP query that returns user entries.",
-	"userNameAttributes":        "UserNameAttributes defines which attributes on an LDAP user entry will be interpreted as its Uccp user name.",
+	"userNameAttributes":        "UserNameAttributes defines which attributes on an LDAP user entry will be interpreted as its OpenShift user name.",
 	"groupMembershipAttributes": "GroupMembershipAttributes defines which attributes on an LDAP user entry will be interpreted as the groups it is a member of",
 	"groupsQuery":               "AllGroupsQuery holds the template for an LDAP query that returns group entries.",
 	"groupUIDAttribute":         "GroupUIDAttributes defines which attribute on an LDAP group entry will be interpreted as its unique identifier. (ldapGroupUID)",
-	"groupNameAttributes":       "GroupNameAttributes defines which attributes on an LDAP group entry will be interpreted as its name to use for an Uccp group",
+	"groupNameAttributes":       "GroupNameAttributes defines which attributes on an LDAP group entry will be interpreted as its name to use for an OpenShift group",
 }
 
 func (AugmentedActiveDirectoryConfig) SwaggerDoc() map[string]string {
@@ -246,11 +246,11 @@ func (EtcdConnectionInfo) SwaggerDoc() map[string]string {
 }
 
 var map_EtcdStorageConfig = map[string]string{
-	"":                         "EtcdStorageConfig holds the necessary configuration options for the etcd storage underlying Uccp and Kubernetes",
+	"":                         "EtcdStorageConfig holds the necessary configuration options for the etcd storage underlying OpenShift and Kubernetes",
 	"kubernetesStorageVersion": "KubernetesStorageVersion is the API version that Kube resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
 	"kubernetesStoragePrefix":  "KubernetesStoragePrefix is the path within etcd that the Kubernetes resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'kubernetes.io'.",
-	"openShiftStorageVersion":  "UccpStorageVersion is the API version that OS resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
-	"openShiftStoragePrefix":   "UccpStoragePrefix is the path within etcd that the Uccp resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'uccp.io'.",
+	"openShiftStorageVersion":  "OpenShiftStorageVersion is the API version that OS resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
+	"openShiftStoragePrefix":   "OpenShiftStoragePrefix is the path within etcd that the OpenShift resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'uccp.io'.",
 }
 
 func (EtcdStorageConfig) SwaggerDoc() map[string]string {
@@ -378,7 +378,7 @@ var map_JenkinsPipelineConfig = map[string]string{
 	"autoProvisionEnabled": "AutoProvisionEnabled determines whether a Jenkins server will be spawned from the provided template when the first build config in the project with type JenkinsPipeline is created. When not specified this option defaults to true.",
 	"templateNamespace":    "TemplateNamespace contains the namespace name where the Jenkins template is stored",
 	"templateName":         "TemplateName is the name of the default Jenkins template",
-	"serviceName":          "ServiceName is the name of the Jenkins service Uccp uses to detect whether a Jenkins pipeline handler has already been installed in a project. This value *must* match a service name in the provided template.",
+	"serviceName":          "ServiceName is the name of the Jenkins service OpenShift uses to detect whether a Jenkins pipeline handler has already been installed in a project. This value *must* match a service name in the provided template.",
 	"parameters":           "Parameters specifies a set of optional parameters to the Jenkins template.",
 }
 
@@ -427,7 +427,7 @@ func (KubernetesMasterConfig) SwaggerDoc() map[string]string {
 }
 
 var map_LDAPAttributeMapping = map[string]string{
-	"":                  "LDAPAttributeMapping maps LDAP attributes to Uccp identity fields",
+	"":                  "LDAPAttributeMapping maps LDAP attributes to OpenShift identity fields",
 	"id":                "ID is the list of attributes whose values should be used as the user ID. Required. LDAP standard identity attribute is \"dn\"",
 	"preferredUsername": "PreferredUsername is the list of attributes whose values should be used as the preferred username. LDAP standard login attribute is \"uid\"",
 	"name":              "Name is the list of attributes whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity LDAP standard display name attribute is \"cn\"",
@@ -473,7 +473,7 @@ var map_LDAPSyncConfig = map[string]string{
 	"bindPassword":             "BindPassword is an optional password to bind with during the search phase.",
 	"insecure":                 "Insecure, if true, indicates the connection should not use TLS. Cannot be set to true with a URL scheme of \"ldaps://\" If false, \"ldaps://\" URLs connect using TLS, and \"ldap://\" URLs are upgraded to a TLS connection using StartTLS as specified in https://tools.ietf.org/html/rfc2830",
 	"ca":                       "CA is the optional trusted certificate authority bundle to use when making requests to the server If empty, the default system roots are used",
-	"groupUIDNameMapping":      "LDAPGroupUIDToUccpGroupNameMapping is an optional direct mapping of LDAP group UIDs to Uccp Group names",
+	"groupUIDNameMapping":      "LDAPGroupUIDToOpenShiftGroupNameMapping is an optional direct mapping of LDAP group UIDs to OpenShift Group names",
 	"rfc2307":                  "RFC2307Config holds the configuration for extracting data from an LDAP server set up in a fashion similar to RFC2307: first-class group and user entries, with group membership determined by a multi-valued attribute on the group entry listing its members",
 	"activeDirectory":          "ActiveDirectoryConfig holds the configuration for extracting data from an LDAP server set up in a fashion similar to that used in Active Directory: first-class user entries, with group membership determined by a multi-valued attribute on members listing groups they are a member of",
 	"augmentedActiveDirectory": "AugmentedActiveDirectoryConfig holds the configuration for extracting data from an LDAP server set up in a fashion similar to that used in Active Directory as described above, with one addition: first-class group entries exist and are used to hold metadata but not group membership",
@@ -494,7 +494,7 @@ func (LocalQuota) SwaggerDoc() map[string]string {
 
 var map_MasterAuthConfig = map[string]string{
 	"":                           "MasterAuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
-	"requestHeader":              "RequestHeader holds options for setting up a front proxy against the API.  It is optional.",
+	"requestHeader":              "RequestHeader holds options for setting up a front proxy against the the API.  It is optional.",
 	"webhookTokenAuthenticators": "WebhookTokenAuthnConfig, if present configures remote token reviewers",
 	"oauthMetadataFile":          "OAuthMetadataFile is a path to a file containing the discovery endpoint for OAuth 2.0 Authorization Server Metadata for an external OAuth server. See IETF Draft: // https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2 This option is mutually exclusive with OAuthConfig",
 }
@@ -504,9 +504,9 @@ func (MasterAuthConfig) SwaggerDoc() map[string]string {
 }
 
 var map_MasterClients = map[string]string{
-	"":                            "MasterClients holds references to `.kubeconfig` files that qualify master clients for Uccp and Kubernetes",
-	"uccpLoopbackKubeConfig": "UccpLoopbackKubeConfig is a .kubeconfig filename for system components to loopback to this master",
-	"uccpLoopbackClientConnectionOverrides": "UccpLoopbackClientConnectionOverrides specifies client overrides for system components to loop back to this master.",
+	"":                            "MasterClients holds references to `.kubeconfig` files that qualify master clients for OpenShift and Kubernetes",
+	"openshiftLoopbackKubeConfig": "OpenShiftLoopbackKubeConfig is a .kubeconfig filename for system components to loopback to this master",
+	"openshiftLoopbackClientConnectionOverrides": "OpenShiftLoopbackClientConnectionOverrides specifies client overrides for system components to loop back to this master.",
 }
 
 func (MasterClients) SwaggerDoc() map[string]string {
@@ -514,13 +514,13 @@ func (MasterClients) SwaggerDoc() map[string]string {
 }
 
 var map_MasterConfig = map[string]string{
-	"":                       "MasterConfig holds the necessary configuration options for the Uccp master\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+	"":                       "MasterConfig holds the necessary configuration options for the OpenShift master\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
 	"servingInfo":            "ServingInfo describes how to start serving",
 	"authConfig":             "AuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
 	"aggregatorConfig":       "AggregatorConfig has options for configuring the aggregator component of the API server.",
 	"corsAllowedOrigins":     "CORSAllowedOrigins",
 	"apiLevels":              "APILevels is a list of API levels that should be enabled on startup: v1 as examples",
-	"masterPublicURL":        "MasterPublicURL is how clients can access the Uccp API server",
+	"masterPublicURL":        "MasterPublicURL is how clients can access the OpenShift API server",
 	"controllers":            "Controllers is a list of the controllers that should be started. If set to \"none\", no controllers will start automatically. The default value is \"*\" which will start all controllers. When using \"*\", you may exclude controllers by prepending a \"-\" in front of their name. No other values are recognized at this time.",
 	"admissionConfig":        "AdmissionConfig contains admission control plugin configuration.",
 	"controllerConfig":       "ControllerConfig holds configuration values for controllers",
@@ -595,7 +595,7 @@ func (NodeAuthConfig) SwaggerDoc() map[string]string {
 }
 
 var map_NodeConfig = map[string]string{
-	"":                                "NodeConfig is the fully specified config starting an Uccp node\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+	"":                                "NodeConfig is the fully specified config starting an OpenShift node\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
 	"nodeName":                        "NodeName is the value used to identify this particular node in the cluster.  If possible, this should be your fully qualified hostname. If you're describing a set of static nodes to the master, this value must match one of the values in the list",
 	"nodeIP":                          "Node may have multiple IPs, specify the IP to use for pod traffic routing If not specified, network parse/lookup on the nodeName is performed and the first non-loopback address is used",
 	"servingInfo":                     "ServingInfo describes how to start serving",
@@ -722,7 +722,7 @@ func (PodManifestConfig) SwaggerDoc() map[string]string {
 }
 
 var map_PolicyConfig = map[string]string{
-	"":                        "holds the necessary configuration options for",
+	"":                        "\n holds the necessary configuration options for",
 	"userAgentMatchingConfig": "UserAgentMatchingConfig controls how API calls from *voluntarily* identifying clients will be handled.  THIS DOES NOT DEFEND AGAINST MALICIOUS CLIENTS!",
 }
 
@@ -731,7 +731,7 @@ func (PolicyConfig) SwaggerDoc() map[string]string {
 }
 
 var map_ProjectConfig = map[string]string{
-	"":                       "holds the necessary configuration options for",
+	"":                       "\n holds the necessary configuration options for",
 	"defaultNodeSelector":    "DefaultNodeSelector holds default project node label selector",
 	"projectRequestMessage":  "ProjectRequestMessage is the string presented to a user if they are unable to request a project via the projectrequest api endpoint",
 	"projectRequestTemplate": "ProjectRequestTemplate is the template to use for creating projects in response to projectrequest. It is in the format namespace/template and it is optional. If it is not specified, a default template is used.",
@@ -746,11 +746,11 @@ var map_RFC2307Config = map[string]string{
 	"":                               "RFC2307Config holds the necessary configuration options to define how an LDAP group sync interacts with an LDAP server using the RFC2307 schema",
 	"groupsQuery":                    "AllGroupsQuery holds the template for an LDAP query that returns group entries.",
 	"groupUIDAttribute":              "GroupUIDAttributes defines which attribute on an LDAP group entry will be interpreted as its unique identifier. (ldapGroupUID)",
-	"groupNameAttributes":            "GroupNameAttributes defines which attributes on an LDAP group entry will be interpreted as its name to use for an Uccp group",
+	"groupNameAttributes":            "GroupNameAttributes defines which attributes on an LDAP group entry will be interpreted as its name to use for an OpenShift group",
 	"groupMembershipAttributes":      "GroupMembershipAttributes defines which attributes on an LDAP group entry will be interpreted  as its members. The values contained in those attributes must be queryable by your UserUIDAttribute",
 	"usersQuery":                     "AllUsersQuery holds the template for an LDAP query that returns user entries.",
 	"userUIDAttribute":               "UserUIDAttribute defines which attribute on an LDAP user entry will be interpreted as its unique identifier. It must correspond to values that will be found from the GroupMembershipAttributes",
-	"userNameAttributes":             "UserNameAttributes defines which attributes on an LDAP user entry will be used, in order, as its Uccp user name. The first attribute with a non-empty value is used. This should match your PreferredUsername setting for your LDAPPasswordIdentityProvider",
+	"userNameAttributes":             "UserNameAttributes defines which attributes on an LDAP user entry will be used, in order, as its OpenShift user name. The first attribute with a non-empty value is used. This should match your PreferredUsername setting for your LDAPPasswordIdentityProvider",
 	"tolerateMemberNotFoundErrors":   "TolerateMemberNotFoundErrors determines the behavior of the LDAP sync job when missing user entries are encountered. If 'true', an LDAP query for users that doesn't find any will be tolerated and an only and error will be logged. If 'false', the LDAP sync job will fail if a query for users doesn't find any. The default value is 'false'. Misconfigured LDAP sync jobs with this flag set to 'true' can cause group membership to be removed, so it is recommended to use this flag with caution.",
 	"tolerateMemberOutOfScopeErrors": "TolerateMemberOutOfScopeErrors determines the behavior of the LDAP sync job when out-of-scope user entries are encountered. If 'true', an LDAP query for a user that falls outside of the base DN given for the all user query will be tolerated and only an error will be logged. If 'false', the LDAP sync job will fail if a user query would search outside of the base DN specified by the all user query. Misconfigured LDAP sync jobs with this flag set to 'true' can result in groups missing users, so it is recommended to use this flag with caution.",
 }
@@ -945,7 +945,7 @@ func (UserAgentDenyRule) SwaggerDoc() map[string]string {
 
 var map_UserAgentMatchRule = map[string]string{
 	"":          "UserAgentMatchRule describes how to match a given request based on User-Agent and HTTPVerb",
-	"regex":     "UserAgentRegex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing uccp resources: oc/v1.1.3 (linux/amd64) uccp/b348c2f 3. uccp kubectl accessing kube resources:  uccp/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. uccp kubectl accessing uccp resources: uccp/v1.1.3 (linux/amd64) uccp/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing uccp resources: oadm/v1.1.3 (linux/amd64) uccp/b348c2f 7. uccp cli accessing kube resources: uccp/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. uccp cli accessing uccp resources: uccp/v1.1.3 (linux/amd64) uccp/b348c2f",
+	"regex":     "UserAgentRegex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing openshift resources: oc/v1.1.3 (linux/amd64) openshift/b348c2f 3. openshift kubectl accessing kube resources:  openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. openshift kubectl accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing openshift resources: oadm/v1.1.3 (linux/amd64) openshift/b348c2f 7. openshift cli accessing kube resources: openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. openshift cli accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f",
 	"httpVerbs": "HTTPVerbs specifies which HTTP verbs should be matched.  An empty list means \"match all verbs\".",
 }
 

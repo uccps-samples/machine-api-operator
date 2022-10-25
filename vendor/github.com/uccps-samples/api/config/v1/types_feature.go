@@ -101,8 +101,7 @@ type FeatureGateEnabledDisabled struct {
 // version of this file. In this upgrade scenario the map could return nil.
 //
 // example:
-//
-//	if featureSet, ok := FeatureSets["SomeNewFeature"]; ok { }
+//   if featureSet, ok := FeatureSets["SomeNewFeature"]; ok { }
 //
 // If you put an item in either of these lists, put your area and name on it so we can find owners.
 var FeatureSets = map[FeatureSet]*FeatureGateEnabledDisabled{
@@ -112,20 +111,19 @@ var FeatureSets = map[FeatureSet]*FeatureGateEnabledDisabled{
 		Disabled: []string{},
 	},
 	TechPreviewNoUpgrade: newDefaultFeatures().
-		with("CSIDriverAzureDisk").          // sig-storage, jsafrane, OCP specific
-		with("CSIDriverAzureFile").          // sig-storage, fbertina, OCP specific
-		with("CSIDriverVSphere").            // sig-storage, jsafrane, OCP specific
-		with("CSIMigrationAWS").             // sig-storage, jsafrane, Kubernetes feature gate
-		with("CSIMigrationOpenStack").       // sig-storage, jsafrane, Kubernetes feature gate
-		with("CSIMigrationGCE").             // sig-storage, fbertina, Kubernetes feature gate
-		with("CSIMigrationAzureDisk").       // sig-storage, fbertina, Kubernetes feature gate
-		with("CSIMigrationAzureFile").       // sig-storage, fbertina, Kubernetes feature gate
-		with("CSIMigrationvSphere").         // sig-storage, fbertina, Kubernetes feature gate
-		with("ExternalCloudProvider").       // sig-cloud-provider, jspeed, OCP specific
-		with("CSIDriverSharedResource").     // sig-build, adkaplan, OCP specific
-		with("BuildCSIVolumes").             // sig-build, adkaplan, OCP specific
-		with("NodeSwap").                    // sig-node, ehashman, Kubernetes feature gate
-		with("MachineAPIProviderOpenStack"). // openstack, egarcia (#forum-openstack), OCP specific
+		with("CSIDriverAzureDisk").         // sig-storage, jsafrane, OCP specific
+		with("CSIDriverAzureFile").         // sig-storage, fbertina, OCP specific
+		with("CSIDriverVSphere").           // sig-storage, jsafrane, OCP specific
+		with("CSIMigrationAWS").            // sig-storage, jsafrane, Kubernetes feature gate
+		with("CSIMigrationOpenStack").      // sig-storage, jsafrane, Kubernetes feature gate
+		with("CSIMigrationGCE").            // sig-storage, fbertina, Kubernetes feature gate
+		with("CSIMigrationAzureDisk").      // sig-storage, fbertina, Kubernetes feature gate
+		with("CSIMigrationAzureFile").      // sig-storage, fbertina, Kubernetes feature gate
+		with("CSIMigrationVSphere").        // sig-storage, fbertina, Kubernetes feature gate
+		with("ExternalCloudProvider").      // sig-cloud-provider, jspeed, OCP specific
+		with("InsightsOperatorPullingSCA"). // insights-operator/ccx, tremes, OCP specific
+		with("CSIDriverSharedResource").    // sig-build, adkaplan, OCP specific
+		with("BuildCSIVolumes").            // sig-build, adkaplan, OCP specific
 		toFeatures(),
 	LatencySensitive: newDefaultFeatures().
 		with(
@@ -143,16 +141,14 @@ var defaultFeatures = &FeatureGateEnabledDisabled{
 	Enabled: []string{
 		"APIPriorityAndFairness",         // sig-apimachinery, deads2k
 		"RotateKubeletServerCertificate", // sig-pod, sjenning
+		"SupportPodPidsLimit",            // sig-pod, sjenning
+		"NodeDisruptionExclusion",        // sig-scheduling, ccoleman
+		"ServiceNodeExclusion",           // sig-scheduling, ccoleman
 		"DownwardAPIHugePages",           // sig-node, rphillips
 		"PodSecurity",                    // sig-auth, s-urbaniak
 	},
 	Disabled: []string{
-		"CSIMigrationAWS",       // sig-storage, jsafrane
-		"CSIMigrationOpenStack", // sig-storage, jsafrane
-		"CSIMigrationGCE",       // sig-storage, jsafrane
-		"CSIMigrationAzureDisk", // sig-storage, jsafrane
-		"CSIMigrationAzureFile", // sig-storage, jsafrane
-		"CSIMigrationvSphere",   // sig-storage, jsafrane
+		"LegacyNodeRoleBehavior", // sig-scheduling, ccoleman
 	},
 }
 

@@ -27,7 +27,7 @@ Ensure presence of expected number of replicas and a given provider config for a
 
   - [cluster-api-provider-aws](https://github.com/uccps-samples/cluster-api-provider-aws)
 
-  - [cluster-api-provider-gcp](https://github.com/uccps-samples/cluster-api-provider-gcp)
+  - [cluster-api-provider-gcp](https://github.com/openshift/cluster-api-provider-gcp)
 
   - [cluster-api-provider-azure](https://github.com/uccps-samples/cluster-api-provider-azure)
 

@@ -116,7 +116,7 @@ func (EtcdConnectionInfo) SwaggerDoc() map[string]string {
 }
 
 var map_EtcdStorageConfig = map[string]string{
-	"storagePrefix": "StoragePrefix is the path within etcd that the Uccp resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located.",
+	"storagePrefix": "StoragePrefix is the path within etcd that the OpenShift resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located.",
 }
 
 func (EtcdStorageConfig) SwaggerDoc() map[string]string {
@@ -315,7 +315,7 @@ var map_APIServerSpec = map[string]string{
 	"additionalCORSAllowedOrigins": "additionalCORSAllowedOrigins lists additional, user-defined regular expressions describing hosts for which the API server allows access using the CORS headers. This may be needed to access the API and the integrated OAuth server from JavaScript applications. The values are regular expressions that correspond to the Golang regular expression language.",
 	"encryption":                   "encryption allows the configuration of encryption of resources at the datastore layer.",
 	"tlsSecurityProfile":           "tlsSecurityProfile specifies settings for TLS connections for externally exposed servers.\n\nIf unset, a default (which may change between releases) is chosen. Note that only Old, Intermediate and Custom profiles are currently supported, and the maximum available MinTLSVersions is VersionTLS12.",
-	"audit":                        "audit specifies the settings for audit configuration to be applied to all Uccp-provided API servers in the cluster.",
+	"audit":                        "audit specifies the settings for audit configuration to be applied to all OpenShift-provided API servers in the cluster.",
 }
 
 func (APIServerSpec) SwaggerDoc() map[string]string {
@@ -323,7 +323,7 @@ func (APIServerSpec) SwaggerDoc() map[string]string {
 }
 
 var map_Audit = map[string]string{
-	"profile":     "profile specifies the name of the desired top-level audit profile to be applied to all requests sent to any of the Uccp-provided API servers in the cluster (kube-apiserver, uccp-apiserver and oauth-apiserver), with the exception of those requests that match one or more of the customRules.\n\nThe following profiles are provided: - Default: default policy which means MetaData level logging with the exception of events\n  (not logged at all), oauthaccesstokens and oauthauthorizetokens (both logged at RequestBody\n  level).\n- WriteRequestBodies: like 'Default', but logs request and response HTTP payloads for write requests (create, update, patch). - AllRequestBodies: like 'WriteRequestBodies', but also logs request and response HTTP payloads for read requests (get, list). - None: no requests are logged at all, not even oauthaccesstokens and oauthauthorizetokens.\n\nWarning: It is not recommended to disable audit logging by using the `None` profile unless you are fully aware of the risks of not logging data that can be beneficial when troubleshooting issues. If you disable audit logging and a support situation arises, you might need to enable audit logging and reproduce the issue in order to troubleshoot properly.\n\nIf unset, the 'Default' profile is used as the default.",
+	"profile":     "profile specifies the name of the desired top-level audit profile to be applied to all requests sent to any of the OpenShift-provided API servers in the cluster (kube-apiserver, uccp-apiserver and oauth-apiserver), with the exception of those requests that match one or more of the customRules.\n\nThe following profiles are provided: - Default: default policy which means MetaData level logging with the exception of events\n  (not logged at all), oauthaccesstokens and oauthauthorizetokens (both logged at RequestBody\n  level).\n- WriteRequestBodies: like 'Default', but logs request and response HTTP payloads for write requests (create, update, patch). - AllRequestBodies: like 'WriteRequestBodies', but also logs request and response HTTP payloads for read requests (get, list). - None: no requests are logged at all, not even oauthaccesstokens and oauthauthorizetokens.\n\nWarning: It is not recommended to disable audit logging by using the `None` profile unless you are fully aware of the risks of not logging data that can be beneficial when troubleshooting issues. If you disable audit logging and a support situation arises, you might need to enable audit logging and reproduce the issue in order to troubleshoot properly.\n\nIf unset, the 'Default' profile is used as the default.",
 	"customRules": "customRules specify profiles per group. These profile take precedence over the top-level profile field if they apply. They are evaluation from top to bottom and the first one that matches, applies.",
 }
 
@@ -334,7 +334,7 @@ func (Audit) SwaggerDoc() map[string]string {
 var map_AuditCustomRule = map[string]string{
 	"":        "AuditCustomRule describes a custom rule for an audit profile that takes precedence over the top-level profile.",
 	"group":   "group is a name of group a request user must be member of in order to this profile to apply.",
-	"profile": "profile specifies the name of the desired audit policy configuration to be deployed to all Uccp-provided API servers in the cluster.\n\nThe following profiles are provided: - Default: the existing default policy. - WriteRequestBodies: like 'Default', but logs request and response HTTP payloads for write requests (create, update, patch). - AllRequestBodies: like 'WriteRequestBodies', but also logs request and response HTTP payloads for read requests (get, list). - None: no requests are logged at all, not even oauthaccesstokens and oauthauthorizetokens.\n\nIf unset, the 'Default' profile is used as the default.",
+	"profile": "profile specifies the name of the desired audit policy configuration to be deployed to all OpenShift-provided API servers in the cluster.\n\nThe following profiles are provided: - Default: the existing default policy. - WriteRequestBodies: like 'Default', but logs request and response HTTP payloads for write requests (create, update, patch). - AllRequestBodies: like 'WriteRequestBodies', but also logs request and response HTTP payloads for read requests (get, list). - None: no requests are logged at all, not even oauthaccesstokens and oauthauthorizetokens.\n\nIf unset, the 'Default' profile is used as the default.",
 }
 
 func (AuditCustomRule) SwaggerDoc() map[string]string {
@@ -364,7 +364,7 @@ var map_AuthenticationSpec = map[string]string{
 	"oauthMetadata":              "oauthMetadata contains the discovery endpoint data for OAuth 2.0 Authorization Server Metadata for an external OAuth server. This discovery document can be viewed from its served location: oc get --raw '/.well-known/oauth-authorization-server' For further details, see the IETF Draft: https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2 If oauthMetadata.name is non-empty, this value has precedence over any metadata reference stored in status. The key \"oauthMetadata\" is used to locate the data. If specified and the config map or expected key is not found, no metadata is served. If the specified metadata is not valid, no metadata is served. The namespace for this config map is uccp-config.",
 	"webhookTokenAuthenticators": "webhookTokenAuthenticators is DEPRECATED, setting it has no effect.",
 	"webhookTokenAuthenticator":  "webhookTokenAuthenticator configures a remote token reviewer. These remote authentication webhooks can be used to verify bearer tokens via the tokenreviews.authentication.k8s.io REST API. This is required to honor bearer tokens that are provisioned by an external authentication service.",
-	"serviceAccountIssuer":       "serviceAccountIssuer is the identifier of the bound service account token issuer. The default is https://kubernetes.default.svc WARNING: Updating this field will not result in immediate invalidation of all bound tokens with the previous issuer value. Instead, the tokens issued by previous service account issuer will continue to be trusted for a time period chosen by the platform (currently set to 24h). This time period is subject to change over time. This allows internal components to transition to use new service account issuer without service distruption.",
+	"serviceAccountIssuer":       "serviceAccountIssuer is the identifier of the bound service account token issuer. The default is https://kubernetes.default.svc WARNING: Updating this field will result in the invalidation of all bound tokens with the previous issuer value. Unless the holder of a bound token has explicit support for a change in issuer, they will not request a new bound token until pod restart or until their existing token exceeds 80% of its duration.",
 }
 
 func (AuthenticationSpec) SwaggerDoc() map[string]string {
@@ -398,7 +398,7 @@ func (WebhookTokenAuthenticator) SwaggerDoc() map[string]string {
 }
 
 var map_Build = map[string]string{
-	"":     "Build configures the behavior of Uccp builds for the entire cluster. This includes default settings that can be overridden in BuildConfig objects, and overrides which are applied to all builds.\n\nThe canonical name is \"cluster\"\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+	"":     "Build configures the behavior of OpenShift builds for the entire cluster. This includes default settings that can be overridden in BuildConfig objects, and overrides which are applied to all builds.\n\nThe canonical name is \"cluster\"\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"spec": "Spec holds user-settable values for the build controller configuration",
 }
 
@@ -622,7 +622,7 @@ func (ConditionalUpdateRisk) SwaggerDoc() map[string]string {
 
 var map_PromQLClusterCondition = map[string]string{
 	"":       "PromQLClusterCondition represents a cluster condition based on PromQL.",
-	"promql": "PromQL is a PromQL query classifying clusters. This query query should return a 1 in the match case and a 0 in the does-not-match case. Queries which return no time series, or which return values besides 0 or 1, are evaluation failures.",
+	"promql": "PromQL is a PromQL query classifying clusters. This query query should return a 1 in the match case and a 0 in the does-not-match case case. Queries which return no time series, or which return values besides 0 or 1, are evaluation failures.",
 }
 
 func (PromQLClusterCondition) SwaggerDoc() map[string]string {
@@ -630,7 +630,7 @@ func (PromQLClusterCondition) SwaggerDoc() map[string]string {
 }
 
 var map_Release = map[string]string{
-	"":         "Release represents an Uccp release image and associated metadata.",
+	"":         "Release represents an OpenShift release image and associated metadata.",
 	"version":  "version is a semantic versioning identifying the update version. When this field is part of spec, version is optional if image is specified.",
 	"image":    "image is a container image location that contains the update. When this field is part of spec, image is optional if version is specified and the availableUpdates field contains a matching version.",
 	"url":      "url contains information about this release. This URL is set by the 'url' metadata property on a release or the metadata returned by the update API and should be displayed as a link in user interfaces. The URL field may not be set for test or nightly releases.",
@@ -730,7 +730,7 @@ func (DNSList) SwaggerDoc() map[string]string {
 }
 
 var map_DNSSpec = map[string]string{
-	"baseDomain":  "baseDomain is the base domain of the cluster. All managed DNS records will be sub-domains of this base.\n\nFor example, given the base domain `uccp.example.com`, an API server DNS record may be created for `cluster-api.uccp.example.com`.\n\nOnce set, this field cannot be changed.",
+	"baseDomain":  "baseDomain is the base domain of the cluster. All managed DNS records will be sub-domains of this base.\n\nFor example, given the base domain `openshift.example.com`, an API server DNS record may be created for `cluster-api.openshift.example.com`.\n\nOnce set, this field cannot be changed.",
 	"publicZone":  "publicZone is the location where all the DNS records that are publicly accessible to the internet exist.\n\nIf this field is nil, no public records should be created.\n\nOnce set, this field cannot be changed.",
 	"privateZone": "privateZone is the location where all the DNS records that are only available internally to the cluster exist.\n\nIf this field is nil, no private records should be created.\n\nOnce set, this field cannot be changed.",
 }
@@ -786,7 +786,7 @@ func (FeatureGateSelection) SwaggerDoc() map[string]string {
 }
 
 var map_Image = map[string]string{
-	"":       "Image governs policies related to imagestream imports and runtime configuration for external registries. It allows cluster admins to configure which registries Uccp is allowed to import images from, extra CA trust bundles for external registries, and policies to block or allow registry hostnames. When exposing Uccp's image registry to the public, this also lets cluster admins specify the external hostname.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+	"":       "Image governs policies related to imagestream imports and runtime configuration for external registries. It allows cluster admins to configure which registries OpenShift is allowed to import images from, extra CA trust bundles for external registries, and policies to block or allow registry hostnames. When exposing OpenShift's image registry to the public, this also lets cluster admins specify the external hostname.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"spec":   "spec holds user settable values for configuration",
 	"status": "status holds observed values from the cluster. They may not be overridden.",
 }
@@ -815,7 +815,7 @@ func (ImageSpec) SwaggerDoc() map[string]string {
 }
 
 var map_ImageStatus = map[string]string{
-	"internalRegistryHostname":  "internalRegistryHostname sets the hostname for the default internal image registry. The value must be in \"hostname[:port]\" format. This value is set by the image registry operator which controls the internal registry hostname. For backward compatibility, users can still use UCCP_DEFAULT_REGISTRY environment variable but this setting overrides the environment variable.",
+	"internalRegistryHostname":  "internalRegistryHostname sets the hostname for the default internal image registry. The value must be in \"hostname[:port]\" format. This value is set by the image registry operator which controls the internal registry hostname. For backward compatibility, users can still use OPENSHIFT_DEFAULT_REGISTRY environment variable but this setting overrides the environment variable.",
 	"externalRegistryHostnames": "externalRegistryHostnames provides the hostnames for the default external image registry. The external hostname should be set only when the image registry is exposed externally. The first value is used in 'publicDockerImageRepository' field in ImageStreams. The value must be in \"hostname[:port]\" format.",
 }
 
@@ -895,7 +895,7 @@ var map_AWSPlatformStatus = map[string]string{
 	"":                 "AWSPlatformStatus holds the current status of the Amazon Web Services infrastructure provider.",
 	"region":           "region holds the default AWS region for new AWS resources created by the cluster.",
 	"serviceEndpoints": "ServiceEndpoints list contains custom endpoints which will override default service endpoint of AWS Services. There must be only one ServiceEndpoint for a service.",
-	"resourceTags":     "resourceTags is a list of additional tags to apply to AWS resources created for the cluster. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for information on tagging AWS resources. AWS supports a maximum of 50 tags per resource. Uccp reserves 25 tags for its use, leaving 25 tags available for the user.",
+	"resourceTags":     "resourceTags is a list of additional tags to apply to AWS resources created for the cluster. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for information on tagging AWS resources. AWS supports a maximum of 50 tags per resource. OpenShift reserves 25 tags for its use, leaving 25 tags available for the user.",
 }
 
 func (AWSPlatformStatus) SwaggerDoc() map[string]string {
@@ -1190,8 +1190,7 @@ func (PlatformStatus) SwaggerDoc() map[string]string {
 }
 
 var map_PowerVSPlatformSpec = map[string]string{
-	"":                 "PowerVSPlatformSpec holds the desired state of the IBM Power Systems Virtual Servers infrastructure provider. This only includes fields that can be modified in the cluster.",
-	"serviceEndpoints": "serviceEndpoints is a list of custom endpoints which will override the default service endpoints of a Power VS service.",
+	"": "PowerVSPlatformSpec holds the desired state of the IBM Power Systems Virtual Servers infrastructure provider. This only includes fields that can be modified in the cluster.",
 }
 
 func (PowerVSPlatformSpec) SwaggerDoc() map[string]string {
@@ -1212,7 +1211,7 @@ func (PowerVSPlatformStatus) SwaggerDoc() map[string]string {
 
 var map_PowerVSServiceEndpoint = map[string]string{
 	"":     "PowervsServiceEndpoint stores the configuration of a custom url to override existing defaults of PowerVS Services.",
-	"name": "name is the name of the Power VS service. Few of the services are IAM - https://cloud.ibm.com/apidocs/iam-identity-token-api ResourceController - https://cloud.ibm.com/apidocs/resource-controller/resource-controller Power Cloud - https://cloud.ibm.com/apidocs/power-cloud",
+	"name": "name is the name of the Power VS service.",
 	"url":  "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
 }
 
@@ -1287,7 +1286,7 @@ func (IngressList) SwaggerDoc() map[string]string {
 var map_IngressSpec = map[string]string{
 	"domain":               "domain is used to generate a default host name for a route when the route's host name is empty. The generated host name will follow this pattern: \"<route-name>.<route-namespace>.<domain>\".\n\nIt is also used as the default wildcard domain suffix for ingress. The default ingresscontroller domain will follow this pattern: \"*.<domain>\".\n\nOnce set, changing domain is not currently supported.",
 	"appsDomain":           "appsDomain is an optional domain to use instead of the one specified in the domain field when a Route is created without specifying an explicit host. If appsDomain is nonempty, this value is used to generate default host values for Route. Unlike domain, appsDomain may be modified after installation. This assumes a new ingresscontroller has been setup with a wildcard certificate.",
-	"componentRoutes":      "componentRoutes is an optional list of routes that are managed by Uccp components that a cluster-admin is able to configure the hostname and serving certificate for. The namespace and name of each route in this list should match an existing entry in the status.componentRoutes list.\n\nTo determine the set of configurable Routes, look at namespace and name of entries in the .status.componentRoutes list, where participating operators write the status of configurable routes.",
+	"componentRoutes":      "componentRoutes is an optional list of routes that are managed by OpenShift components that a cluster-admin is able to configure the hostname and serving certificate for. The namespace and name of each route in this list should match an existing entry in the status.componentRoutes list.\n\nTo determine the set of configurable Routes, look at namespace and name of entries in the .status.componentRoutes list, where participating operators write the status of configurable routes.",
 	"requiredHSTSPolicies": "requiredHSTSPolicies specifies HSTS policies that are required to be set on newly created  or updated routes matching the domainPattern/s and namespaceSelector/s that are specified in the policy. Each requiredHSTSPolicy must have at least a domainPattern and a maxAge to validate a route HSTS Policy route annotation, and affect route admission.\n\nA candidate route is checked for HSTS Policies if it has the HSTS Policy route annotation: \"haproxy.router.uccp.io/hsts_header\" E.g. haproxy.router.uccp.io/hsts_header: max-age=31536000;preload;includeSubDomains\n\n- For each candidate route, if it matches a requiredHSTSPolicy domainPattern and optional namespaceSelector, then the maxAge, preloadPolicy, and includeSubdomainsPolicy must be valid to be admitted.  Otherwise, the route is rejected. - The first match, by domainPattern and optional namespaceSelector, in the ordering of the RequiredHSTSPolicies determines the route's admission status. - If the candidate route doesn't match any requiredHSTSPolicy domainPattern and optional namespaceSelector, then it may use any HSTS Policy annotation.\n\nThe HSTS policy configuration may be changed after routes have already been created. An update to a previously admitted route may then fail if the updated route does not conform to the updated HSTS policy configuration. However, changing the HSTS policy configuration will not cause a route that is already admitted to stop working.\n\nNote that if there are no RequiredHSTSPolicies, any HSTS Policy annotation on the route is valid.",
 }
 
@@ -1333,26 +1332,6 @@ func (ExternalIPPolicy) SwaggerDoc() map[string]string {
 	return map_ExternalIPPolicy
 }
 
-var map_MTUMigration = map[string]string{
-	"":        "MTUMigration contains infomation about MTU migration.",
-	"network": "Network contains MTU migration configuration for the default network.",
-	"machine": "Machine contains MTU migration configuration for the machine's uplink.",
-}
-
-func (MTUMigration) SwaggerDoc() map[string]string {
-	return map_MTUMigration
-}
-
-var map_MTUMigrationValues = map[string]string{
-	"":     "MTUMigrationValues contains the values for a MTU migration.",
-	"to":   "To is the MTU to migrate to.",
-	"from": "From is the MTU to migrate from.",
-}
-
-func (MTUMigrationValues) SwaggerDoc() map[string]string {
-	return map_MTUMigrationValues
-}
-
 var map_Network = map[string]string{
 	"":       "Network holds cluster-wide information about Network. The canonical name is `cluster`. It is used to configure the desired network configuration, such as: IP address pools for services/pod IPs, network plugin, etc. Please view network.spec for an explanation on what applies when configuring this resource.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
 	"spec":   "spec holds user settable values for configuration. As a general rule, this SHOULD NOT be read directly. Instead, you should consume the NetworkStatus, as it indicates the currently deployed configuration. Currently, most spec fields are immutable after installation. Please view the individual ones for further details on each.",
@@ -1373,8 +1352,7 @@ func (NetworkList) SwaggerDoc() map[string]string {
 
 var map_NetworkMigration = map[string]string{
 	"":            "NetworkMigration represents the cluster network configuration.",
-	"networkType": "NetworkType is the target plugin that is to be deployed. Currently supported values are: UccpSDN, OVNKubernetes",
-	"mtu":         "MTU contains the MTU migration configuration.",
+	"networkType": "NetworkType is the target plugin that is to be deployed. Currently supported values are: OpenShiftSDN, OVNKubernetes",
 }
 
 func (NetworkMigration) SwaggerDoc() map[string]string {
@@ -1385,7 +1363,7 @@ var map_NetworkSpec = map[string]string{
 	"":                     "NetworkSpec is the desired network configuration. As a general rule, this SHOULD NOT be read directly. Instead, you should consume the NetworkStatus, as it indicates the currently deployed configuration. Currently, most spec fields are immutable after installation. Please view the individual ones for further details on each.",
 	"clusterNetwork":       "IP address pool to use for pod IPs. This field is immutable after installation.",
 	"serviceNetwork":       "IP address pool for services. Currently, we only support a single entry here. This field is immutable after installation.",
-	"networkType":          "NetworkType is the plugin that is to be deployed (e.g. UccpSDN). This should match a value that the cluster-network-operator understands, or else no networking will be installed. Currently supported values are: - UccpSDN This field is immutable after installation.",
+	"networkType":          "NetworkType is the plugin that is to be deployed (e.g. OpenShiftSDN). This should match a value that the cluster-network-operator understands, or else no networking will be installed. Currently supported values are: - OpenShiftSDN This field is immutable after installation.",
 	"externalIP":           "externalIP defines configuration for controllers that affect Service.ExternalIP. If nil, then ExternalIP is not allowed to be set.",
 	"serviceNodePortRange": "The port range allowed for Services of type NodePort. If not specified, the default of 30000-32767 will be used. Such Services without a NodePort specified will have one automatically allocated from this range. This parameter can be updated after the cluster is installed.",
 }
@@ -1398,7 +1376,7 @@ var map_NetworkStatus = map[string]string{
 	"":                  "NetworkStatus is the current network configuration.",
 	"clusterNetwork":    "IP address pool to use for pod IPs.",
 	"serviceNetwork":    "IP address pool for services. Currently, we only support a single entry here.",
-	"networkType":       "NetworkType is the plugin that is deployed (e.g. UccpSDN).",
+	"networkType":       "NetworkType is the plugin that is deployed (e.g. OpenShiftSDN).",
 	"clusterNetworkMTU": "ClusterNetworkMTU is the MTU for inter-pod networking.",
 	"migration":         "Migration contains the cluster network migration configuration.",
 }
@@ -1499,7 +1477,7 @@ func (KeystoneIdentityProvider) SwaggerDoc() map[string]string {
 }
 
 var map_LDAPAttributeMapping = map[string]string{
-	"":                  "LDAPAttributeMapping maps LDAP attributes to Uccp identity fields",
+	"":                  "LDAPAttributeMapping maps LDAP attributes to OpenShift identity fields",
 	"id":                "id is the list of attributes whose values should be used as the user ID. Required. First non-empty attribute is used. At least one attribute is required. If none of the listed attribute have a value, authentication fails. LDAP standard identity attribute is \"dn\"",
 	"preferredUsername": "preferredUsername is the list of attributes whose values should be used as the preferred username. LDAP standard login attribute is \"uid\"",
 	"name":              "name is the list of attributes whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity LDAP standard display name attribute is \"cn\"",
@@ -1589,7 +1567,7 @@ var map_OpenIDClaims = map[string]string{
 	"preferredUsername": "preferredUsername is the list of claims whose values should be used as the preferred username. If unspecified, the preferred username is determined from the value of the sub claim",
 	"name":              "name is the list of claims whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity",
 	"email":             "email is the list of claims whose values should be used as the email address. Optional. If unspecified, no email is set for the identity",
-	"groups":            "groups is the list of claims value of which should be used to synchronize groups from the OIDC provider to Uccp for the user. If multiple claims are specified, the first one with a non-empty value is used.",
+	"groups":            "groups is the list of claims value of which should be used to synchronize groups from the OIDC provider to OpenShift for the user. If multiple claims are specified, the first one with a non-empty value is used.",
 }
 
 func (OpenIDClaims) SwaggerDoc() map[string]string {

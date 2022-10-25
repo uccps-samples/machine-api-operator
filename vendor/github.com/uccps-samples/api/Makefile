@@ -11,8 +11,7 @@ include $(addprefix ./vendor/github.com/uccps-samples/build-machinery-go/make/, 
 	targets/openshift/crd-schema-gen.mk \
 )
 
-EXCLUDE_DIRS := _output/ dependencymagnet/ hack/ third_party/ tls/ vendor/
-GO_PACKAGES :=$(addsuffix ...,$(addprefix ./,$(filter-out $(EXCLUDE_DIRS), $(wildcard */))))
+GO_PACKAGES :=$(addsuffix ...,$(addprefix ./,$(filter-out vendor/,$(filter-out hack/,$(wildcard */)))))
 GO_BUILD_PACKAGES :=$(GO_PACKAGES)
 GO_BUILD_PACKAGES_EXPANDED :=$(GO_BUILD_PACKAGES)
 # LDFLAGS are not needed for dummy builds (saving time on calling git commands)

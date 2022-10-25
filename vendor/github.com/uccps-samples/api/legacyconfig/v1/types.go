@@ -290,7 +290,7 @@ type MasterConfig struct {
 // MasterAuthConfig configures authentication options in addition to the standard
 // oauth token and client certificate authenticators
 type MasterAuthConfig struct {
-	// RequestHeader holds options for setting up a front proxy against the API.  It is optional.
+	// RequestHeader holds options for setting up a front proxy against the the API.  It is optional.
 	RequestHeader *RequestHeaderAuthenticationOptions `json:"requestHeader"`
 	// WebhookTokenAuthnConfig, if present configures remote token reviewers
 	WebhookTokenAuthenticators []WebhookTokenAuthenticator `json:"webhookTokenAuthenticators"`
@@ -442,7 +442,7 @@ type RegistryLocation struct {
 	Insecure bool `json:"insecure,omitempty"`
 }
 
-// holds the necessary configuration options for
+//  holds the necessary configuration options for
 type ProjectConfig struct {
 	// DefaultNodeSelector holds default project node label selector
 	DefaultNodeSelector string `json:"defaultNodeSelector"`
@@ -482,7 +482,7 @@ type SecurityAllocator struct {
 	MCSLabelsPerProject int `json:"mcsLabelsPerProject"`
 }
 
-// holds the necessary configuration options for
+//  holds the necessary configuration options for
 type PolicyConfig struct {
 	// UserAgentMatchingConfig controls how API calls from *voluntarily* identifying clients will be handled.  THIS DOES NOT DEFEND AGAINST MALICIOUS CLIENTS!
 	UserAgentMatchingConfig UserAgentMatchingConfig `json:"userAgentMatchingConfig"`

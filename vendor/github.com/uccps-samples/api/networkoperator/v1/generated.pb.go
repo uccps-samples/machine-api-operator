@@ -308,16 +308,16 @@ func (m *RedirectConfig) XXX_DiscardUnknown() {
 var xxx_messageInfo_RedirectConfig proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*EgressRouter)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouter")
-	proto.RegisterType((*EgressRouterAddress)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouterAddress")
-	proto.RegisterType((*EgressRouterInterface)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouterInterface")
-	proto.RegisterType((*EgressRouterList)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouterList")
-	proto.RegisterType((*EgressRouterSpec)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouterSpec")
-	proto.RegisterType((*EgressRouterStatus)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouterStatus")
-	proto.RegisterType((*EgressRouterStatusCondition)(nil), "github.com.uccp.api.networkoperator.v1.EgressRouterStatusCondition")
-	proto.RegisterType((*L4RedirectRule)(nil), "github.com.uccp.api.networkoperator.v1.L4RedirectRule")
-	proto.RegisterType((*MacvlanConfig)(nil), "github.com.uccp.api.networkoperator.v1.MacvlanConfig")
-	proto.RegisterType((*RedirectConfig)(nil), "github.com.uccp.api.networkoperator.v1.RedirectConfig")
+	proto.RegisterType((*EgressRouter)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouter")
+	proto.RegisterType((*EgressRouterAddress)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouterAddress")
+	proto.RegisterType((*EgressRouterInterface)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouterInterface")
+	proto.RegisterType((*EgressRouterList)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouterList")
+	proto.RegisterType((*EgressRouterSpec)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouterSpec")
+	proto.RegisterType((*EgressRouterStatus)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouterStatus")
+	proto.RegisterType((*EgressRouterStatusCondition)(nil), "github.com.uccps-samples.api.networkoperator.v1.EgressRouterStatusCondition")
+	proto.RegisterType((*L4RedirectRule)(nil), "github.com.uccps-samples.api.networkoperator.v1.L4RedirectRule")
+	proto.RegisterType((*MacvlanConfig)(nil), "github.com.uccps-samples.api.networkoperator.v1.MacvlanConfig")
+	proto.RegisterType((*RedirectConfig)(nil), "github.com.uccps-samples.api.networkoperator.v1.RedirectConfig")
 }
 
 func init() {

@@ -54,7 +54,7 @@ type APIServerSpec struct {
 	// MinTLSVersions is VersionTLS12.
 	// +optional
 	TLSSecurityProfile *TLSSecurityProfile `json:"tlsSecurityProfile,omitempty"`
-	// audit specifies the settings for audit configuration to be applied to all uccp-provided
+	// audit specifies the settings for audit configuration to be applied to all OpenShift-provided
 	// API servers in the cluster.
 	// +optional
 	// +kubebuilder:default={profile: Default}
@@ -83,7 +83,7 @@ const (
 
 type Audit struct {
 	// profile specifies the name of the desired top-level audit profile to be applied to all requests
-	// sent to any of the uccp-provided API servers in the cluster (kube-apiserver,
+	// sent to any of the OpenShift-provided API servers in the cluster (kube-apiserver,
 	// uccp-apiserver and oauth-apiserver), with the exception of those requests that match
 	// one or more of the customRules.
 	//
@@ -125,7 +125,7 @@ type AuditCustomRule struct {
 	// +required
 	Group string `json:"group"`
 	// profile specifies the name of the desired audit policy configuration to be deployed to
-	// all uccp-provided API servers in the cluster.
+	// all OpenShift-provided API servers in the cluster.
 	//
 	// The following profiles are provided:
 	// - Default: the existing default policy.
