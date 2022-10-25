@@ -1,0 +1,67 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: machine-api-operator
+  name: machine-api-operator
+  namespace: uccp-machine-api
+  annotations:
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
+spec:
+  endpoints:
+    - bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+      interval: 30s
+      port: https
+      scheme: https
+      tlsConfig:
+        caFile: /etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt
+        serverName: machine-api-operator.uccp-machine-api.svc
+  namespaceSelector:
+    matchNames:
+      - uccp-machine-api
+  selector:
+    matchLabels:
+      k8s-app: machine-api-operator
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  namespace: uccp-machine-api
+  name: machine-api-controllers
+  labels:
+    k8s-app: controller
+  annotations:
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
+spec:
+  namespaceSelector:
+    matchNames:
+      - uccp-machine-api
+  selector:
+    matchLabels:
+      k8s-app: controller
+  endpoints:
+  - port: machine-mtrc
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    scheme: https
+    tlsConfig:
+      caFile: /etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt
+      serverName: machine-api-controllers.uccp-machine-api.svc
+  - port: machineset-mtrc
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    scheme: https
+    tlsConfig:
+      caFile: /etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt
+      serverName: machine-api-controllers.uccp-machine-api.svc
+  - port: mhc-mtrc
+    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    interval: 30s
+    scheme: https
+    tlsConfig:
+      caFile: /etc/prometheus/configmaps/serving-certs-ca-bundle/service-ca.crt
+      serverName: machine-api-controllers.uccp-machine-api.svc

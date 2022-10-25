@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-rbac-proxy
+  namespace: uccp-machine-api
+  annotations:
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
+data:
+  config-file.yaml: |+
+    authorization:
+      resourceAttributes:
+        apiVersion: v1
+        resource: namespace
+        subresource: metrics
+        namespace: uccp-machine-api
+

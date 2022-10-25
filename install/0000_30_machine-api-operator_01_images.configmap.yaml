@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: machine-api-operator-images
+  namespace: uccp-machine-api
+  annotations:
+    include.release.uccp.io/ibm-cloud-managed: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
+data:
+  images.json: >
+    {
+      "machineAPIOperator": "registry.svc.ci.openshift.org/openshift:machine-api-operator",
+      "kubeRBACProxy": "registry.svc.ci.openshift.org/openshift:kube-rbac-proxy",
+      "clusterAPIControllerAWS": "registry.svc.ci.openshift.org/openshift:aws-machine-controllers",
+      "clusterAPIControllerAlibaba": "registry.svc.ci.openshift.org/openshift:alibaba-machine-controllers",
+      "clusterAPIControllerOpenStack": "registry.svc.ci.openshift.org/openshift:openstack-machine-controllers",
+      "clusterAPIControllerMAPO": "quay.io/openshift/origin-openstack-machine-api-provider",
+      "clusterAPIControllerLibvirt": "registry.svc.ci.openshift.org/openshift:libvirt-machine-controllers",
+      "clusterAPIControllerBareMetal": "registry.svc.ci.openshift.org/openshift:baremetal-machine-controllers",
+      "clusterAPIControllerAzure": "registry.svc.ci.openshift.org/openshift:azure-machine-controllers",
+      "clusterAPIControllerGCP": "registry.svc.ci.openshift.org/openshift:gcp-machine-controllers",
+      "clusterAPIControllerIBMCloud": "registry.svc.ci.openshift.org/openshift:ibmcloud-machine-controllers",
+      "clusterAPIControllerOvirt": "registry.svc.ci.openshift.org/openshift:ovirt-machine-controllers",
+      "clusterAPIControllerPowerVS": "registry.svc.ci.openshift.org/openshift:powervs-machine-controllers",
+      "clusterAPIControllerVSphere": "registry.svc.ci.openshift.org/openshift:machine-api-operator"
+    }
