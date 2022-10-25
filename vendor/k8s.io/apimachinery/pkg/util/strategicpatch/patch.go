@@ -83,7 +83,7 @@ type MergeOptions struct {
 	IgnoreUnmatchedNulls bool
 }
 
-// The following code is adapted from github.com/uccps-samples/origin/pkg/util/jsonmerge.
+// The following code is adapted from github.com/openshift/origin/pkg/util/jsonmerge.
 // Instead of defining a Delta that holds an original, a patch and a set of preconditions,
 // the reconcile method accepts a set of preconditions as an argument.
 
@@ -1328,15 +1328,19 @@ func mergeMap(original, patch map[string]interface{}, schema LookupPatchMeta, me
 
 		_, ok := original[k]
 		if !ok {
-			// If it's not in the original document, just take the patch value.
-			original[k] = patchV
+			if !isDeleteList {
+				// If it's not in the original document, just take the patch value.
+				original[k] = patchV
+			}
 			continue
 		}
 
 		originalType := reflect.TypeOf(original[k])
 		patchType := reflect.TypeOf(patchV)
 		if originalType != patchType {
-			original[k] = patchV
+			if !isDeleteList {
+				original[k] = patchV
+			}
 			continue
 		}
 		// If they're both maps or lists, recurse into the value.
