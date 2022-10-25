@@ -27,14 +27,14 @@ import (
 
 const (
 	// MachineFinalizer is set on PrepareForCreate callback.
-	MachineFinalizer = "machine.machine.openshift.io"
+	MachineFinalizer = "machine.machine.uccp.io"
 
 	// MachineClusterLabelName is the label set on machines linked to a cluster.
 	MachineClusterLabelName = "cluster.k8s.io/cluster-name"
 
 	// MachineClusterIDLabel is the label that a machine must have to identify the
 	// cluster to which it belongs.
-	MachineClusterIDLabel = "machine.openshift.io/cluster-api-cluster"
+	MachineClusterIDLabel = "machine.uccp.io/cluster-api-cluster"
 )
 
 // +genclient

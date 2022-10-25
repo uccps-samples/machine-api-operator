@@ -34,34 +34,34 @@ This API makes possible to create simple **MachineDisruptionBudget** object with
 #### Example with minAvailable
 
 ```yaml
-apiVersion: healthchecking.openshift.io/v1alpha1
+apiVersion: healthchecking.uccp.io/v1alpha1
 kind: MachineDisruptionBudget
 metadata:
   name: mdb-test
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 spec:
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-machine-role: worker
-      machine.openshift.io/ceph-storage: true
+      machine.uccp.io/cluster-api-machine-role: worker
+      machine.uccp.io/ceph-storage: true
   minAvailable: 3
 ```
 
 #### Example with maxUnavailable
 
 ```yaml
-apiVersion: healthchecking.openshift.io/v1alpha1
+apiVersion: healthchecking.uccp.io/v1alpha1
 kind: MachineDisruptionBudget
 metadata:
   name: mdb-test
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 spec:
   selector:
     matchLabels:
-      machine.openshift.io/cluster-api-cluster: test-1-4pcgd
-      machine.openshift.io/cluster-api-machine-role: worker
-      machine.openshift.io/cluster-api-machine-type: worker
-      machine.openshift.io/cluster-api-machineset: test-1-4pcgd-worker-0
+      machine.uccp.io/cluster-api-cluster: test-1-4pcgd
+      machine.uccp.io/cluster-api-machine-role: worker
+      machine.uccp.io/cluster-api-machine-type: worker
+      machine.uccp.io/cluster-api-machineset: test-1-4pcgd-worker-0
   maxUnavailable: 4
 ```
 

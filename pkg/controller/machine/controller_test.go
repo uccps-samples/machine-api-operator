@@ -25,8 +25,8 @@ import (
 	"time"
 
 	. "github.com/onsi/gomega"
-	machinev1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
+	machinev1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"

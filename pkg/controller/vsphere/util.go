@@ -7,8 +7,8 @@ import (
 
 	"gopkg.in/gcfg.v1"
 
-	configv1 "github.com/openshift/api/config/v1"
-	vspherev1 "github.com/openshift/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
+	configv1 "github.com/uccps-samples/api/config/v1"
+	vspherev1 "github.com/uccps-samples/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtimeclient "sigs.k8s.io/controller-runtime/pkg/client"
@@ -16,7 +16,7 @@ import (
 
 const (
 	globalInfrastuctureName  = "cluster"
-	openshiftConfigNamespace = "openshift-config"
+	openshiftConfigNamespace = "uccp-config"
 )
 
 // vSphereConfig is a copy of the Kubernetes vSphere cloud provider config type

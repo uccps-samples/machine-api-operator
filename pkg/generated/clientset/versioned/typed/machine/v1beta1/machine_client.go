@@ -19,8 +19,8 @@
 package v1beta1
 
 import (
-	v1beta1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/generated/clientset/versioned/scheme"
+	v1beta1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/generated/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 
@@ -31,7 +31,7 @@ type MachineV1beta1Interface interface {
 	MachineSetsGetter
 }
 
-// MachineV1beta1Client is used to interact with features provided by the machine.openshift.io group.
+// MachineV1beta1Client is used to interact with features provided by the machine.uccp.io group.
 type MachineV1beta1Client struct {
 	restClient rest.Interface
 }

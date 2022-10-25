@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"time"
 
-	commonerrors "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	commonerrors "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 )
 
 // A more descriptive kind of error that represents an error condition that

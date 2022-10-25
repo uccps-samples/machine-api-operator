@@ -21,8 +21,8 @@ import (
 
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/types"
-	mapiv1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
+	mapiv1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
 )
 
 // MatchMachineHealthCheckStatus returns a custom matcher to check equality of mapiv1.MachineHealthCheckStatus

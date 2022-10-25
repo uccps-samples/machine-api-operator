@@ -4,13 +4,13 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    exclude.release.openshift.io/internal-openshift-hosted: "true"
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
   creationTimestamp: null
-  name: machines.machine.openshift.io
+  name: machines.machine.uccp.io
 spec:
-  group: machine.openshift.io
+  group: machine.uccp.io
   names:
     kind: Machine
     listKind: MachineList
@@ -24,15 +24,15 @@ spec:
       name: Phase
       type: string
     - description: Type of instance
-      jsonPath: .metadata.labels['machine\.openshift\.io/instance-type']
+      jsonPath: .metadata.labels['machine\.uccp\.io/instance-type']
       name: Type
       type: string
     - description: Region associated with machine
-      jsonPath: .metadata.labels['machine\.openshift\.io/region']
+      jsonPath: .metadata.labels['machine\.uccp\.io/region']
       name: Region
       type: string
     - description: Zone associated with machine
-      jsonPath: .metadata.labels['machine\.openshift\.io/zone']
+      jsonPath: .metadata.labels['machine\.uccp\.io/zone']
       name: Zone
       type: string
     - description: Machine age
@@ -50,7 +50,7 @@ spec:
       priority: 1
       type: string
     - description: State of instance
-      jsonPath: .metadata.annotations['machine\.openshift\.io/instance-state']
+      jsonPath: .metadata.annotations['machine\.uccp\.io/instance-state']
       name: State
       priority: 1
       type: string

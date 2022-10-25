@@ -13,21 +13,21 @@ rules:
       - '*'
 
   - apiGroups:
-      - machine.openshift.io
+      - machine.uccp.io
     resources:
       - '*'
     verbs:
       - '*'
 
   - apiGroups:
-      - healthchecking.openshift.io
+      - healthchecking.uccp.io
     resources:
       - '*'
     verbs:
       - '*'
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - clusteroperators
       - clusteroperators/status
@@ -37,7 +37,7 @@ rules:
       - update
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - infrastructures
       - infrastructures/status
@@ -45,7 +45,7 @@ rules:
       - get
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - featuregates
       - featuregates/status

@@ -1,7 +1,7 @@
 package apis
 
 import (
-	"github.com/openshift/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
 )
 
 func init() {

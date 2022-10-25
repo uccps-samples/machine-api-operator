@@ -21,7 +21,7 @@ import (
 
 	. "github.com/onsi/gomega"
 	"github.com/onsi/gomega/types"
-	mapiv1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	mapiv1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 )
 
 // MatchConditions returns a custom matcher to check equality of mapiv1.Conditions

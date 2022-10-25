@@ -17,7 +17,7 @@ limitations under the License.
 package conditions
 
 import (
-	mapiv1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	mapiv1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 )
