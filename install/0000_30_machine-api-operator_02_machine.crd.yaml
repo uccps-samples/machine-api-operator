@@ -4,11 +4,11 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    exclude.release.openshift.io/internal-openshift-hosted: "true"
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
   creationTimestamp: null
-  name: machines.machine.openshift.io
+  name: machines.machine.uccp.io
 spec:
-  group: machine.openshift.io
+  group: machine.uccp.io
   names:
     kind: Machine
     listKind: MachineList

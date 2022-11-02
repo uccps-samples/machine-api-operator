@@ -20,7 +20,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 )
 
 var _ Actuator = &TestActuator{}

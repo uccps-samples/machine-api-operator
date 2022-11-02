@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	mapiv1beta1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
-	maotesting "github.com/openshift/machine-api-operator/pkg/util/testing"
+	mapiv1beta1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
+	maotesting "github.com/uccps-samples/machine-api-operator/pkg/util/testing"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -28,7 +28,7 @@ import (
 )
 
 const (
-	namespace = "openshift-machine-api"
+	namespace = "uccp-machine-api"
 )
 
 func init() {
@@ -1812,7 +1812,7 @@ func TestRemediate(t *testing.T) {
 				Machine: mapiv1beta1.Machine{
 					TypeMeta: metav1.TypeMeta{
 						Kind:       "Machine",
-						APIVersion: "machine.openshift.io/v1beta1",
+						APIVersion: "machine.uccp.io/v1beta1",
 					},
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: make(map[string]string),
@@ -1855,7 +1855,7 @@ func TestRemediate(t *testing.T) {
 				Machine: mapiv1beta1.Machine{
 					TypeMeta: metav1.TypeMeta{
 						Kind:       "Machine",
-						APIVersion: "machine.openshift.io/v1beta1",
+						APIVersion: "machine.uccp.io/v1beta1",
 					},
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: make(map[string]string),
@@ -1901,7 +1901,7 @@ func TestRemediate(t *testing.T) {
 				Machine: mapiv1beta1.Machine{
 					TypeMeta: metav1.TypeMeta{
 						Kind:       "Machine",
-						APIVersion: "machine.openshift.io/v1beta1",
+						APIVersion: "machine.uccp.io/v1beta1",
 					},
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: make(map[string]string),

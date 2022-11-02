@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"strings"
 
-	osconfigv1 "github.com/openshift/api/config/v1"
-	osclientset "github.com/openshift/client-go/config/clientset/versioned"
-	gcp "github.com/openshift/cluster-api-provider-gcp/pkg/apis/gcpprovider/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/apis/machine"
-	vsphere "github.com/openshift/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	osclientset "github.com/uccps-samples/client-go/config/clientset/versioned"
+	gcp "github.com/uccps-samples/cluster-api-provider-gcp/pkg/apis/gcpprovider/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/apis/machine"
+	vsphere "github.com/uccps-samples/machine-api-operator/pkg/apis/vsphereprovider/v1beta1"
 	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -62,18 +62,18 @@ var (
 )
 
 const (
-	DefaultMachineMutatingHookPath      = "/mutate-machine-openshift-io-v1beta1-machine"
-	DefaultMachineValidatingHookPath    = "/validate-machine-openshift-io-v1beta1-machine"
-	DefaultMachineSetMutatingHookPath   = "/mutate-machine-openshift-io-v1beta1-machineset"
-	DefaultMachineSetValidatingHookPath = "/validate-machine-openshift-io-v1beta1-machineset"
+	DefaultMachineMutatingHookPath      = "/mutate-machine-uccp-io-v1beta1-machine"
+	DefaultMachineValidatingHookPath    = "/validate-machine-uccp-io-v1beta1-machine"
+	DefaultMachineSetMutatingHookPath   = "/mutate-machine-uccp-io-v1beta1-machineset"
+	DefaultMachineSetValidatingHookPath = "/validate-machine-uccp-io-v1beta1-machineset"
 
 	defaultWebhookConfigurationName = "machine-api"
 	defaultWebhookServiceName       = "machine-api-operator-webhook"
-	defaultWebhookServiceNamespace  = "openshift-machine-api"
+	defaultWebhookServiceNamespace  = "uccp-machine-api"
 	defaultWebhookServicePort       = 443
 
 	defaultUserDataSecret  = "worker-user-data"
-	defaultSecretNamespace = "openshift-machine-api"
+	defaultSecretNamespace = "uccp-machine-api"
 
 	// AWS Defaults
 	defaultAWSCredentialsSecret = "aws-cloud-credentials"
@@ -92,8 +92,8 @@ const (
 	defaultGCPDiskSizeGb        = 128
 	defaultGCPDiskType          = "pd-standard"
 	// https://releases-art-rhcos.svc.ci.openshift.org/art/storage/releases/rhcos-4.6/46.82.202007212240-0/x86_64/meta.json
-	// https://github.com/openshift/installer/pull/3808
-	// https://github.com/openshift/installer/blob/d75bf7ad98124b901ae7e22b5595e0392ed6ea3c/data/data/rhcos.json
+	// https://github.com/uccps-samples/installer/pull/3808
+	// https://github.com/uccps-samples/installer/blob/d75bf7ad98124b901ae7e22b5595e0392ed6ea3c/data/data/rhcos.json
 	defaultGCPDiskImage = "projects/rhcos-cloud/global/images/rhcos-46-82-202007212240-0-gcp-x86-64"
 
 	// vSphere Defaults
@@ -240,7 +240,7 @@ func NewValidatingWebhookConfiguration() *admissionregistrationv1.ValidatingWebh
 		ObjectMeta: metav1.ObjectMeta{
 			Name: defaultWebhookConfigurationName,
 			Annotations: map[string]string{
-				"service.beta.openshift.io/inject-cabundle": "true",
+				"service.beta.uccp.io/inject-cabundle": "true",
 			},
 		},
 		Webhooks: []admissionregistrationv1.ValidatingWebhook{
@@ -265,7 +265,7 @@ func MachineValidatingWebhook() admissionregistrationv1.ValidatingWebhook {
 	}
 	return admissionregistrationv1.ValidatingWebhook{
 		AdmissionReviewVersions: []string{"v1beta1"},
-		Name:                    "validation.machine.machine.openshift.io",
+		Name:                    "validation.machine.machine.uccp.io",
 		FailurePolicy:           &webhookFailurePolicy,
 		SideEffects:             &webhookSideEffects,
 		ClientConfig: admissionregistrationv1.WebhookClientConfig{
@@ -297,7 +297,7 @@ func MachineSetValidatingWebhook() admissionregistrationv1.ValidatingWebhook {
 	}
 	return admissionregistrationv1.ValidatingWebhook{
 		AdmissionReviewVersions: []string{"v1beta1"},
-		Name:                    "validation.machineset.machine.openshift.io",
+		Name:                    "validation.machineset.machine.uccp.io",
 		FailurePolicy:           &webhookFailurePolicy,
 		SideEffects:             &webhookSideEffects,
 		ClientConfig: admissionregistrationv1.WebhookClientConfig{
@@ -325,7 +325,7 @@ func NewMutatingWebhookConfiguration() *admissionregistrationv1.MutatingWebhookC
 		ObjectMeta: metav1.ObjectMeta{
 			Name: defaultWebhookConfigurationName,
 			Annotations: map[string]string{
-				"service.beta.openshift.io/inject-cabundle": "true",
+				"service.beta.uccp.io/inject-cabundle": "true",
 			},
 		},
 		Webhooks: []admissionregistrationv1.MutatingWebhook{
@@ -350,7 +350,7 @@ func MachineMutatingWebhook() admissionregistrationv1.MutatingWebhook {
 	}
 	return admissionregistrationv1.MutatingWebhook{
 		AdmissionReviewVersions: []string{"v1beta1"},
-		Name:                    "default.machine.machine.openshift.io",
+		Name:                    "default.machine.machine.uccp.io",
 		FailurePolicy:           &webhookFailurePolicy,
 		SideEffects:             &webhookSideEffects,
 		ClientConfig: admissionregistrationv1.WebhookClientConfig{
@@ -381,7 +381,7 @@ func MachineSetMutatingWebhook() admissionregistrationv1.MutatingWebhook {
 	}
 	return admissionregistrationv1.MutatingWebhook{
 		AdmissionReviewVersions: []string{"v1beta1"},
-		Name:                    "default.machineset.machine.openshift.io",
+		Name:                    "default.machineset.machine.uccp.io",
 		FailurePolicy:           &webhookFailurePolicy,
 		SideEffects:             &webhookSideEffects,
 		ClientConfig: admissionregistrationv1.WebhookClientConfig{
@@ -581,7 +581,7 @@ func validateAWS(m *Machine, clusterID string) (bool, []string, utilerrors.Aggre
 		)
 	}
 	// TODO(alberto): Validate providerSpec.BlockDevices.
-	// https://github.com/openshift/cluster-api-provider-aws/pull/299#discussion_r433920532
+	// https://github.com/uccps-samples/cluster-api-provider-aws/pull/299#discussion_r433920532
 
 	if len(errs) > 0 {
 		return false, warnings, utilerrors.NewAggregate(errs)

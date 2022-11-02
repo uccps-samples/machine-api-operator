@@ -1,4 +1,4 @@
-module github.com/openshift/machine-api-operator
+module github.com/uccps-samples/machine-api-operator
 
 go 1.13
 
@@ -10,14 +10,14 @@ require (
 	github.com/imdario/mergo v0.3.9
 	github.com/onsi/ginkgo v1.12.1
 	github.com/onsi/gomega v1.10.1
-	github.com/openshift/api v0.0.0-20200901182017-7ac89ba6b971
-	github.com/openshift/client-go v0.0.0-20200827190008-3062137373b5
-	github.com/openshift/cluster-api-provider-gcp v0.0.1-0.20201002065957-9854f7420570
-	github.com/openshift/library-go v0.0.0-20200909173121-1d055d971916
 	github.com/operator-framework/operator-sdk v0.5.1-0.20190301204940-c2efe6f74e7b
 	github.com/prometheus/client_golang v1.7.1
 	github.com/spf13/cobra v1.0.0
 	github.com/stretchr/testify v1.5.1
+	github.com/uccps-samples/api v0.0.0-20221031070633-8e1b1039022d
+	github.com/uccps-samples/client-go v0.0.0-20221031072447-f72e263d831d
+	github.com/uccps-samples/cluster-api-provider-gcp v0.0.0
+	github.com/uccps-samples/library-go v0.0.0-20221031073444-c94a5857ffe5
 	github.com/vmware/govmomi v0.22.2
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
 	golang.org/x/net v0.0.0-20200707034311-ab3426394381

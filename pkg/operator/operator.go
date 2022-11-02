@@ -7,11 +7,11 @@ import (
 	"time"
 
 	"github.com/golang/glog"
-	osconfigv1 "github.com/openshift/api/config/v1"
-	osoperatorv1 "github.com/openshift/api/operator/v1"
-	osclientset "github.com/openshift/client-go/config/clientset/versioned"
-	configinformersv1 "github.com/openshift/client-go/config/informers/externalversions/config/v1"
-	configlistersv1 "github.com/openshift/client-go/config/listers/config/v1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	osoperatorv1 "github.com/uccps-samples/api/operator/v1"
+	osclientset "github.com/uccps-samples/client-go/config/clientset/versioned"
+	configinformersv1 "github.com/uccps-samples/client-go/config/informers/externalversions/config/v1"
+	configlistersv1 "github.com/uccps-samples/client-go/config/listers/config/v1"
 	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
@@ -34,9 +34,9 @@ const (
 	//
 	// 5ms, 10ms, 20ms, 40ms, 80ms, 160ms, 320ms, 640ms, 1.3s, 2.6s, 5.1s, 10.2s, 20.4s, 41s, 82s
 	maxRetries         = 15
-	maoOwnedAnnotation = "machine.openshift.io/owned"
+	maoOwnedAnnotation = "machine.uccp.io/owned"
 	// Indicates that the metal3 deployment is being managed by cluster-baremetal-operator
-	cboOwnedAnnotation = "baremetal.openshift.io/owned"
+	cboOwnedAnnotation = "baremetal.uccp.io/owned"
 	// The name of the clusteroperator for cluster-baremetal-operator
 	cboClusterOperatorName = "baremetal"
 )

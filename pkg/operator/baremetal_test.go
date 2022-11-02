@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	. "github.com/onsi/gomega"
-	osconfigv1 "github.com/openshift/api/config/v1"
-	fakeos "github.com/openshift/client-go/config/clientset/versioned/fake"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	fakeos "github.com/uccps-samples/client-go/config/clientset/versioned/fake"
 	"golang.org/x/net/context"
 	appsv1 "k8s.io/api/apps/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -493,7 +493,7 @@ func TestCheckForBaremetalClusterOperator(t *testing.T) {
 			clusterOperator: &osconfigv1.ClusterOperator{
 				TypeMeta: metav1.TypeMeta{
 					Kind:       "ClusterOperator",
-					APIVersion: "config.openshift.io/v1",
+					APIVersion: "config.uccp.io/v1",
 				},
 				ObjectMeta: metav1.ObjectMeta{
 					Name: cboClusterOperatorName,
@@ -503,7 +503,7 @@ func TestCheckForBaremetalClusterOperator(t *testing.T) {
 						{
 							Group:    "",
 							Resource: "namespaces",
-							Name:     "openshift-machine-api",
+							Name:     "uccp-machine-api",
 						},
 					},
 				},

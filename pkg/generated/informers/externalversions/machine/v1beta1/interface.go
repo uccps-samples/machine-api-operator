@@ -19,7 +19,7 @@
 package v1beta1
 
 import (
-	internalinterfaces "github.com/openshift/machine-api-operator/pkg/generated/informers/externalversions/internalinterfaces"
+	internalinterfaces "github.com/uccps-samples/machine-api-operator/pkg/generated/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

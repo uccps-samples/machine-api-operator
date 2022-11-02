@@ -24,7 +24,7 @@ ifeq ($(NO_DOCKER), 1)
   DOCKER_CMD =
   IMAGE_BUILD_CMD = imagebuilder
 else
-  DOCKER_CMD := docker run --env GO111MODULE=$(GO111MODULE) --env GOFLAGS=$(GOFLAGS) --rm -v "$(PWD)":/go/src/github.com/openshift/machine-api-operator:Z -w /go/src/github.com/openshift/machine-api-operator golang:1.13
+  DOCKER_CMD := docker run --env GO111MODULE=$(GO111MODULE) --env GOFLAGS=$(GOFLAGS) --rm -v "$(PWD)":/go/src/github.com/uccps-samples/machine-api-operator:Z -w /go/src/github.com/uccps-samples/machine-api-operator golang:1.13
   IMAGE_BUILD_CMD = docker build
 endif
 
@@ -83,7 +83,7 @@ verify-codegen:
 build-integration: ## Build integration test binary
 	@echo -e "\033[32mBuilding integration test binary...\033[0m"
 	mkdir -p bin
-	$(DOCKER_CMD) go build $(GOGCFLAGS) -o bin/integration github.com/openshift/machine-api-operator/test/integration
+	$(DOCKER_CMD) go build $(GOGCFLAGS) -o bin/integration github.com/uccps-samples/machine-api-operator/test/integration
 
 .PHONY: test-e2e
 test-e2e: ## Run openshift specific e2e tests

@@ -1,9 +1,9 @@
 package metrics
 
 import (
-	mapiv1beta1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	machineinformers "github.com/openshift/machine-api-operator/pkg/generated/informers/externalversions/machine/v1beta1"
-	machinelisters "github.com/openshift/machine-api-operator/pkg/generated/listers/machine/v1beta1"
+	mapiv1beta1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	machineinformers "github.com/uccps-samples/machine-api-operator/pkg/generated/informers/externalversions/machine/v1beta1"
+	machinelisters "github.com/uccps-samples/machine-api-operator/pkg/generated/listers/machine/v1beta1"
 	"github.com/prometheus/client_golang/prometheus"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/klog/v2"

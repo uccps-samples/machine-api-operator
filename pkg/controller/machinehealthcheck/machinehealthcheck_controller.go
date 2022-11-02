@@ -12,8 +12,8 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 
 	"github.com/golang/glog"
-	mapiv1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
+	mapiv1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
 	corev1 "k8s.io/api/core/v1"
 	apimachineryerrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -31,13 +31,13 @@ import (
 )
 
 const (
-	machineAnnotationKey          = "machine.openshift.io/machine"
+	machineAnnotationKey          = "machine.uccp.io/machine"
 	machineExternalAnnotationKey  = "host.metal3.io/external-remediation"
 	nodeMasterLabel               = "node-role.kubernetes.io/master"
-	machineRoleLabel              = "machine.openshift.io/cluster-api-machine-role"
+	machineRoleLabel              = "machine.uccp.io/cluster-api-machine-role"
 	machineMasterRole             = "master"
 	machinePhaseFailed            = "Failed"
-	remediationStrategyAnnotation = "machine.openshift.io/remediation-strategy"
+	remediationStrategyAnnotation = "machine.uccp.io/remediation-strategy"
 	remediationStrategyExternal   = mapiv1.RemediationStrategyType("external-baremetal")
 	defaultNodeStartupTimeout     = 10 * time.Minute
 	machineNodeNameIndex          = "machineNodeNameIndex"

@@ -44,7 +44,7 @@ These terms, while obviously related, are not interchangeable.  Oftentimes, peop
 # Machines
 
 ## Machine Phases?
-Please see docs for Machine phases: https://github.com/openshift/enhancements/blob/master/enhancements/machine-api/machine-instance-lifecycle.md
+Please see docs for Machine phases: https://github.com/uccps-samples/enhancements/blob/master/enhancements/machine-api/machine-instance-lifecycle.md
 
 ## Can I change a Machine’s Spec?
 It will have no effect, and may have negative results.  For example, if you remove a master Machine’s load balancer entries, the Machine will not be removed from the load balancer, and when the Machine is deleted, the instance will not be removed from the load balancer prior to deletion.  Changes to other attributes such as image-id or instance type will have no effect.
@@ -72,7 +72,7 @@ Finally, the finalizer is removed from the Machine object and the Machine object
 ## I want to skip draining when I delete a Machine
 This is not recommended for most cases, especially Master Machines.  Properly draining Machines will respect PodDisruptionBudgets and prevent the cluster and workloads from going into an unhealthy state.
 
-You can optionally set an **annotation** **"machine.openshift.io/exclude-node-draining"** on each Machine object you wish for draining to be skipped.  Annotations take the form of key/value pairs.
+You can optionally set an **annotation** **"machine.uccp.io/exclude-node-draining"** on each Machine object you wish for draining to be skipped.  Annotations take the form of key/value pairs.
 This annotation does not require any specific value, merely the key being present will disable
 draining (even with a value of 'false' or similar).  This can be applied or removed at any time.
 
@@ -118,7 +118,7 @@ There is a limited number of features we support on each cloud provider that are
 # MachineSets
 
 ## What decides which Machines to destroy when a MachineSet is scaled down?
-By default, it selects a Machine at random.  You can set **Spec.DeletePolicy** to **“Random”, “Oldest”, or “Newest”**.  You can also designate Machines with an annotation which will override all other selection criteria: **"machine.openshift.io/cluster-api-delete-machine"**
+By default, it selects a Machine at random.  You can set **Spec.DeletePolicy** to **“Random”, “Oldest”, or “Newest”**.  You can also designate Machines with an annotation which will override all other selection criteria: **"machine.uccp.io/cluster-api-delete-machine"**
 
 ## What Happens if I change a MachineSet
 You are free to edit a MachineSet at any time.  Any changes you make will not affect existing Machines, only Machines created after the changes are made.
@@ -129,7 +129,7 @@ There is not one right answer here, you can do a variety of things.
 
 First, it’s recommended to disable the autoscaler.  You don’t want it to fight what you’re trying to do.  Second, try not to operate on more than about 20 Machines at once.  Reason being, some cloud providers have API quota and will rate limit the amount of requests you can make in a short period of time.
 
-One option is to delete each Machine in the MachineSet (‘oc delete -n openshift-Machine-api Machine example-Machine-1’).  This will cause the MachineSet to automatically create a new Machine with the updated Machine template.  You can do these in rapid succession, or you can wait for the replacement Machine to be created, or wait some nominal amount of time between deleting each Machine.
+One option is to delete each Machine in the MachineSet (‘oc delete -n uccp-Machine-api Machine example-Machine-1’).  This will cause the MachineSet to automatically create a new Machine with the updated Machine template.  You can do these in rapid succession, or you can wait for the replacement Machine to be created, or wait some nominal amount of time between deleting each Machine.
 
 Another option is to scale the MachineSet to 0, wait for the Machines to be marked deleted, then scale the MachineSet back to the desired value.
 
@@ -152,10 +152,10 @@ a re-creation.
 
 ## What is the difference between the ClusterAutoscaler and MachineAutoscaler resources?
 The ClusterAutoscaler resource is used to manage the lifecycle of the Kubernetes cluster autoscaler. It can be used to specify how the cluster autoscaler should be deployed and what global system limits it should respect. You can only create one of this resource.
-([ClusterAutoscaler example](https://github.com/openshift/cluster-autoscaler-operator/blob/master/examples/clusterautoscaler.yaml))
+([ClusterAutoscaler example](https://github.com/uccps-samples/cluster-autoscaler-operator/blob/master/examples/clusterautoscaler.yaml))
 
 The MachineAutoscaler resource is used to inform the cluster autoscaler that a MachineSet should be considered for autoscaling. Each MachineAutoscaler can be used to specify a single MachineSet as well as the minimum and maximum sizes for the set. You may create many of these resources depending on the topology of your cluster and your desired scaling needs.
-([MachineAutoscaler example](https://github.com/openshift/cluster-autoscaler-operator/blob/master/examples/machineautoscaler.yaml))
+([MachineAutoscaler example](https://github.com/uccps-samples/cluster-autoscaler-operator/blob/master/examples/machineautoscaler.yaml))
 
 ## Cluster AutoScaler won’t scale up
 For the most part, this happens when scaling up a MachineSet results in violating the one of the max resource quotas you have configured.  For example, Max CPU is the aggregate for all Machines in a MachineSet, not just one.  So, if your max replicas is set to 50, max CPU needs to be at minimum 50 * (instance-type-CPU).

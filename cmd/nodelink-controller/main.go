@@ -5,9 +5,9 @@ import (
 	"runtime"
 	"time"
 
-	mapiv1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/controller"
-	"github.com/openshift/machine-api-operator/pkg/controller/nodelink"
+	mapiv1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/controller"
+	"github.com/uccps-samples/machine-api-operator/pkg/controller/nodelink"
 	sdkVersion "github.com/operator-framework/operator-sdk/version"
 	"k8s.io/klog/v2"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"

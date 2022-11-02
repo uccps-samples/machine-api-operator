@@ -1,9 +1,9 @@
-apiVersion: config.openshift.io/v1
+apiVersion: config.uccp.io/v1
 kind: ClusterOperator
 metadata:
   name: machine-api
   annotations:
-    exclude.release.openshift.io/internal-openshift-hosted: "true"
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
 spec: {}
 status:
   versions:

@@ -21,7 +21,7 @@ package fake
 import (
 	"context"
 
-	v1beta1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
+	v1beta1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -36,9 +36,9 @@ type FakeMachineHealthChecks struct {
 	ns   string
 }
 
-var machinehealthchecksResource = schema.GroupVersionResource{Group: "machine.openshift.io", Version: "v1beta1", Resource: "machinehealthchecks"}
+var machinehealthchecksResource = schema.GroupVersionResource{Group: "machine.uccp.io", Version: "v1beta1", Resource: "machinehealthchecks"}
 
-var machinehealthchecksKind = schema.GroupVersionKind{Group: "machine.openshift.io", Version: "v1beta1", Kind: "MachineHealthCheck"}
+var machinehealthchecksKind = schema.GroupVersionKind{Group: "machine.uccp.io", Version: "v1beta1", Kind: "MachineHealthCheck"}
 
 // Get takes name of the machineHealthCheck, and returns the corresponding machineHealthCheck object, and an error if there is any.
 func (c *FakeMachineHealthChecks) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1beta1.MachineHealthCheck, err error) {

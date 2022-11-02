@@ -8,8 +8,8 @@ namespace: kube-system
 # markers ("---").
 resources:
 # Install CVO clusteroperator CRD required by mao (so it can report its status)
-# Pulled from https://github.com/openshift/cluster-version-operator/blob/master/install/0000_00_cluster-version-operator_01_clusteroperator.crd.yaml
-# and updated (delete depricated clusteroperators.operatorstatus.openshift.io CRD)
+# Pulled from https://github.com/uccps-samples/cluster-version-operator/blob/master/install/0000_00_cluster-version-operator_01_clusteroperator.crd.yaml
+# and updated (delete depricated clusteroperators.operatorstatus.uccp.io CRD)
 - config/0000_00_cluster-version-operator_01_clusteroperator.crd.yaml
 # Install prometheus CRDs expected by mao/cao
 # https://github.com/coreos/prometheus-operator/tree/ca400fdc3edd0af0df896a338eca270e115b74d7/example/prometheus-operator-crd

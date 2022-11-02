@@ -25,8 +25,8 @@ import (
 	"sync"
 	"time"
 
-	machinev1beta1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/util"
+	machinev1beta1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/util"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -141,8 +141,8 @@ func (r *ReconcileMachineSet) MachineToMachineSets(o handler.MapObject) []reconc
 // Reconcile reads that state of the cluster for a MachineSet object and makes changes based on the state read
 // and what is in the MachineSet.Spec
 // Automatically generate RBAC rules to allow the Controller to read and write Deployments
-// +kubebuilder:rbac:groups=machine.openshift.io,resources=machinesets,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=machine.openshift.io,resources=machines,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=machine.uccp.io,resources=machinesets,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=machine.uccp.io,resources=machines,verbs=get;list;watch;create;update;patch;delete
 func (r *ReconcileMachineSet) Reconcile(request reconcile.Request) (reconcile.Result, error) {
 	// Fetch the MachineSet instance
 	ctx := context.TODO()

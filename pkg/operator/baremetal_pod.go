@@ -9,7 +9,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/golang/glog"
-	osclientset "github.com/openshift/client-go/config/clientset/versioned"
+	osclientset "github.com/uccps-samples/client-go/config/clientset/versioned"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -237,7 +237,7 @@ func createMetal3PasswordSecrets(client coreclientv1.SecretsGetter, config *Oper
 	return nil
 }
 
-// Return false on error or if "baremetal.openshift.io/owned" annotation set
+// Return false on error or if "baremetal.uccp.io/owned" annotation set
 func checkMetal3DeploymentMAOOwned(client appsclientv1.DeploymentsGetter, config *OperatorConfig) (bool, error) {
 	existing, err := client.Deployments(config.TargetNamespace).Get(context.Background(), baremetalDeploymentName, metav1.GetOptions{})
 	if err != nil {

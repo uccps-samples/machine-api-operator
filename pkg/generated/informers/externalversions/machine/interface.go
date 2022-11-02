@@ -19,8 +19,8 @@
 package machine
 
 import (
-	internalinterfaces "github.com/openshift/machine-api-operator/pkg/generated/informers/externalversions/internalinterfaces"
-	v1beta1 "github.com/openshift/machine-api-operator/pkg/generated/informers/externalversions/machine/v1beta1"
+	internalinterfaces "github.com/uccps-samples/machine-api-operator/pkg/generated/informers/externalversions/internalinterfaces"
+	v1beta1 "github.com/uccps-samples/machine-api-operator/pkg/generated/informers/externalversions/machine/v1beta1"
 )
 
 // Interface provides access to each of this group's versions.

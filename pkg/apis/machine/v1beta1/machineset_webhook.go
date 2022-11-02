@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	osconfigv1 "github.com/openshift/api/config/v1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
 	utilerrors "k8s.io/apimachinery/pkg/util/errors"
 	"k8s.io/klog/v2"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/admission"

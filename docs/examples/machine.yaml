@@ -1,19 +1,19 @@
-apiVersion: machine.openshift.io/v1beta1
+apiVersion: machine.uccp.io/v1beta1
 kind: Machine
 metadata:
   labels:
-    machine.openshift.io/cluster-api-cluster: clusterID
-    machine.openshift.io/cluster-api-machine-role: role
-    machine.openshift.io/cluster-api-machine-type: role
+    machine.uccp.io/cluster-api-cluster: clusterID
+    machine.uccp.io/cluster-api-machine-role: role
+    machine.uccp.io/cluster-api-machine-type: role
   name: machineName
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 spec:
   providerSpec:
     value:
       kind: AWSMachineProviderConfig
       ami:
         id: ami-0df3f99538fbef10f
-      apiVersion: awsproviderconfig.openshift.io/v1beta1
+      apiVersion: awsproviderconfig.uccp.io/v1beta1
       blockDevices:
         - ebs:
             iops: 0

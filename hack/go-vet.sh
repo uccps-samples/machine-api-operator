@@ -4,8 +4,8 @@ if [ "$IS_CONTAINER" != "" ]; then
 else
   docker run --rm \
     --env IS_CONTAINER=TRUE \
-    --volume "${PWD}:/go/src/github.com/openshift/machine-api-operator:z" \
-    --workdir /go/src/github.com/openshift/machine-api-operator \
+    --volume "${PWD}:/go/src/github.com/uccps-samples/machine-api-operator:z" \
+    --workdir /go/src/github.com/uccps-samples/machine-api-operator \
     --env GO111MODULE="$GO111MODULE" \
     --env GOFLAGS="$GOFLAGS" \
     openshift/origin-release:golang-1.13 \

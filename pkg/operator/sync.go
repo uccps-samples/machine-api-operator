@@ -7,14 +7,14 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/imdario/mergo"
-	"github.com/openshift/library-go/pkg/operator/events"
-	"github.com/openshift/library-go/pkg/operator/resource/resourceapply"
-	"github.com/openshift/library-go/pkg/operator/resource/resourcehash"
-	"github.com/openshift/library-go/pkg/operator/resource/resourcemerge"
-	mapiv1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	machinecontroller "github.com/openshift/machine-api-operator/pkg/controller/machine"
-	"github.com/openshift/machine-api-operator/pkg/metrics"
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
+	"github.com/uccps-samples/library-go/pkg/operator/events"
+	"github.com/uccps-samples/library-go/pkg/operator/resource/resourceapply"
+	"github.com/uccps-samples/library-go/pkg/operator/resource/resourcehash"
+	"github.com/uccps-samples/library-go/pkg/operator/resource/resourcemerge"
+	mapiv1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	machinecontroller "github.com/uccps-samples/machine-api-operator/pkg/controller/machine"
+	"github.com/uccps-samples/machine-api-operator/pkg/metrics"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
 	admissionregistrationv1 "k8s.io/api/admissionregistration/v1"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
@@ -853,7 +853,7 @@ func newTerminationContainers(config *OperatorConfig) []corev1.Container {
 // triggering the Kubernetes rollout as defined when the inputHash changes by adding it annotation to the deployment object.
 func ensureDependecyAnnotations(inputHashes map[string]string, deployment *appsv1.Deployment) {
 	for k, v := range inputHashes {
-		annotationKey := fmt.Sprintf("operator.openshift.io/dep-%s", k)
+		annotationKey := fmt.Sprintf("operator.uccp.io/dep-%s", k)
 		if deployment.Annotations == nil {
 			deployment.Annotations = map[string]string{}
 		}

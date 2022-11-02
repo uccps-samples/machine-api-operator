@@ -22,8 +22,8 @@ import (
 	"fmt"
 	"time"
 
-	machinev1 "github.com/openshift/machine-api-operator/pkg/apis/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/util"
+	machinev1 "github.com/uccps-samples/machine-api-operator/pkg/apis/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/util"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -47,24 +47,24 @@ const (
 	requeueAfter   = 30 * time.Second
 
 	// ExcludeNodeDrainingAnnotation annotation explicitly skips node draining if set
-	ExcludeNodeDrainingAnnotation = "machine.openshift.io/exclude-node-draining"
+	ExcludeNodeDrainingAnnotation = "machine.uccp.io/exclude-node-draining"
 
 	// MachineRegionLabelName as annotation name for a machine region
-	MachineRegionLabelName = "machine.openshift.io/region"
+	MachineRegionLabelName = "machine.uccp.io/region"
 
 	// MachineAZLabelName as annotation name for a machine AZ
-	MachineAZLabelName = "machine.openshift.io/zone"
+	MachineAZLabelName = "machine.uccp.io/zone"
 
 	// MachineInstanceStateAnnotationName as annotation name for a machine instance state
-	MachineInstanceStateAnnotationName = "machine.openshift.io/instance-state"
+	MachineInstanceStateAnnotationName = "machine.uccp.io/instance-state"
 
 	// MachineInstanceTypeLabelName as annotation name for a machine instance type
-	MachineInstanceTypeLabelName = "machine.openshift.io/instance-type"
+	MachineInstanceTypeLabelName = "machine.uccp.io/instance-type"
 
 	// MachineInterruptibleInstanceLabelName as annotaiton name for interruptible instances
-	MachineInterruptibleInstanceLabelName = "machine.openshift.io/interruptible-instance"
+	MachineInterruptibleInstanceLabelName = "machine.uccp.io/interruptible-instance"
 
-	// https://github.com/openshift/enhancements/blob/master/enhancements/machine-instance-lifecycle.md
+	// https://github.com/uccps-samples/enhancements/blob/master/enhancements/machine-instance-lifecycle.md
 	// This is not a transient error, but
 	// indicates a state that will likely need to be fixed before progress can be made
 	// e.g Instance does NOT exist but Machine has providerID/address
@@ -147,7 +147,7 @@ type ReconcileMachine struct {
 
 // Reconcile reads that state of the cluster for a Machine object and makes changes based on the state read
 // and what is in the Machine.Spec
-// +kubebuilder:rbac:groups=machine.openshift.io,resources=machines;machines/status,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=machine.uccp.io,resources=machines;machines/status,verbs=get;list;watch;create;update;patch;delete
 func (r *ReconcileMachine) Reconcile(request reconcile.Request) (reconcile.Result, error) {
 	// TODO(mvladev): Can context be passed from Kubebuilder?
 	ctx := context.TODO()

@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var componentNamespace = "openshift-machine-api"
+var componentNamespace = "uccp-machine-api"
 
 const (
 	componentName = "machine-api-operator"

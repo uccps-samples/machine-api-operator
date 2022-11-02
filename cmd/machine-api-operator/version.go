@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/openshift/machine-api-operator/pkg/version"
+	"github.com/uccps-samples/machine-api-operator/pkg/version"
 	"github.com/spf13/cobra"
 )
 

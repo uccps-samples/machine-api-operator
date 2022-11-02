@@ -2,11 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   labels:
     k8s-app: machine-api-operator
   annotations:
-    exclude.release.openshift.io/internal-openshift-hosted: "true"
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
 spec:
   replicas: 1
   selector:

@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/golang/glog"
-	osconfigv1 "github.com/openshift/api/config/v1"
-	"github.com/openshift/library-go/pkg/config/clusteroperator/v1helpers"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	"github.com/uccps-samples/library-go/pkg/config/clusteroperator/v1helpers"
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
 	"k8s.io/apimachinery/pkg/api/errors"
@@ -33,7 +33,7 @@ const (
 
 var (
 	// This is to be compliant with
-	// https://github.com/openshift/cluster-version-operator/blob/b57ee63baf65f7cb6e95a8b2b304d88629cfe3c0/docs/dev/clusteroperator.md#what-should-an-operator-report-with-clusteroperator-custom-resource
+	// https://github.com/uccps-samples/cluster-version-operator/blob/b57ee63baf65f7cb6e95a8b2b304d88629cfe3c0/docs/dev/clusteroperator.md#what-should-an-operator-report-with-clusteroperator-custom-resource
 	// When known hazardous states for upgrades are determined
 	// specific "Upgradeable=False" status can be added with messages for how admins
 	// can resolve it.
@@ -166,19 +166,19 @@ func (optr *Operator) relatedObjects() []osconfigv1.ObjectReference {
 			Name:     optr.namespace,
 		},
 		{
-			Group:     "machine.openshift.io",
+			Group:     "machine.uccp.io",
 			Resource:  "machines",
 			Name:      "",
 			Namespace: optr.namespace,
 		},
 		{
-			Group:     "machine.openshift.io",
+			Group:     "machine.uccp.io",
 			Resource:  "machinesets",
 			Name:      "",
 			Namespace: optr.namespace,
 		},
 		{
-			Group:     "machine.openshift.io",
+			Group:     "machine.uccp.io",
 			Resource:  "machinehealthchecks",
 			Name:      "",
 			Namespace: optr.namespace,

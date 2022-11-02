@@ -27,7 +27,7 @@ import (
 	"time"
 
 	fuzz "github.com/google/gofuzz"
-	osconfigv1 "github.com/openshift/api/config/v1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"

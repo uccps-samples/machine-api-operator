@@ -2,28 +2,28 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: machine-api-termination-handler
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-controllers
-  namespace: openshift-config
+  namespace: uccp-config
 rules:
   - apiGroups:
       - ""
@@ -39,18 +39,18 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 rules:
 
   - apiGroups:
-      - machine.openshift.io
+      - machine.uccp.io
     resources:
       - '*'
     verbs:
       - '*'
 
   - apiGroups:
-      - healthchecking.openshift.io
+      - healthchecking.uccp.io
     resources:
       - '*'
     verbs:
@@ -180,7 +180,7 @@ rules:
       - watch
 
   - apiGroups:
-    - config.openshift.io
+    - config.uccp.io
     resources:
     - infrastructures
     verbs:
@@ -190,7 +190,7 @@ rules:
 
 # the baremetal pod deployment uses hostNetwork, hostPort, and privileged
   - apiGroups:
-      - security.openshift.io
+      - security.uccp.io
     resources:
       - securitycontextconstraints
     verbs:
@@ -203,17 +203,17 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-termination-handler
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 rules:
   - apiGroups:
-      - machine.openshift.io
+      - machine.uccp.io
     resources:
       - machines
     verbs:
       - list
       - delete
   - apiGroups:
-      - security.openshift.io
+      - security.uccp.io
     resourceNames:
       - hostnetwork
     resources:
@@ -226,7 +226,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 rules:
 
   - apiGroups:
@@ -257,7 +257,7 @@ rules:
       - delete
 
   - apiGroups:
-      - machine.openshift.io
+      - machine.uccp.io
     resources:
       - '*'
     verbs:
@@ -286,7 +286,7 @@ rules:
       - subjectaccessreviews
     verbs: ["create"]
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - clusteroperators
       - clusteroperators/status
@@ -296,7 +296,7 @@ rules:
       - update
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - infrastructures
       - infrastructures/status
@@ -304,7 +304,7 @@ rules:
       - get
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - featuregates
       - featuregates/status
@@ -356,14 +356,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -371,14 +371,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-controllers
-  namespace: openshift-config
+  namespace: uccp-config
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -386,14 +386,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-termination-handler
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -401,7 +401,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-termination-handler
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -415,14 +415,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-operator
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -430,14 +430,14 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-operator
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: prometheus-k8s-machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -445,7 +445,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: prometheus-k8s
-    namespace: openshift-monitoring
+    namespace: uccp-monitoring
 
 ---
 # Roles needed by prometheus to scrape machine api Operator metrics endpoint
@@ -453,7 +453,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: prometheus-k8s-machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 rules:
   - apiGroups:
       - ""
@@ -472,7 +472,7 @@ rules:
       - list
       - watch
 ---
-# Cluster-reader extension to view machine machine.openshift.io resources
+# Cluster-reader extension to view machine machine.uccp.io resources
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -481,7 +481,7 @@ metadata:
     rbac.authorization.k8s.io/aggregate-to-cluster-reader: "true"
 rules:
 - apiGroups:
-  - machine.openshift.io
+  - machine.uccp.io
   resources:
   - machinehealthchecks
   - machines
