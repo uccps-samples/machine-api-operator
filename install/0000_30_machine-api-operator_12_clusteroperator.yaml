@@ -1,11 +1,11 @@
-apiVersion: config.openshift.io/v1
+apiVersion: config.uccp.io/v1
 kind: ClusterOperator
 metadata:
   name: machine-api
   annotations:
-    exclude.release.openshift.io/internal-openshift-hosted: "true"
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    exclude.release.uccp.io/internal-uccp-hosted: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 spec: {}
 status:
   versions:
@@ -13,15 +13,15 @@ status:
       version: "0.0.1-snapshot"
   relatedObjects:
   - group: ""
-    name: openshift-machine-api
+    name: uccp-machine-api
     resource: namespaces
-  - group: machine.openshift.io
+  - group: machine.uccp.io
     name: ""
     resource: machines
-  - group: machine.openshift.io
+  - group: machine.uccp.io
     name: ""
     resource: machinesets
-  - group: machine.openshift.io
+  - group: machine.uccp.io
     name: ""
     resource: machinehealthchecks
   - group: rbac.authorization.k8s.io

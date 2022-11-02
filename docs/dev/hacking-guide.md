@@ -3,9 +3,9 @@
 ## Important
 This guide assumes that the reader is familiar with Machine API and its resources ([Machines, MachineSets, etc.]( https://docs.openshift.com/container-platform/latest/machine_management/creating_machinesets/creating-machineset-aws.html)). 
 
-Frequently asked questions can be found here - https://github.com/openshift/machine-api-operator/blob/master/FAQ.md
+Frequently asked questions can be found here - https://github.com/uccps-samples/machine-api-operator/blob/master/FAQ.md
 
-A diagram of the Machine lifecycle can be found here - https://github.com/openshift/enhancements/blob/master/enhancements/machine-api/machine-instance-lifecycle.md#machine-lifecycle-diagram
+A diagram of the Machine lifecycle can be found here - https://github.com/uccps-samples/enhancements/blob/master/enhancements/machine-api/machine-instance-lifecycle.md#machine-lifecycle-diagram
 
 ## Table of contents
 - [I'm completely new here, where to start?](#im-completely-new-here-where-to-start?)
@@ -28,20 +28,20 @@ A diagram of the Machine lifecycle can be found here - https://github.com/opensh
 ### General information about Machine API structure
 Machine API consists of a number different components:
 
-- Machine API Operator - https://github.com/openshift/machine-api-operator. The operator contains CRDs (Machine,MachineSet, MachineHeathCheck) and is responsible for running controllers for given CRDs. It’s also responsible for running the controllers on the cluster.
-  - [Machine](https://github.com/openshift/machine-api-operator/tree/master/pkg/controller/machine)
-  - [MachineSet](https://github.com/openshift/machine-api-operator/tree/master/pkg/controller/machineset)
-  - [MachineHealthCheck](https://github.com/openshift/machine-api-operator/tree/master/pkg/controller/machinehealthcheck)
-  - [NodeLink](https://github.com/openshift/machine-api-operator/tree/master/pkg/controller/nodelink)
+- Machine API Operator - https://github.com/uccps-samples/machine-api-operator. The operator contains CRDs (Machine,MachineSet, MachineHeathCheck) and is responsible for running controllers for given CRDs. It’s also responsible for running the controllers on the cluster.
+  - [Machine](https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/machine)
+  - [MachineSet](https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/machineset)
+  - [MachineHealthCheck](https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/machinehealthcheck)
+  - [NodeLink](https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/nodelink)
 
 - Provider specific implementation. Each provider except vSphere is located in a separate repository. These providers use the code from the machine controller(link to MAO/machine-controller) and extend it with cloud specific logic:
-  - https://github.com/openshift/cluster-api-provider-gcp
-  - https://github.com/openshift/cluster-api-provider-azure
-  - https://github.com/openshift/cluster-api-provider-aws
-  - https://github.com/openshift/machine-api-operator/tree/master/pkg/controller/vsphere
-  - https://github.com/openshift/cluster-api-provider-openstack
-  - https://github.com/openshift/cluster-api-provider-baremetal
-  - https://github.com/openshift/cluster-api-provider-ovirt
+  - https://github.com/uccps-samples/cluster-api-provider-gcp
+  - https://github.com/uccps-samples/cluster-api-provider-azure
+  - https://github.com/uccps-samples/cluster-api-provider-aws
+  - https://github.com/uccps-samples/machine-api-operator/tree/master/pkg/controller/vsphere
+  - https://github.com/uccps-samples/cluster-api-provider-openstack
+  - https://github.com/uccps-samples/cluster-api-provider-baremetal
+  - https://github.com/uccps-samples/cluster-api-provider-ovirt
 
 ### How to start contributing
 
@@ -54,7 +54,7 @@ If it is a cloud provider related change, you should fork and clone one of provi
 
 If the change is related to all providers, you should fork and clone machine-api-operator.
 
-In order to add changes to our e2e test suite fork and clone [cluster-api-actuator-pkg](https://github.com/openshift/cluster-api-actuator-pkg).
+In order to add changes to our e2e test suite fork and clone [cluster-api-actuator-pkg](https://github.com/uccps-samples/cluster-api-actuator-pkg).
 
 Our project follows the [GitHub flow](https://guides.github.com/introduction/flow/) for contributing the code.
 
@@ -63,7 +63,7 @@ You may want to run unit tests before pushing changes. It can be done in a simil
 
 Prerequisite:
 ```
-git checkout github.com/openshift/$repository_name
+git checkout github.com/uccps-samples/$repository_name
 cd $repository_name
 ```
 In order to run the unit tests locally on your machine run the following command:
@@ -78,7 +78,7 @@ If this command is run inside a cloud provider repository you will run only clou
 ### Running machine controller
 Prerequisites:
 ```
-git checkout github.com/openshift/$repository_name
+git checkout github.com/uccps-samples/$repository_name
 cd $repository_name
 ```
 Make sure your $KUBECONFIG is set properly, because it will be used to interact with your cluster.
@@ -88,19 +88,19 @@ First step is to scale down the cluster version operator.
 “At the heart of OpenShift is an operator called the Cluster Version Operator. This operator watches the deployments and images related to the core OpenShift services, and will prevent a user from changing these details. If I want to replace the core OpenShift services I will need to scale this operator down.”
 
 ```
-oc scale --replicas=0 deployment/cluster-version-operator -n openshift-cluster-version
+oc scale --replicas=0 deployment/cluster-version-operator -n uccp-cluster-version
 ```
 
 Second step is scaling down the machine-api-operator. The operator watches for machine controller to be running and will prevent it from scaling down.
 
 ``` 
-oc scale deployment/machine-api-operator -n openshift-machine-api --replicas=0
+oc scale deployment/machine-api-operator -n uccp-machine-api --replicas=0
 ```
 
 Third step, once MAO is down scaled it is required to remove the machine-controller container from machine-api-controllers Deployment.
 
 ```
-oc edit deployment/machine-api-controllers -n openshift-machine-api
+oc edit deployment/machine-api-controllers -n uccp-machine-api
 ```
 
 Finally, once all has been scaled down you can compile and run the controller.
@@ -120,7 +120,7 @@ The section is inspired by [this](https://notes.elmiko.dev/2020/08/18/tips-exper
 
 Prerequisites:
 ```
-git checkout github.com/openshift/$repository_name
+git checkout github.com/uccps-samples/$repository_name
 cd $repository_name
 ```
 
@@ -136,37 +136,37 @@ Note: The commands might be slightly different for providers.
 Second step, similar to running the component locally we need to scale down CVO.
 
 ```
-oc scale --replicas=0 deployment/cluster-version-operator -n openshift-cluster-version
+oc scale --replicas=0 deployment/cluster-version-operator -n uccp-cluster-version
 ```
 Next, edit machine-api-operator-images ConfigMap and place a link to your image there.
 
-The openshift-machine-api project contains all the resources and components that are used by the Machine API. There is a ConfigMap named machine-api-operator-images. This ConfigMap contains references to all the images used by the Machine API Operator, it uses these to deploy the controller and ensure they are the proper images. The ConfigMap looks something like this:
+The uccp-machine-api project contains all the resources and components that are used by the Machine API. There is a ConfigMap named machine-api-operator-images. This ConfigMap contains references to all the images used by the Machine API Operator, it uses these to deploy the controller and ensure they are the proper images. The ConfigMap looks something like this:
 ```
 apiVersion: v1
 kind: ConfigMap
 data:
   images.json: |
     {
-        "machineAPIOperator": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerAWS": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerOpenStack": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerLibvirt": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerBareMetal": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerAzure": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerGCP": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerOvirt": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "clusterAPIControllerVSphere": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "baremetalOperator": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "baremetalIronic": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "baremetalIronicInspector": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "baremetalIpaDownloader": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "baremetalMachineOsDownloader": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:...",
-        "baremetalStaticIpManager": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:..."
+        "machineAPIOperator": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerAWS": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerOpenStack": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerLibvirt": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerBareMetal": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerAzure": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerGCP": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerOvirt": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "clusterAPIControllerVSphere": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "baremetalOperator": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "baremetalIronic": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "baremetalIronicInspector": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "baremetalIpaDownloader": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "baremetalMachineOsDownloader": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:...",
+        "baremetalStaticIpManager": "quay.io/uccp-release-dev/ocp-v4.0-art-dev@sha256:..."
     }
 ```
 
 ```
-oc edit configmap/machine-api-operator-images -n openshift-machine-api
+oc edit configmap/machine-api-operator-images -n uccp-machine-api
 ```
 
 With the new image information loaded into the ConfigMap, the next thing you might do is replace the Machine API operator. This operator controls how the specific cloud controllers are deployed and coordinated. You only change this component if there is something you are testing.
@@ -174,29 +174,29 @@ With the new image information loaded into the ConfigMap, the next thing you mig
 The easiest way to change this operator is to change the image reference in the deployment. The commands you can use:
 
 ```
-oc edit deployment/machine-api-operator -n openshift-machine-api
+oc edit deployment/machine-api-operator -n uccp-machine-api
 ```
 
 After changing the download reference in the images ConfigMap an easy way to swap out the controller is to let the Machine API operator do it for you. You can delete the deployment associated with the cloud provider controller and then the Machine API operator will create a new one for you, like this:
 
 ```
-oc delete deployment/machine-api-controllers -n openshift-machine-api
+oc delete deployment/machine-api-controllers -n uccp-machine-api
 ```
 
 ## How to run e2e tests
 
-For running e2e on your cluster refer to this [document](https://github.com/openshift/cluster-api-actuator-pkg#running-the-cluster-autoscaler-operator-e2e-tests-against-an-openshift-cluster)
+For running e2e on your cluster refer to this [document](https://github.com/uccps-samples/cluster-api-actuator-pkg#running-the-cluster-autoscaler-operator-e2e-tests-against-an-uccp-cluster)
 
 ### Running specific e2e tests
-In case you want to disable MHC, autoscaler or infra test, you can remove or comment them here - https://github.com/openshift/cluster-api-actuator-pkg/blob/master/pkg/e2e_test.go#L20
+In case you want to disable MHC, autoscaler or infra test, you can remove or comment them here - https://github.com/uccps-samples/cluster-api-actuator-pkg/blob/master/pkg/e2e_test.go#L20
 
 Example of disabling autoscaler tests:
 ```
 …
-// _ "github.com/openshift/cluster-api-actuator-pkg/pkg/autoscaler"
-_ "github.com/openshift/cluster-api-actuator-pkg/pkg/infra"
-_ "github.com/openshift/cluster-api-actuator-pkg/pkg/machinehealthcheck"
-_ "github.com/openshift/cluster-api-actuator-pkg/pkg/operators"
+// _ "github.com/uccps-samples/cluster-api-actuator-pkg/pkg/autoscaler"
+_ "github.com/uccps-samples/cluster-api-actuator-pkg/pkg/infra"
+_ "github.com/uccps-samples/cluster-api-actuator-pkg/pkg/machinehealthcheck"
+_ "github.com/uccps-samples/cluster-api-actuator-pkg/pkg/operators"
 )
 
 ```
@@ -207,7 +207,7 @@ machine-api-operator is vendored in every provider repository.
 ```
 git checkout github.com/openshfit/$provider_repository_name
 cd $provider_repository_name
-go get github.com/openshift/machine-api-operator@master
+go get github.com/uccps-samples/machine-api-operator@master
 make vendor
 ```
 
@@ -232,7 +232,7 @@ To fix this, run:
 ```
 *Note* : Changing owners with this script requires user to have sudo privileges.
 
-Running `make images NO_DOCKER=1` without having `docker-deamon` running on your machine fails. Reason for this is that [openshift/imagebuilder](https://github.com/openshift/imagebuilder) is being used to build images and it requires docker-deamon. 
+Running `make images NO_DOCKER=1` without having `docker-deamon` running on your machine fails. Reason for this is that [openshift/imagebuilder](https://github.com/uccps-samples/imagebuilder) is being used to build images and it requires docker-deamon. 
 To solve this, run:
 ```
 sudo podman system service --time=0 unix:///var/run/docker.sock

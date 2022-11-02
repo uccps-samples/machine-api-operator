@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"reflect"
 
-	osconfigv1 "github.com/openshift/api/config/v1"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	utilerrors "k8s.io/apimachinery/pkg/util/errors"

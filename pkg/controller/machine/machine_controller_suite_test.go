@@ -23,7 +23,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
 	"sigs.k8s.io/controller-runtime/pkg/envtest"

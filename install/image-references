@@ -1,5 +1,5 @@
 kind: ImageStream
-apiVersion: image.openshift.io/v1
+apiVersion: image.uccp.io/v1
 spec:
   tags:
   - name: machine-api-operator

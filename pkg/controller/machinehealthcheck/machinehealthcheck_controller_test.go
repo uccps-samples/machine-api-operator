@@ -9,13 +9,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/openshift/machine-api-operator/pkg/util/external"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/external"
 
 	. "github.com/onsi/gomega"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
-	maotesting "github.com/openshift/machine-api-operator/pkg/util/testing"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
+	maotesting "github.com/uccps-samples/machine-api-operator/pkg/util/testing"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -33,7 +33,7 @@ import (
 )
 
 const (
-	namespace = "openshift-machine-api"
+	namespace = "uccp-machine-api"
 )
 
 var (
@@ -2050,7 +2050,7 @@ func TestRemediate(t *testing.T) {
 				Machine: machinev1.Machine{
 					TypeMeta: metav1.TypeMeta{
 						Kind:       "Machine",
-						APIVersion: "machine.openshift.io/v1beta1",
+						APIVersion: "machine.uccp.io/v1beta1",
 					},
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: make(map[string]string),
@@ -2093,7 +2093,7 @@ func TestRemediate(t *testing.T) {
 				Machine: machinev1.Machine{
 					TypeMeta: metav1.TypeMeta{
 						Kind:       "Machine",
-						APIVersion: "machine.openshift.io/v1beta1",
+						APIVersion: "machine.uccp.io/v1beta1",
 					},
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: make(map[string]string),
@@ -2139,7 +2139,7 @@ func TestRemediate(t *testing.T) {
 				Machine: machinev1.Machine{
 					TypeMeta: metav1.TypeMeta{
 						Kind:       "Machine",
-						APIVersion: "machine.openshift.io/v1beta1",
+						APIVersion: "machine.uccp.io/v1beta1",
 					},
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: make(map[string]string),
@@ -3118,7 +3118,7 @@ func newMachineHealthCheckWithRemediationTemplate(infraRemediationTmpl *unstruct
 
 	mhc := maotesting.NewMachineHealthCheck("machineHealthCheck")
 	remediationTemplateObjRef := &corev1.ObjectReference{
-		APIVersion: "infrastructure.machine.openshift.io/v1alpha3",
+		APIVersion: "infrastructure.machine.uccp.io/v1alpha3",
 		Kind:       "InfrastructureRemediationTemplate",
 		Name:       infraRemediationTmpl.GetName(),
 	}

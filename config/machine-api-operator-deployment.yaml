@@ -3,7 +3,7 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   labels:
     k8s-app: machine-api-operator
 spec:

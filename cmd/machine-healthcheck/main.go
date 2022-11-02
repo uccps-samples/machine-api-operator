@@ -4,13 +4,13 @@ import (
 	"flag"
 	"runtime"
 
-	"github.com/openshift/machine-api-operator/pkg/controller/machinehealthcheck"
-	"github.com/openshift/machine-api-operator/pkg/metrics"
-	"github.com/openshift/machine-api-operator/pkg/util"
+	"github.com/uccps-samples/machine-api-operator/pkg/controller/machinehealthcheck"
+	"github.com/uccps-samples/machine-api-operator/pkg/metrics"
+	"github.com/uccps-samples/machine-api-operator/pkg/util"
 
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 
-	"github.com/openshift/machine-api-operator/pkg/controller"
+	"github.com/uccps-samples/machine-api-operator/pkg/controller"
 	sdkVersion "github.com/operator-framework/operator-sdk/version"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
 	"k8s.io/klog/v2"

@@ -24,7 +24,7 @@ import (
 	"time"
 
 	. "github.com/onsi/gomega"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 	"golang.org/x/net/context"
 	"k8s.io/apimachinery/pkg/api/apitesting/fuzzer"
 	metafuzzer "k8s.io/apimachinery/pkg/apis/meta/fuzzer"

@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"time"
 
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 )
 
 // A more descriptive kind of error that represents an error condition that

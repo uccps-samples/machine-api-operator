@@ -29,8 +29,8 @@ import (
 	corev1 "k8s.io/api/core/v1"
 
 	fuzz "github.com/google/gofuzz"
-	osconfigv1 "github.com/openshift/api/config/v1"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	osconfigv1 "github.com/uccps-samples/api/config/v1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/kubernetes/scheme"

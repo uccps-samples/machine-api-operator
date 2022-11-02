@@ -25,10 +25,10 @@ import (
 	"testing"
 
 	. "github.com/onsi/gomega"
-	configv1 "github.com/openshift/api/config/v1"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
-	machinecontroller "github.com/openshift/machine-api-operator/pkg/controller/machine"
-	"github.com/openshift/machine-api-operator/pkg/controller/vsphere/session"
+	configv1 "github.com/uccps-samples/api/config/v1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
+	machinecontroller "github.com/uccps-samples/machine-api-operator/pkg/controller/machine"
+	"github.com/uccps-samples/machine-api-operator/pkg/controller/vsphere/session"
 	"github.com/vmware/govmomi/object"
 	"github.com/vmware/govmomi/simulator"
 	"github.com/vmware/govmomi/vapi/rest"
@@ -1521,7 +1521,7 @@ func TestCreate(t *testing.T) {
 					Name: "test",
 				},
 			},
-			expectedError: errors.New("test: failed validating machine provider spec: test: missing \"machine.openshift.io/cluster-api-cluster\" label"),
+			expectedError: errors.New("test: failed validating machine provider spec: test: missing \"machine.uccp.io/cluster-api-cluster\" label"),
 		},
 		{
 			name: "Fail on not connected to vCenter",
@@ -1705,7 +1705,7 @@ func TestUpdate(t *testing.T) {
 					},
 				},
 			},
-			expectedError: errors.New("test: failed validating machine provider spec: test: missing \"machine.openshift.io/cluster-api-cluster\" label"),
+			expectedError: errors.New("test: failed validating machine provider spec: test: missing \"machine.uccp.io/cluster-api-cluster\" label"),
 		},
 	}
 

@@ -9,8 +9,8 @@ import (
 	"time"
 
 	. "github.com/onsi/gomega"
-	configv1 "github.com/openshift/api/config/v1"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	configv1 "github.com/uccps-samples/api/config/v1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 	"github.com/vmware/govmomi/simulator"
 	corev1 "k8s.io/api/core/v1"
 	v1 "k8s.io/api/core/v1"
@@ -188,7 +188,7 @@ func TestMachineEvents(t *testing.T) {
 				machine.Labels[machinev1.MachineClusterIDLabel] = ""
 				actuator.Create(ctx, machine)
 			},
-			event: "test: reconciler failed to Create machine: test: failed validating machine provider spec: test: missing \"machine.openshift.io/cluster-api-cluster\" label",
+			event: "test: reconciler failed to Create machine: test: failed validating machine provider spec: test: missing \"machine.uccp.io/cluster-api-cluster\" label",
 		},
 		{
 			name: "Create machine event succeed",
@@ -210,7 +210,7 @@ func TestMachineEvents(t *testing.T) {
 				machine.Labels[machinev1.MachineClusterIDLabel] = ""
 				actuator.Update(ctx, machine)
 			},
-			event: "test: reconciler failed to Update machine: test: failed validating machine provider spec: test: missing \"machine.openshift.io/cluster-api-cluster\" label",
+			event: "test: reconciler failed to Update machine: test: failed validating machine provider spec: test: missing \"machine.uccp.io/cluster-api-cluster\" label",
 		},
 		{
 			name: "Update machine event succeed and only one event is created",

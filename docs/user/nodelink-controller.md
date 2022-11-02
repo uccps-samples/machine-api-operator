@@ -7,11 +7,11 @@ valid node reference.
 
 **Example Machine (truncated)**
 ```yaml
-apiVersion: machine.openshift.io/v1beta1
+apiVersion: machine.uccp.io/v1beta1
 kind: Machine
 metadata:
   name: alpha-b6dhr-worker-us-east-2a-jxqng
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 status:
   nodeRef:
     kind: Node
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Node
 metadata:
   annotations:
-      machine.openshift.io/machine: openshift-machine-api/alpha-b6dhr-worker-us-east-2a-jxqng
+      machine.uccp.io/machine: uccp-machine-api/alpha-b6dhr-worker-us-east-2a-jxqng
   name: ip-10-0-145-184.us-east-2.compute.internal
   uid: e689b5e9-6c23-4b74-b23d-69432f81b230
 ```
@@ -37,7 +37,7 @@ In short the nodelink controller does the following:
    (`.spec.providerID`) or the IP address (`.status.addresses`).
 3. If the machine is found, update its node reference (`.status.nodeRef`)
    with the name and UID of the associated node.
-4. Add the `machine.openshift.io/machine` annotation to the node, with
+4. Add the `machine.uccp.io/machine` annotation to the node, with
    the value of `{machine namespace}/{machine name}`.
 5. Copy the labels from the machine spec (`.spec.labels`) to the node.
 6. Copy the taints from the machine spec (`.spec.taints`) to the node.

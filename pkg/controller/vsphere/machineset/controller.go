@@ -6,9 +6,9 @@ import (
 	"strconv"
 
 	"github.com/go-logr/logr"
-	machinev1 "github.com/openshift/api/machine/v1beta1"
-	mapierrors "github.com/openshift/machine-api-operator/pkg/controller/machine"
-	vsphereutil "github.com/openshift/machine-api-operator/pkg/controller/vsphere"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
+	mapierrors "github.com/uccps-samples/machine-api-operator/pkg/controller/machine"
+	vsphereutil "github.com/uccps-samples/machine-api-operator/pkg/controller/vsphere"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -21,9 +21,9 @@ import (
 const (
 	// This exposes compute information based on the providerSpec input.
 	// This is needed by the autoscaler to foresee upcoming capacity when scaling from zero.
-	// https://github.com/openshift/enhancements/pull/186
-	cpuKey    = "machine.openshift.io/vCPU"
-	memoryKey = "machine.openshift.io/memoryMb"
+	// https://github.com/uccps-samples/enhancements/pull/186
+	cpuKey    = "machine.uccp.io/vCPU"
+	memoryKey = "machine.uccp.io/memoryMb"
 )
 
 // Reconciler reconciles machineSets.

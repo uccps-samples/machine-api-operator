@@ -12,9 +12,9 @@ import (
 	"time"
 
 	. "github.com/onsi/gomega"
-	openshiftv1 "github.com/openshift/api/config/v1"
-	fakeos "github.com/openshift/client-go/config/clientset/versioned/fake"
-	configinformersv1 "github.com/openshift/client-go/config/informers/externalversions"
+	openshiftv1 "github.com/uccps-samples/api/config/v1"
+	fakeos "github.com/uccps-samples/client-go/config/clientset/versioned/fake"
+	configinformersv1 "github.com/uccps-samples/client-go/config/informers/externalversions"
 	"github.com/stretchr/testify/assert"
 	appsv1 "k8s.io/api/apps/v1"
 	kerrors "k8s.io/apimachinery/pkg/api/errors"
@@ -509,7 +509,7 @@ func TestMAOConfigFromInfrastructure(t *testing.T) {
 			infra:          nil,
 			proxy:          proxy,
 			expectedConfig: nil,
-			expectedError:  kerrors.NewNotFound(schema.GroupResource{Group: "config.openshift.io", Resource: "infrastructures"}, "cluster"),
+			expectedError:  kerrors.NewNotFound(schema.GroupResource{Group: "config.uccp.io", Resource: "infrastructures"}, "cluster"),
 		},
 		{
 			name:           "no-proxy",
@@ -517,7 +517,7 @@ func TestMAOConfigFromInfrastructure(t *testing.T) {
 			infra:          infra,
 			proxy:          nil,
 			expectedConfig: nil,
-			expectedError:  kerrors.NewNotFound(schema.GroupResource{Group: "config.openshift.io", Resource: "proxies"}, "cluster"),
+			expectedError:  kerrors.NewNotFound(schema.GroupResource{Group: "config.uccp.io", Resource: "proxies"}, "cluster"),
 		},
 		{
 			name:           "no-platform",

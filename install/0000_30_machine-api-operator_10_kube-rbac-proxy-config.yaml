@@ -2,10 +2,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: kube-rbac-proxy
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 data:
   config-file.yaml: |+
     authorization:
@@ -13,5 +13,5 @@ data:
         apiVersion: v1
         resource: namespace
         subresource: metrics
-        namespace: openshift-machine-api
+        namespace: uccp-machine-api
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -15,9 +15,9 @@ import (
 
 const (
 	// Namespace contains the default namespace for machine-api components
-	Namespace = "openshift-machine-api"
+	Namespace = "uccp-machine-api"
 	// MachineAnnotationKey contains default machine node annotation
-	MachineAnnotationKey = "machine.openshift.io/machine"
+	MachineAnnotationKey = "machine.uccp.io/machine"
 )
 
 var (
@@ -45,7 +45,7 @@ func NewExternalRemediationTemplate() *unstructured.Unstructured {
 	infraRemediationTmpl := &unstructured.Unstructured{
 		Object: map[string]interface{}{
 			"kind":       "InfrastructureRemediationTemplate",
-			"apiVersion": "infrastructure.machine.openshift.io/v1alpha3",
+			"apiVersion": "infrastructure.machine.uccp.io/v1alpha3",
 			"spec": map[string]interface{}{
 				"template": map[string]interface{}{},
 			},
@@ -62,7 +62,7 @@ func NewExternalRemediationMachine() *unstructured.Unstructured {
 	return &unstructured.Unstructured{
 		Object: map[string]interface{}{
 			"kind":       "InfrastructureRemediation",
-			"apiVersion": "infrastructure.machine.openshift.io/v1alpha3",
+			"apiVersion": "infrastructure.machine.uccp.io/v1alpha3",
 			"metadata": map[string]interface{}{
 				"name":      "Machine",
 				"namespace": Namespace,

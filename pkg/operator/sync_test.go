@@ -150,16 +150,16 @@ func Test_ensureDependecyAnnotations(t *testing.T) {
 		expected: &appsv1.Deployment{
 			ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-					"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+					"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+					"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 				},
 			},
 			Spec: appsv1.DeploymentSpec{
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: map[string]string{
-							"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-							"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+							"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+							"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 						},
 					},
 				},
@@ -170,16 +170,16 @@ func Test_ensureDependecyAnnotations(t *testing.T) {
 		input: &appsv1.Deployment{
 			ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-					"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+					"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+					"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 				},
 			},
 			Spec: appsv1.DeploymentSpec{
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: map[string]string{
-							"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-							"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+							"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+							"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 						},
 					},
 				},
@@ -189,16 +189,16 @@ func Test_ensureDependecyAnnotations(t *testing.T) {
 		expected: &appsv1.Deployment{
 			ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-					"operator.openshift.io/dep-dep-2": "dep-2-state-2",
+					"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+					"operator.uccp.io/dep-dep-2": "dep-2-state-2",
 				},
 			},
 			Spec: appsv1.DeploymentSpec{
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: map[string]string{
-							"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-							"operator.openshift.io/dep-dep-2": "dep-2-state-2",
+							"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+							"operator.uccp.io/dep-dep-2": "dep-2-state-2",
 						},
 					},
 				},
@@ -209,16 +209,16 @@ func Test_ensureDependecyAnnotations(t *testing.T) {
 		input: &appsv1.Deployment{
 			ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-					"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+					"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+					"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 				},
 			},
 			Spec: appsv1.DeploymentSpec{
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: map[string]string{
-							"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-							"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+							"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+							"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 						},
 					},
 				},
@@ -228,16 +228,16 @@ func Test_ensureDependecyAnnotations(t *testing.T) {
 		expected: &appsv1.Deployment{
 			ObjectMeta: metav1.ObjectMeta{
 				Annotations: map[string]string{
-					"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-					"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+					"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+					"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 				},
 			},
 			Spec: appsv1.DeploymentSpec{
 				Template: corev1.PodTemplateSpec{
 					ObjectMeta: metav1.ObjectMeta{
 						Annotations: map[string]string{
-							"operator.openshift.io/dep-dep-1": "dep-1-state-1",
-							"operator.openshift.io/dep-dep-2": "dep-2-state-1",
+							"operator.uccp.io/dep-dep-1": "dep-1-state-1",
+							"operator.uccp.io/dep-dep-2": "dep-2-state-1",
 						},
 					},
 				},

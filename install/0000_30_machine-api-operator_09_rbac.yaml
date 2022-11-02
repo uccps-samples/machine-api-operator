@@ -2,30 +2,30 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: machine-api-termination-handler
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 automountServiceAccountToken: false
 
 ---
@@ -33,10 +33,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-controllers
-  namespace: openshift-config
+  namespace: uccp-config
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
   - apiGroups:
       - ""
@@ -52,9 +52,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-controllers
-  namespace: openshift-config-managed
+  namespace: uccp-config-managed
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
 rules:
 - apiGroups:
   - ""
@@ -70,21 +70,21 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
 
   - apiGroups:
-      - machine.openshift.io
+      - machine.uccp.io
     resources:
       - '*'
     verbs:
       - '*'
 
   - apiGroups:
-      - healthchecking.openshift.io
+      - healthchecking.uccp.io
     resources:
       - '*'
     verbs:
@@ -163,8 +163,8 @@ kind: ClusterRole
 metadata:
   name: machine-api-controllers
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
 
   - apiGroups:
@@ -230,7 +230,7 @@ rules:
       - watch
 
   - apiGroups:
-    - config.openshift.io
+    - config.uccp.io
     resources:
     - infrastructures
     - dnses
@@ -241,7 +241,7 @@ rules:
 
 # The baremetal controller needs access to rendered-ignition
   - apiGroups:
-      - machineconfiguration.openshift.io
+      - machineconfiguration.uccp.io
     resources:
       - machineconfigs
       - machineconfigpools
@@ -255,10 +255,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
 
   - apiGroups:
@@ -289,7 +289,7 @@ rules:
       - delete
 
   - apiGroups:
-      - machine.openshift.io
+      - machine.uccp.io
     resources:
       - '*'
     verbs:
@@ -332,8 +332,8 @@ kind: ClusterRole
 metadata:
   name: machine-api-operator
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
   - apiGroups: ["authentication.k8s.io"]
     resources:
@@ -344,7 +344,7 @@ rules:
       - subjectaccessreviews
     verbs: ["create"]
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - clusteroperators
       - clusteroperators/status
@@ -354,7 +354,7 @@ rules:
       - update
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - infrastructures
       - infrastructures/status
@@ -362,7 +362,7 @@ rules:
       - get
 
   - apiGroups:
-      - config.openshift.io
+      - config.uccp.io
     resources:
       - featuregates
       - featuregates/status
@@ -400,8 +400,8 @@ kind: ClusterRole
 metadata:
   name: machine-api-operator-ext-remediation
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 aggregationRule:
   clusterRoleSelectors:
     - matchLabels: # Allowing external remediations to add their permissions
@@ -415,8 +415,8 @@ kind: ClusterRoleBinding
 metadata:
   name: machine-api-operator-ext-remediation
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -424,7 +424,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -432,8 +432,8 @@ kind: ClusterRoleBinding
 metadata:
   name: machine-api-controllers
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -441,17 +441,17 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -459,17 +459,17 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-controllers
-  namespace: openshift-config
+  namespace: uccp-config
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -477,16 +477,16 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-controllers
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-controllers
-  namespace: openshift-config-managed
+  namespace: uccp-config-managed
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -494,7 +494,7 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: machine-api-controllers
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -502,8 +502,8 @@ kind: ClusterRoleBinding
 metadata:
   name: machine-api-operator
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -511,17 +511,17 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-operator
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -529,17 +529,17 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: machine-api-operator
-    namespace: openshift-machine-api
+    namespace: uccp-machine-api
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: prometheus-k8s-machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
@@ -547,7 +547,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: prometheus-k8s
-    namespace: openshift-monitoring
+    namespace: uccp-monitoring
 
 ---
 # Roles needed by prometheus to scrape machine api Operator metrics endpoint
@@ -555,10 +555,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: prometheus-k8s-machine-api-operator
-  namespace: openshift-machine-api
+  namespace: uccp-machine-api
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
   - apiGroups:
       - ""
@@ -577,7 +577,7 @@ rules:
       - list
       - watch
 ---
-# Cluster-reader extension to view machine machine.openshift.io resources
+# Cluster-reader extension to view machine machine.uccp.io resources
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -585,11 +585,11 @@ metadata:
   labels:
     rbac.authorization.k8s.io/aggregate-to-cluster-reader: "true"
   annotations:
-    include.release.openshift.io/self-managed-high-availability: "true"
-    include.release.openshift.io/single-node-developer: "true"
+    include.release.uccp.io/self-managed-high-availability: "true"
+    include.release.uccp.io/single-node-developer: "true"
 rules:
 - apiGroups:
-  - machine.openshift.io
+  - machine.uccp.io
   resources:
   - machinehealthchecks
   - machines

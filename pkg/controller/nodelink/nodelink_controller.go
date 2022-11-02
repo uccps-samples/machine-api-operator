@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"reflect"
 
-	machinev1 "github.com/openshift/api/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	machineAnnotationKey   = "machine.openshift.io/machine"
+	machineAnnotationKey   = "machine.uccp.io/machine"
 	machineInternalIPIndex = "machineInternalIPIndex"
 	machineProviderIDIndex = "machineProviderIDIndex"
 	nodeInternalIPIndex    = "nodeInternalIPIndex"

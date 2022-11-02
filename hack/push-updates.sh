@@ -138,7 +138,7 @@ for repo in $REPOS; do
 
     # Use -d option to avoid build errors because we aren't going to
     # build locally.
-    go get -d github.com/openshift/machine-api-operator@${FULL_SHA}
+    go get -d github.com/uccps-samples/machine-api-operator@${FULL_SHA}
 
     go mod tidy
     go mod vendor

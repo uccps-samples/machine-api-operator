@@ -1,9 +1,9 @@
 package metrics
 
 import (
-	machinev1 "github.com/openshift/api/machine/v1beta1"
-	machineinformers "github.com/openshift/client-go/machine/informers/externalversions/machine/v1beta1"
-	machinelisters "github.com/openshift/client-go/machine/listers/machine/v1beta1"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
+	machineinformers "github.com/uccps-samples/client-go/machine/informers/externalversions/machine/v1beta1"
+	machinelisters "github.com/uccps-samples/client-go/machine/listers/machine/v1beta1"
 	"github.com/prometheus/client_golang/prometheus"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/klog/v2"

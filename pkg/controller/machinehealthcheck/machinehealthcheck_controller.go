@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
-	machinev1 "github.com/openshift/api/machine/v1beta1"
-	"github.com/openshift/machine-api-operator/pkg/metrics"
-	"github.com/openshift/machine-api-operator/pkg/util/annotations"
-	"github.com/openshift/machine-api-operator/pkg/util/conditions"
-	"github.com/openshift/machine-api-operator/pkg/util/external"
+	machinev1 "github.com/uccps-samples/api/machine/v1beta1"
+	"github.com/uccps-samples/machine-api-operator/pkg/metrics"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/annotations"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/conditions"
+	"github.com/uccps-samples/machine-api-operator/pkg/util/external"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	apimachineryerrors "k8s.io/apimachinery/pkg/api/errors"
@@ -36,13 +36,13 @@ import (
 )
 
 const (
-	machineAnnotationKey          = "machine.openshift.io/machine"
+	machineAnnotationKey          = "machine.uccp.io/machine"
 	machineExternalAnnotationKey  = "host.metal3.io/external-remediation"
 	nodeMasterLabel               = "node-role.kubernetes.io/master"
-	machineRoleLabel              = "machine.openshift.io/cluster-api-machine-role"
+	machineRoleLabel              = "machine.uccp.io/cluster-api-machine-role"
 	machineMasterRole             = "master"
 	machinePhaseFailed            = "Failed"
-	remediationStrategyAnnotation = "machine.openshift.io/remediation-strategy"
+	remediationStrategyAnnotation = "machine.uccp.io/remediation-strategy"
 	remediationStrategyExternal   = machinev1.RemediationStrategyType("external-baremetal")
 	defaultNodeStartupTimeout     = 10 * time.Minute
 	machineNodeNameIndex          = "machineNodeNameIndex"
